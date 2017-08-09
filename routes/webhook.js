@@ -5,7 +5,7 @@ var express = require('express');
 var router = express.Router();
 var exec = require('exec');
 
-router.post('/', function(req, res) {
+router.all('/', function(req, res) {
     var commands = [
         'git pull',
         'npm install',
