@@ -8,6 +8,7 @@ var exec = require('exec');
 router.get('/', function(req, res) {
     var commands = [
         'git pull',
+        'npm install',
         'forever restart ./bin/www'
     ].join(' && ');
 
