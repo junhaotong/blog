@@ -14,7 +14,6 @@ router.all('/', function(req, res) {
 
     exec(commands, function(err, out, code) {
         if (err instanceof Error) {
-            res.writeHead(500);
             res.end('Server Internal Error.');
             throw err;
         }
