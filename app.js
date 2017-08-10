@@ -7,13 +7,19 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var webhook = require('./routes/webhook');
+var webhook = require('./webhook/webhook');
 
 var app = express();
 
+var session = require('express-session');
+var RedisStore = require('connect-redis')(session);
+
+var client = require('./redis/redis');
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+app.engine('.html', require('ejs').renderFile);
+app.set('view engine', 'html');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
@@ -22,6 +28,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(session({
+    store: new RedisStore({
+        client: client
+    }),
+    resave:false,
+    saveUninitialized:true,
+    secret: 'blog',
+    cookie: {maxAge: 100000}
+}))
 
 app.use('/', index);
 app.use('/users', users);
