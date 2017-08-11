@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+    <div>
         <canvas id="canvas" style="background:#000">
             your browser not support canavs
         </canvas>
