@@ -1,23 +1,34 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <router-view></router-view>
-  </div>
+    <div id="app">
+        <canvas id="canvas" style="background:#000">
+            your browser not support canavs
+        </canvas>
+    </div>
 </template>
 
 <script>
-export default {
-  name: 'app'
-}
+    import './assets/Martrix.min';
+    export default {
+        name: 'app',
+        mounted() {
+            martrix('canvas', {
+                cW: 1390,
+                cH: 700,
+                wordColor: '#FFFC3A',
+                fontSize: 13,
+                speed: 0.13,
+            });
+        }
+    }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #canvas {
+        width: 100%;
+        height: 100%;
+    }
 </style>
