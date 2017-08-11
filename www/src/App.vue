@@ -14,7 +14,7 @@
             martrix('canvas', {
                 cW: 1390,
                 cH: 700,
-                wordColor: '#FFFC3A',
+                wordColor: '#13CE66',
                 fontSize: 13,
                 speed: 0.13,
             });
