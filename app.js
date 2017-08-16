@@ -6,15 +6,12 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var api = require('./routes/api');
 var webhook = require('./webhook/webhook');
 
 var app = express();
 
 var session = require('express-session');
-var RedisStore = require('connect-redis')(session);
-
-var client = require('./redis/redis');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,18 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(session({
-    store: new RedisStore({
-        client: client
-    }),
-    resave:false,
-    saveUninitialized:true,
-    secret: 'blog',
-    cookie: {maxAge: 100000}
-}))
-
 app.use('/', index);
-app.use('/users', users);
+app.use('/api', api);
 app.use('/webhook', webhook);
 
 // catch 404 and forward to error handler
