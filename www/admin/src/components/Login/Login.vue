@@ -28,7 +28,7 @@
 </script>
 
 <style lang="less" rel="stylesheet/less">
-    .login-wrapper {
+    body>.login-wrapper {
         position: absolute;
         top: 0;
         left: 0;
