@@ -2,7 +2,7 @@
     <Row class="login-wrapper">
         <canvas id="login"></canvas>
         <div class="login-dialog">
-            <div class="title">登录{{pwdError}}</div>
+            <div class="title">登录</div>
             <Form ref="loginForm" :model="loginForm" :rules="loginRules">
                 <Form-item prop="username" :error="usernameError">
                     <Input class="input" v-model="loginForm.username" placeholder="请输入用户名"/>
