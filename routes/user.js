@@ -45,14 +45,35 @@ router.post('/regist', (req, res) => {
  * 登录
  */
 router.post('/login', (req, res) => {
+    let username = req.body.username;
+    let password = req.body.password;
+
     let user = new User();
-    user.getUserByEmail('2535078865@qq.com')
-        .then(data => {
-            res.json({code: '10000', data: data, msg: '查询成功'});
+    user.getUserByUsername(username)
+        .then(resules => {
+            if (resules.length) {
+                let data = JSON.parse(JSON.stringify(resules))[0];
+                let user_pwd = data.password;
+                let md5 = crypto.createHash('md5');
+                md5.update(password);
+                password = md5.digest('hex');
+                if (password === user_pwd) {
+                    res.json({code: '10000', msg: '登录成功'});
+                } else {
+                    res.json({code: '20001', msg: '密码错误'});
+                }
+            } else {
+                res.json({code: '20000', msg: '用户不存在'});
+            }
         })
-        .catch(err => {
-            res.json({code: '20000', msg: err});
-        })
+
+    // user.getUserByEmail('2535078865@qq.com')
+    //     .then(data => {
+    //         res.json({code: '10000', data: data, msg: '查询成功'});
+    //     })
+    //     .catch(err => {
+    //         res.json({code: '20000', msg: err});
+    //     })
 });
 
 module.exports = router;

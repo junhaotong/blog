@@ -2,23 +2,58 @@
     <Row class="login-wrapper">
         <canvas id="login"></canvas>
         <div class="login-dialog">
-            <div class="title">登录</div>
-            <Input class="input" v-model="username" placeholder="请输入用户名"/>
-            <Input class="input" v-model="password" placeholder="请输入密码"/>
-            <Button class="btn-login">登录</Button>
+            <div class="title">登录{{pwdError}}</div>
+            <Form ref="loginForm" :model="loginForm" :rules="loginRules">
+                <Form-item prop="username" :error="usernameError">
+                    <Input class="input" v-model="loginForm.username" placeholder="请输入用户名"/>
+                </Form-item>
+                <Form-item prop="password" :error="pwdError">
+                    <Input class="input" type="password" v-model="loginForm.password" placeholder="请输入密码"/>
+                </Form-item>
+                <Button class="btn-login" @click="login">登录</Button>
+            </Form>
         </div>
     </Row>
 </template>
 
 <script>
     import '../../assets/lib/dot';
+    import qs from 'qs';
 
     export default {
         name: 'AdminLogin',
         data() {
             return {
-                username: '',
-                password: ''
+                loginForm: {
+                    username: '',
+                    password: '',
+                },
+                loginRules: {
+                    username: {required: true, message: '用户名不能为空', trigger: 'blur'},
+                    password: {required: true, message: '密码不能为空', trigger: 'blur'}
+                },
+                usernameError: '',
+                pwdError: ''
+            }
+        },
+        methods: {
+            login() {
+                this.pwdError = '';
+                this.usernameError = '';
+                this.$refs.loginForm.validate(valid => {
+                    if (valid) {
+                        this.axios.post('/api/login', qs.stringify(this.loginForm))
+                            .then(res => {
+                                if (res.data.code === '10000') {
+                                    this.$Message.success(res.data.msg);
+                                } else if(res.data.code === '20001') {
+                                    this.pwdError = res.data.msg;
+                                } else {
+                                    this.usernameError = res.data.msg;
+                                }
+                            });
+                    }
+                })
             }
         },
         mounted() {
@@ -40,7 +75,7 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: rgba(53, 60, 66, 0.89);
+            background: rgba(8, 22, 35, 0.89);
         }
     }
 
@@ -64,7 +99,7 @@
                 text-align: center;
                 border-color: rgba(255, 255, 255, .3);
                 color: #fff;
-                margin-bottom: 15px;
+                /*margin-bottom: 15px;*/
             }
             .btn-login {
                 width: 100%;
