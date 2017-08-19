@@ -46,6 +46,8 @@
                             .then(res => {
                                 if (res.data.code === '10000') {
                                     this.$Message.success(res.data.msg);
+                                    this.$store.dispatch('update_userinfo');
+                                    this.$router.push('/');
                                 } else if(res.data.code === '20001') {
                                     this.pwdError = res.data.msg;
                                 } else {
