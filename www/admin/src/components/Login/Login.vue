@@ -59,7 +59,10 @@
             }
         },
         mounted() {
-            Dot('login');
+            Dot('login', {
+                cW: 1500,
+                cH: 650
+            });
         }
     };
 </script>
