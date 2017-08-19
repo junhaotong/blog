@@ -13,8 +13,7 @@
         margin: 0;
         padding: 0;
     }
-    #canvas {
-        width: 100%;
-        height: 100%;
+    .pull-right {
+        float: right !important;
     }
 </style>
