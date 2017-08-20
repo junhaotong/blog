@@ -12,8 +12,12 @@
     body {
         margin: 0;
         padding: 0;
+        font-size: 14px;
     }
     .pull-right {
         float: right !important;
+    }
+    .middle-input {
+        width: 300px;
     }
 </style>

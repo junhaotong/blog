@@ -7,6 +7,7 @@
     "push": "git add . && git commit -a -m 'push' && git push"
   },
   "dependencies": {
+    "ali-oss": "^4.10.0",
     "body-parser": "~1.17.1",
     "compression": "^1.7.0",
     "connect-redis": "^3.3.0",
@@ -23,6 +24,7 @@
     "morgan": "~1.8.1",
     "mysql": "^2.14.1",
     "redis": "^2.8.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "~2.4.2",
+    "sqlstring": "^2.2.0"
   }
 }
