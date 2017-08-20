@@ -27,6 +27,7 @@
                 loginForm: {
                     username: '',
                     password: '',
+                    user_type: 2
                 },
                 loginRules: {
                     username: {required: true, message: '用户名不能为空', trigger: 'blur'},
