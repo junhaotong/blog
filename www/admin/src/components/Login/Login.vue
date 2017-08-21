@@ -27,6 +27,7 @@
                 loginForm: {
                     username: '',
                     password: '',
+                    user_type: 2
                 },
                 loginRules: {
                     username: {required: true, message: '用户名不能为空', trigger: 'blur'},
@@ -46,6 +47,8 @@
                             .then(res => {
                                 if (res.data.code === '10000') {
                                     this.$Message.success(res.data.msg);
+                                    this.$store.dispatch('update_userinfo');
+                                    this.$router.push('/');
                                 } else if(res.data.code === '20001') {
                                     this.pwdError = res.data.msg;
                                 } else {
@@ -57,7 +60,10 @@
             }
         },
         mounted() {
-            Dot('login');
+            Dot('login', {
+                cW: 1500,
+                cH: 650
+            });
         }
     };
 </script>

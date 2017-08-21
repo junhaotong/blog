@@ -5,9 +5,22 @@ import Components from '../components';
 
 Vue.use(Router);
 
+import User from './router/User';
+
 export default new Router({
     routes: [{
         path: '/',
-        component: Components.Login
+        redirect: '/user',
+        hidden: true,
+        component: resolve => {
+            resolve(Components.Content);
+        },
+    }, {
+        path: '/login',
+        hidden: true,
+        component: resolve => {
+            resolve(Components.Login);
+        },
     }]
+        .concat(User)
 });
