@@ -3,7 +3,7 @@
  */
 let express = require('express');
 let router = express.Router();
-let User = require('../lib/controlers/User');
+let User = require('../lib/Controlers/User');
 
 /**
  * 注册
@@ -43,7 +43,9 @@ let User = require('../lib/controlers/User');
  * 登录
  */
 router.post('/login', User.checkUsernameAndPwd);
-router.post('/login', User.login);
+router.post('/login', User.checkUser);
 router.post('/login', User.getToken);
+router.post('/login', User.saveToken);
+router.post('/login', User.login);
 
 module.exports = router;
