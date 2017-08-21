@@ -2,6 +2,12 @@
  * Created by apple on 2017/8/13.
  */
 //用户模块
-let user = require('./user');
+let User = require('./user');
 
-module.exports = user;
+// 图片上传模块
+let Upload = require('./upload');
+
+module.exports = [
+    User,
+    Upload
+]

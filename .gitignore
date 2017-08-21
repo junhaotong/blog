@@ -60,3 +60,5 @@ typings/
 .idea/
 /.idea
 /www/admin/node_modules/
+/uploads
+uploads/*
