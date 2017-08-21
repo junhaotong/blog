@@ -2,6 +2,9 @@
     <Row>
         <i-col span="12">
             <Form :model="UserForm" :rules="rules" :label-width="100">
+                <Upload action="/api/upload/image" name="image" class="uplaod">
+                    <Button type="ghost" icon="ios-cloud-upload-outline">上传头像</Button>
+                </Upload>
                 <Form-item label="用户名" prop="username">
                     <Input class="middle-input" v-model="UserForm.username" placeholder="请输入用户名"/>
                 </Form-item>
@@ -34,6 +37,7 @@
         data() {
             return {
                 UserForm: {
+                    avatar: '',
                     username: '',
                     email: '',
                     pwd: '',
@@ -68,5 +72,8 @@
 </script>
 
 <style lang="less" rel="stylesheet/less">
-
+    .uplaod {
+        width: 150px;
+        height: 150px;
+    }
 </style>

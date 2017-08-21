@@ -8,5 +8,8 @@ module.exports = {
         password: 'Tjh19971121',
         database: 'blog',
         port: 3306
+    },
+    upload: {
+        path: 'uploads'
     }
 }
