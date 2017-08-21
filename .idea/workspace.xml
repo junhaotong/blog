@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="aa34f0d0-8046-4dcd-8b54-95433feb91a8" name="Default" comment="" />
+=======
     <list default="true" id="aa34f0d0-8046-4dcd-8b54-95433feb91a8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
 <<<<<<< HEAD
@@ -11,6 +14,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/user.js" afterPath="$PROJECT_DIR$/routes/user.js" />
 >>>>>>> 9bec07518f9e62deb1d7f7c34b7b7a7dcdf2d678
     </list>
+>>>>>>> 6367011948e14db0161607f2b58f85e47dcdbed6
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -71,8 +75,8 @@
       <file leaf-file-name="User.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/controlers/User.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="776">
-              <caret line="54" column="50" lean-forward="false" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
+            <state relative-caret-position="364">
+              <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -195,6 +199,11 @@
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
 <<<<<<< HEAD
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="733" />
+=======
+<<<<<<< HEAD
     <option name="x" value="-8" />
     <option name="width" value="1932" />
     <option name="height" value="1038" />
@@ -202,6 +211,7 @@
     <option name="width" value="1280" />
     <option name="height" value="800" />
 >>>>>>> 9bec07518f9e62deb1d7f7c34b7b7a7dcdf2d678
+>>>>>>> 6367011948e14db0161607f2b58f85e47dcdbed6
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -509,7 +519,6 @@
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/node_modules/mysql/index.js" />
-    <property name="FullScreen" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -624,15 +633,22 @@
       <workItem from="1502200675639" duration="6035000" />
       <workItem from="1502686237549" duration="11181000" />
 <<<<<<< HEAD
+      <workItem from="1502894074384" duration="20270000" />
+=======
+<<<<<<< HEAD
       <workItem from="1502894074384" duration="11801000" />
       <workItem from="1503111261591" duration="977000" />
 =======
       <workItem from="1502894074384" duration="20143000" />
 >>>>>>> 9bec07518f9e62deb1d7f7c34b7b7a7dcdf2d678
+>>>>>>> 6367011948e14db0161607f2b58f85e47dcdbed6
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="58648000" />
+=======
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="51156000" />
   </component>
@@ -640,9 +656,10 @@
     <frame x="-8" y="0" width="1932" height="1038" extended-state="0" />
 =======
     <option name="totallyTimeSpent" value="58521000" />
+>>>>>>> 6367011948e14db0161607f2b58f85e47dcdbed6
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1280" height="800" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="733" extended-state="1" />
     <editor active="true" />
 >>>>>>> 9bec07518f9e62deb1d7f7c34b7b7a7dcdf2d678
     <layout>
@@ -892,7 +909,13 @@
         <state relative-caret-position="1020">
           <caret line="62" column="42" lean-forward="false" selection-start-line="62" selection-start-column="37" selection-end-line="62" selection-end-column="42" />
           <folding>
+<<<<<<< HEAD
+            <element signature="e#140#161#0" expanded="false" />
+            <element signature="e#233#259#0" expanded="false" />
+            <element signature="e#310#336#0" expanded="false" />
+=======
             <element signature="e#0#41#0" expanded="false" />
+>>>>>>> 6367011948e14db0161607f2b58f85e47dcdbed6
           </folding>
         </state>
       </provider>
@@ -1032,9 +1055,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/controlers/User.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="364">
+          <caret line="32" column="25" lean-forward="true" selection-start-line="32" selection-start-column="25" selection-end-line="32" selection-end-column="25" />
+=======
         <state relative-caret-position="776">
           <caret line="54" column="50" lean-forward="false" selection-start-line="54" selection-start-column="50" selection-end-line="54" selection-end-column="50" />
 >>>>>>> 9bec07518f9e62deb1d7f7c34b7b7a7dcdf2d678
+>>>>>>> 6367011948e14db0161607f2b58f85e47dcdbed6
           <folding />
         </state>
       </provider>
