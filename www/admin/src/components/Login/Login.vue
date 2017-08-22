@@ -18,7 +18,6 @@
 
 <script>
     import '../../assets/lib/dot';
-    import qs from 'qs';
 
     export default {
         name: 'AdminLogin',
@@ -43,7 +42,7 @@
                 this.usernameError = '';
                 this.$refs.loginForm.validate(valid => {
                     if (valid) {
-                        this.axios.post('/api/login', qs.stringify(this.loginForm))
+                        this.axios.post('/login', this.loginForm)
                             .then(res => {
                                 if (res.data.code === '10000') {
                                     this.$Message.success(res.data.msg);
