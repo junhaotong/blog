@@ -3,7 +3,7 @@
  */
 let express = require('express');
 let router = express.Router();
-let User = require('../lib/Controlers/User');
+let User = require('../lib/Controlers/User')
 
 /**
  * 注册
