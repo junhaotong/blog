@@ -3,11 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
-// import axios
-import axios from 'axios';
-import VueAxios from 'vue-axios';
-
 // Nprogress
 import Nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
@@ -18,9 +13,11 @@ import 'iview/dist/styles/iview.css';
 
 import store from './store'
 
+// import axios
+import './util/axios';
+
 Vue.config.productionTip = false
 
-Vue.use(VueAxios, axios);
 Vue.use(iView);
 
 router.beforeEach((to, from, next) => {
