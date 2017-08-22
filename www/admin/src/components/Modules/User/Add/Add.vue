@@ -2,9 +2,11 @@
     <Row>
         <i-col span="12">
             <Form :model="UserForm" :rules="rules" :label-width="100">
-                <Upload action="/api/upload/image" name="image" class="uplaod">
-                    <Button type="ghost" icon="ios-cloud-upload-outline">上传头像</Button>
-                </Upload>
+                <Form-item label="用户头像">
+                    <Upload action="/api/upload/image" name="image" class="uplaod">
+                        <Icon type="ios-cloud-upload-outline"></Icon>上传头像
+                    </Upload>
+                </Form-item>
                 <Form-item label="用户名" prop="username">
                     <Input class="middle-input" v-model="UserForm.username" placeholder="请输入用户名"/>
                 </Form-item>
@@ -75,5 +77,12 @@
     .uplaod {
         width: 150px;
         height: 150px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 14px;
+        cursor: pointer;
     }
 </style>
