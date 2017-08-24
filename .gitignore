@@ -60,10 +60,8 @@ typings/
 .idea/
 /.idea
 /www/admin/node_modules/
-<<<<<<< HEAD
 .idea/*
 /.idea/*
-=======
 /uploads
 uploads/*
->>>>>>> d42a5d78d44354e06915368077796c8e68c60503
+/config
