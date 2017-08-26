@@ -7,8 +7,6 @@
     "autorestart": true,
     "node_args": [],
     "args": [],
-    "env": {
-      "NODE_ENV": "production"
-    }
+    "env": {}
   }]
 }

@@ -80,4 +80,3 @@ exports.view = {
     handle: nunjucks
   }
 };
-//# sourceMappingURL=adapter.js.map
