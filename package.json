@@ -3,6 +3,7 @@
   "description": "application created by thinkjs",
   "version": "1.0.0",
   "scripts": {
+    "push": "git add . && git commit -a -m 'add' && git push",
     "start": "node development.js",
     "compile": "babel --no-babelrc src/ --presets think-node --out-dir app/",
     "lint": "eslint src/",
