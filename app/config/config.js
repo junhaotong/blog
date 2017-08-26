@@ -6,4 +6,3 @@ module.exports = {
     defaultErrno: 1000, // default errno
     validateDefaultErrno: 2001 // validate default errno
 };
-//# sourceMappingURL=config.js.map
