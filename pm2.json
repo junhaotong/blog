@@ -2,6 +2,7 @@
   "apps": [{
     "name": "blog",
     "script": "production.js",
+    "cwd": "/root/project/blog",
     "exec_mode": "fork",
     "max_memory_restart": "1G",
     "autorestart": true,
