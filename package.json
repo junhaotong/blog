@@ -10,6 +10,7 @@
     "lint-fix": "eslint --fix src/"
   },
   "dependencies": {
+    "compression": "^1.7.0",
     "crypto": "^1.0.1",
     "execa": "^0.8.0",
     "jsonwebtoken": "^7.4.3",
