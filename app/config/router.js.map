@@ -1,0 +1,15 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/config/router.js"
+    ],
+    "names": [
+        "module",
+        "exports"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CACb,CAAC,OAAD,EAAU,MAAV,EAAkB,MAAlB,CADa,EAEb,CAAC,kBAAD,EAAqB,aAArB,EAAoC,MAApC,CAFa,EAGb,CAAC,UAAD,EAAa,SAAb,EAAwB,MAAxB,CAHa,CAAjB",
+    "file": "../../src/config/router.js",
+    "sourcesContent": [
+        "module.exports = [\n    ['/user', 'user', 'rest'],\n    ['/api/admin/login', 'admin/login', 'post'],\n    ['/webhook', 'webhook', 'post']\n];\n"
+    ]
+}

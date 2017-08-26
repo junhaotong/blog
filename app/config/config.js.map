@@ -1,0 +1,20 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/config/config.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "port",
+        "errnoField",
+        "errmsgField",
+        "defaultErrno",
+        "validateDefaultErrno"
+    ],
+    "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACbC,UAAM,IADO;AAEbC,gBAAY,MAFC,EAEO;AACpBC,iBAAa,KAHA,EAGO;AACpBC,kBAAc,IAJD,EAIO;AACpBC,0BAAsB,IALT,CAKc;AALd,CAAjB",
+    "file": "../../src/config/config.js",
+    "sourcesContent": [
+        "// default config\nmodule.exports = {\n    port: 8090,\n    errnoField: 'code', // errno field\n    errmsgField: 'msg', // errmsg field\n    defaultErrno: 1000, // default errno\n    validateDefaultErrno: 2001 // validate default errno\n};\n"
+    ]
+}
