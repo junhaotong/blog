@@ -1,4 +1,5 @@
 module.exports = [
     ['/user', 'user', 'rest'],
-    ['/api/admin/login', 'admin/login', 'post']
+    ['/api/admin/login', 'admin/login', 'post'],
+    ['/webhook', 'webhook', 'post']
 ];
