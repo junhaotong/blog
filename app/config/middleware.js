@@ -1,10 +1,7 @@
 const path = require('path');
 const isDev = true;
-const compression = require('compression');
 
 module.exports = [{
-    handle: compression()
-}, {
     handle: 'meta',
     options: {
         logRequest: isDev,

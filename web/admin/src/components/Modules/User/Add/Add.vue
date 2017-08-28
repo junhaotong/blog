@@ -29,10 +29,7 @@
                     <Input class="middle-input" type="password" v-model="UserForm.re_pwd" placeholder="再次输入密码"/>
                 </Form-item>
                 <Form-item label="用户类型">
-                    <Select class="middle-input" v-model="UserForm.user_type">
-                        <Option :value="1">普通用户</Option>
-                        <Option :value="2">管理员</Option>
-                    </Select>
+                    <span>普通用户</span>
                 </Form-item>
                 <Form-item>
                     <Button type="primary" @click="regist">确认注册</Button>
@@ -52,8 +49,7 @@
                     username: '',
                     email: '',
                     pwd: '',
-                    re_pwd: '',
-                    user_type: 1
+                    re_pwd: ''
                 },
                 rules: {
                     username: {required: true, message: '用户名不能为空', trigger: 'blur'},

@@ -1,0 +1,51 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/controller/upload.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "multer",
+        "crypto",
+        "module",
+        "exports",
+        "imageAction",
+        "storage",
+        "diskStorage",
+        "destination",
+        "filename",
+        "req",
+        "file",
+        "callback",
+        "fileFormat",
+        "originalname",
+        "split",
+        "random",
+        "Math",
+        "round",
+        "time",
+        "Date",
+        "now",
+        "md5",
+        "createHash",
+        "update",
+        "toString",
+        "fileName",
+        "digest",
+        "length",
+        "upload",
+        "single",
+        "ctx",
+        "request",
+        "response",
+        "err",
+        "fail",
+        "success"
+    ],
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,SAASD,QAAQ,QAAR,CAAf;AACA,MAAME,SAASF,QAAQ,QAAR,CAAf;;AAEAG,OAAOC,OAAP,GAAiB,cAAcL,IAAd,CAAmB;AAChCM,kBAAc;AACV,YAAIC,UAAUL,OAAOM,WAAP,CAAmB;AAC7BC,yBAAa,SADgB;AAE7BC,sBAAU,UAAUC,GAAV,EAAeC,IAAf,EAAqBC,QAArB,EAA+B;AACrC,oBAAIC,aAAcF,KAAKG,YAAN,CAAoBC,KAApB,CAA0B,GAA1B,CAAjB;AACA,oBAAIC,SAASC,KAAKC,KAAL,CAAWD,KAAKD,MAAL,KAAgB,IAA3B,CAAb;AACA,oBAAIG,OAAOC,KAAKC,GAAL,KAAaL,MAAxB;AACA,oBAAIM,MAAMpB,OAAOqB,UAAP,CAAkB,KAAlB,CAAV;AACAD,oBAAIE,MAAJ,CAAWL,KAAKM,QAAL,EAAX;AACA,oBAAIC,WAAWJ,IAAIK,MAAJ,CAAW,KAAX,CAAf;AACAf,yBAAS,IAAT,EAAec,WAAW,GAAX,GAAiBb,WAAWA,WAAWe,MAAX,GAAoB,CAA/B,CAAhC;AACH;AAV4B,SAAnB,CAAd;;AAaA,YAAIC,SAAS5B,OAAO,EAACK,SAASA,OAAV,EAAP,EAA2BwB,MAA3B,CAAkC,OAAlC,CAAb;AACA;AACA;;AAEAD,eAAO,KAAKE,GAAL,CAASC,OAAhB,EAAyB,KAAKD,GAAL,CAASE,QAAlC,EAA6CC,GAAD,IAAS;AACjD,gBAAIA,GAAJ,EAAS;AACL,uBAAO,KAAKC,IAAL,CAAU,MAAV,EAAkB,MAAlB,CAAP;AACH;AACD,mBAAO,KAAKC,OAAL,CAAa,MAAb,CAAP;AACH,SALD;AAMH;AAzB+B,CAApC",
+    "file": "../../src/controller/upload.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\nconst multer = require('multer');\nconst crypto = require('crypto');\n\nmodule.exports = class extends Base {\n    imageAction() {\n        let storage = multer.diskStorage({\n            destination: 'upload/',\n            filename: function (req, file, callback) {\n                var fileFormat = (file.originalname).split(\".\");\n                let random = Math.round(Math.random() * 1000);\n                let time = Date.now() + random;\n                let md5 = crypto.createHash('md5');\n                md5.update(time.toString());\n                let fileName = md5.digest('hex');\n                callback(null, fileName + \".\" + fileFormat[fileFormat.length - 1]);\n            }\n        });\n\n        let upload = multer({storage: storage}).single('image');\n        // console.log(this.ctx.req);\n        // return this.success('上传成功')\n\n        upload(this.ctx.request, this.ctx.response, (err) => {\n            if (err) {\n                return this.fail('2000', '上传失败');\n            }\n            return this.success('上传成功')\n        })\n    }\n};\n"
+    ]
+}

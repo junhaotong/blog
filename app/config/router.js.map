@@ -7,9 +7,9 @@
         "module",
         "exports"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CACb,CAAC,OAAD,EAAU,MAAV,EAAkB,MAAlB,CADa,EAEb,CAAC,kBAAD,EAAqB,aAArB,EAAoC,MAApC,CAFa,EAGb,CAAC,UAAD,EAAa,SAAb,EAAwB,MAAxB,CAHa,CAAjB",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CACb,CAAC,UAAD,EAAa,aAAb,EAA4B,KAA5B,CADa,EAEb,CAAC,kBAAD,EAAqB,aAArB,EAAoC,MAApC,CAFa,EAGb,CAAC,aAAD,EAAgB,cAAhB,EAAgC,MAAhC,CAHa,EAIb,CAAC,mBAAD,EAAsB,cAAtB,EAAsC,MAAtC,CAJa,EAKb,CAAC,UAAD,EAAa,SAAb,EAAwB,MAAxB,CALa,CAAjB",
     "file": "../../src/config/router.js",
     "sourcesContent": [
-        "module.exports = [\n    ['/user', 'user', 'rest'],\n    ['/api/admin/login', 'admin/login', 'post'],\n    ['/webhook', 'webhook', 'post']\n];\n"
+        "module.exports = [\n    [/^\\/admin/, 'index/admin', 'get'],\n    ['/api/admin/login', 'admin/login', 'post'],\n    ['/api/regist', 'front/regist', 'post'],\n    ['/api/upload/image', 'upload/image', 'post'],\n    ['/webhook', 'webhook', 'post']\n];\n"
     ]
 }
