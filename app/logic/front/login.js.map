@@ -1,0 +1,32 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/logic/front/login.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Logic",
+        "indexAction",
+        "allowMethods",
+        "rules",
+        "username",
+        "string",
+        "required",
+        "password",
+        "length",
+        "min",
+        "max",
+        "messages",
+        "flag",
+        "validate",
+        "fail",
+        "validateErrors"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,kBAAc;AACV;AACA,aAAKC,YAAL,GAAoB,MAApB;AACA,YAAIC,QAAQ;AACRC,sBAAU;AACNC,wBAAQ,IADF;AAENC,0BAAU;AAFJ,aADF;AAKRC,sBAAU;AACNF,wBAAQ,IADF;AAENC,0BAAU,IAFJ;AAGNE,wBAAQ,EAACC,KAAK,CAAN,EAASC,KAAK,EAAd;AAHF;AALF,SAAZ;;AAYA,YAAIC,WAAW;AACXP,sBAAU,SADC;AAEXG,sBAAU;AACNC,wBAAQ;AADF;AAFC,SAAf;;AAOA,YAAII,OAAO,KAAKC,QAAL,CAAcV,KAAd,EAAqBQ,QAArB,CAAX;AACA,YAAG,CAACC,IAAJ,EAAS;AACL,mBAAO,KAAKE,IAAL,CAAU,MAAV,EAAkB,KAAKC,cAAvB,CAAP;AACH;AACJ;AA3BwC,CAA3C",
+    "file": "../../../src/logic/front/login.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Logic {\n  indexAction() {\n      //  只允许 POST 请求类型\n      this.allowMethods = 'post';\n      let rules = {\n          username: {\n              string: true,\n              required: true\n          },\n          password: {\n              string: true,\n              required: true,\n              length: {min: 6, max: 20}\n          }\n      }\n\n      let messages = {\n          username: '用户名不能为空',\n          password: {\n              length: '密码应为6-20位'\n          }\n      }\n\n      let flag = this.validate(rules, messages);\n      if(!flag){\n          return this.fail('登录失败', this.validateErrors);\n      }\n  }\n};\n"
+    ]
+}

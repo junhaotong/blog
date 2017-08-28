@@ -1,0 +1,19 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/controller/index.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "adminAction",
+        "display"
+    ],
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChCI,kBAAc;AACV,eAAO,KAAKC,OAAL,CAAa,OAAb,CAAP;AACH;AAH+B,CAApC",
+    "file": "../../src/controller/index.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n    adminAction() {\n        return this.display('admin');\n    }\n};\n"
+    ]
+}
