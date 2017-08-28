@@ -1,31 +1,40 @@
 {
     "version": 3,
     "sources": [
-        "../../src/controller/upload.js"
+        "..\\..\\src\\controller\\upload.js"
     ],
     "names": [
         "Base",
         "require",
-        "multer",
         "crypto",
-        "fs",
-        "multiparty",
+        "images",
         "module",
         "exports",
         "imageAction",
-        "upload",
-        "dest",
-        "single",
+        "path",
         "ctx",
-        "req",
-        "res",
-        "err",
-        "fail",
+        "file",
+        "console",
+        "log",
+        "md5",
+        "createHash",
+        "fileName",
+        "config",
+        "update",
+        "name",
+        "Date",
+        "now",
+        "digest",
+        "type",
+        "split",
+        "result",
+        "size",
+        "save",
         "success"
     ],
-    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,SAASD,QAAQ,QAAR,CAAf;AACA,MAAME,SAASF,QAAQ,QAAR,CAAf;AACA,MAAMG,KAAKH,QAAQ,IAAR,CAAX;AACA,MAAMI,aAAaJ,QAAQ,YAAR,CAAnB;;AAEAK,OAAOC,OAAP,GAAiB,cAAcP,IAAd,CAAmB;AAChCQ,kBAAc;AACV;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;;AAEA,YAAIC,SAASP,OAAO,EAAEQ,MAAM,SAAR,EAAP,EAA4BC,MAA5B,CAAmC,OAAnC,CAAb;AACAF,eAAO,KAAKG,GAAL,CAASC,GAAhB,EAAqB,KAAKD,GAAL,CAASE,GAA9B,EAAoCC,GAAD,IAAS;AACxC,gBAAIA,GAAJ,EAAS;AACL,uBAAO,KAAKC,IAAL,CAAU,IAAV,EAAgBD,GAAhB,CAAP;AACH,aAFD,MAEO;AACH,uBAAO,KAAKE,OAAL,CAAa,MAAb,CAAP;AACH;AACJ,SAND;AAOH;AAzB+B,CAApC",
-    "file": "../../src/controller/upload.js",
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,SAASD,QAAQ,QAAR,CAAf;AACA,MAAME,SAAQF,QAAQ,QAAR,CAAd;;AAEAG,OAAOC,OAAP,GAAiB,cAAcL,IAAd,CAAmB;AAChCM,kBAAc;AACV,YAAIC,OAAO,KAAKC,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBF,IAAlC;AACAG,gBAAQC,GAAR,CAAY,KAAKH,GAAL,CAASC,IAAT,CAAc,OAAd,CAAZ;AACA,YAAIG,MAAMV,OAAOW,UAAP,CAAkB,KAAlB,CAAV;AACA;AACA,YAAIC,WAAW,KAAKC,MAAL,CAAY,WAAZ,CAAf;AACAH,YAAII,MAAJ,CAAW,KAAKR,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBQ,IAAvB,GAA8BC,KAAKC,GAAL,EAAzC;AACAL,oBAAYF,IAAIQ,MAAJ,CAAW,KAAX,CAAZ;AACA;AACAN,oBAAY,MAAM,KAAKN,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBY,IAAvB,CAA4BC,KAA5B,CAAkC,GAAlC,EAAuC,CAAvC,CAAlB;AACA,YAAIC,SAASpB,OAAOI,IAAP,EAAaiB,IAAb,CAAkB,GAAlB,EACRC,IADQ,CACHX,QADG,CAAb;AAEA,eAAO,KAAKY,OAAL,CAAaZ,QAAb,CAAP;AACH;AAd+B,CAApC",
+    "file": "..\\..\\src\\controller\\upload.js",
     "sourcesContent": [
-        "const Base = require('./base.js');\nconst multer = require('multer');\nconst crypto = require('crypto');\nconst fs = require('fs');\nconst multiparty = require('multiparty');\n\nmodule.exports = class extends Base {\n    imageAction() {\n        // console.log(this.ctx.file('image').path);\n        // let file = fs.realpathSync(this.ctx.file('image').path);\n        // let md5 = crypto.createHash('md5');\n        // let imageName = this.ctx.file('image').name + Date.\n        // fs.writeFile('')\n        // console.log(this.config('uploadURL'));\n        // let form = multiparty.Form({\n        //     autoFiles: true,\n        //     uploadDir: this.config('uploadURL')\n        // });\n        // console.log('wocao?');\n        // form.parse(this.ctx.request, (err) => {\n        //     return this.success('test');\n        // });\n\n        var upload = multer({ dest: 'upload/' }).single('image');\n        upload(this.ctx.req, this.ctx.res, (err) => {\n            if (err) {\n                return this.fail(2000, err);\n            } else {\n                return this.success('上传成功');\n            }\n        })\n    }\n};\n"
+        "const Base = require('./base.js');\r\nconst crypto = require('crypto');\r\nconst images= require('images');\r\n\r\nmodule.exports = class extends Base {\r\n    imageAction() {\r\n        let path = this.ctx.file('image').path;\r\n        console.log(this.ctx.file('image'));\r\n        let md5 = crypto.createHash('md5');\r\n        // 使用图片名称加时间戳重命名图片\r\n        let fileName = this.config('uploadURL');\r\n        md5.update(this.ctx.file('image').name + Date.now());\r\n        fileName += md5.digest('hex');\r\n        // 个图图片添加后缀\r\n        fileName += '.' + this.ctx.file('image').type.split('/')[1];\r\n        let result = images(path).size(500)\r\n            .save(fileName);\r\n        return this.success(fileName);\r\n    }\r\n};\r\n"
     ]
 }

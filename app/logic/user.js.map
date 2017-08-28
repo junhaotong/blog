@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\..\\src\\logic\\front\\regist.js"
+        "..\\..\\src\\logic\\user.js"
     ],
     "names": [
         "module",
@@ -11,7 +11,7 @@
         "indexAction"
     ],
     "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvCC,kBAAc,CAEb;AAHsC,CAA3C",
-    "file": "..\\..\\..\\src\\logic\\front\\regist.js",
+    "file": "..\\..\\src\\logic\\user.js",
     "sourcesContent": [
         "module.exports = class extends think.Logic {\r\n    indexAction() {\r\n\r\n    }\r\n};\r\n"
     ]

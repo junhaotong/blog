@@ -1,33 +1,19 @@
 const Base = require('./base.js');
-const multer = require('multer');
 const crypto = require('crypto');
-const fs = require('fs');
-const multiparty = require('multiparty');
+const images = require('images');
 
 module.exports = class extends Base {
     imageAction() {
-        // console.log(this.ctx.file('image').path);
-        // let file = fs.realpathSync(this.ctx.file('image').path);
-        // let md5 = crypto.createHash('md5');
-        // let imageName = this.ctx.file('image').name + Date.
-        // fs.writeFile('')
-        // console.log(this.config('uploadURL'));
-        // let form = multiparty.Form({
-        //     autoFiles: true,
-        //     uploadDir: this.config('uploadURL')
-        // });
-        // console.log('wocao?');
-        // form.parse(this.ctx.request, (err) => {
-        //     return this.success('test');
-        // });
-
-        var upload = multer({ dest: 'upload/' }).single('image');
-        upload(this.ctx.req, this.ctx.res, err => {
-            if (err) {
-                return this.fail(2000, err);
-            } else {
-                return this.success('上传成功');
-            }
-        });
+        let path = this.ctx.file('image').path;
+        console.log(this.ctx.file('image'));
+        let md5 = crypto.createHash('md5');
+        // 使用图片名称加时间戳重命名图片
+        let fileName = this.config('uploadURL');
+        md5.update(this.ctx.file('image').name + Date.now());
+        fileName += md5.digest('hex');
+        // 个图图片添加后缀
+        fileName += '.' + this.ctx.file('image').type.split('/')[1];
+        let result = images(path).size(500).save(fileName);
+        return this.success(fileName);
     }
 };

@@ -1,0 +1,50 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\..\\src\\controller\\admin\\login.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "jwt",
+        "module",
+        "exports",
+        "indexAction",
+        "body",
+        "ctx",
+        "request",
+        "post",
+        "username",
+        "password",
+        "userService",
+        "service",
+        "user",
+        "getAdminByUsername",
+        "fail",
+        "md5",
+        "createHash",
+        "update",
+        "digest",
+        "tokenData",
+        "email",
+        "user_ID",
+        "id",
+        "JSON",
+        "stringify",
+        "token",
+        "sign",
+        "data",
+        "tokenService",
+        "result",
+        "saveToken",
+        "cookie",
+        "maxAge",
+        "httpOnly",
+        "success"
+    ],
+    "mappings": "AAEA;;;;;;;;AAFA,MAAMA,OAAOC,QAAQ,YAAR,CAAb;;AAGA,IAAIC,MAAMD,QAAQ,cAAR,CAAV;;AAEAE,OAAOC,OAAP,GAAiB,cAAcJ,IAAd,CAAmB;AAC1BK,eAAN,GAAoB;AAAA;;AAAA;AAChB,gBAAIC,OAAO,MAAKC,GAAL,CAASC,OAAT,CAAiBF,IAAjB,CAAsBG,IAAjC;AACA,gBAAIC,WAAWJ,KAAKI,QAApB;AACA,gBAAIC,WAAWL,KAAKK,QAApB;AACA,gBAAIC,cAAc,MAAKC,OAAL,CAAa,MAAb,CAAlB;AACA,gBAAIC,OAAO,MAAMF,YAAYG,kBAAZ,CAA+BL,QAA/B,CAAjB;AACA,gBAAI,CAACI,KAAKJ,QAAV,EAAoB;AAChB,uBAAO,MAAKM,IAAL,CAAU,IAAV,EAAgB,OAAhB,CAAP;AACH;AACD,gBAAIC,MAAM,iBAAOC,UAAP,CAAkB,KAAlB,CAAV;AACAD,gBAAIE,MAAJ,CAAWR,QAAX;AACAA,uBAAWM,IAAIG,MAAJ,CAAW,KAAX,CAAX;AACA,gBAAIT,aAAaG,KAAKH,QAAtB,EAAgC;AAC5B,uBAAO,MAAKK,IAAL,CAAU,IAAV,EAAgB,MAAhB,CAAP;AACH;AACD,gBAAIK,YAAY;AACZX,0BAAUI,KAAKJ,QADH;AAEZY,uBAAOR,KAAKQ,KAFA;AAGZC,yBAAST,KAAKU;AAHF,aAAhB;AAKAH,wBAAYI,KAAKC,SAAL,CAAeL,SAAf,CAAZ;AACAJ,kBAAM,iBAAOC,UAAP,CAAkB,KAAlB,CAAN;AACAD,gBAAIE,MAAJ,CAAWE,SAAX;AACAA,wBAAYJ,IAAIG,MAAJ,CAAW,KAAX,CAAZ;AACA,gBAAIO,QAAQzB,IAAI0B,IAAJ,CAAS,EAAEC,MAAMR,SAAR,EAAT,EAA6B,QAA7B,CAAZ;AACA,gBAAIS,eAAe,MAAKjB,OAAL,CAAa,OAAb,CAAnB;AACA,gBAAIkB,SAAS,MAAMD,aAAaE,SAAb,CAAuBL,KAAvB,EAA8Bb,KAAKU,EAAnC,CAAnB;AACA,kBAAKS,MAAL,CAAY,UAAZ,EACIR,KAAKC,SAAL,CAAe,EAAChB,UAAUI,KAAKJ,QAAhB,EAA0BiB,OAAOA,KAAjC,EAAf,CADJ,EAC6D;AACrDO,wBAAQ,QAAQ,EADqC;AAErDC,0BAAU;AAF2C,aAD7D;AAKA,mBAAO,MAAKC,OAAL,CAAa,EAACT,OAAOA,KAAR,EAAb,EAA6B,MAA7B,CAAP;AAhCgB;AAiCnB;AAlC+B,CAApC",
+    "file": "..\\..\\..\\src\\controller\\admin\\login.js",
+    "sourcesContent": [
+        "const Base = require('../base.js');\r\n\r\nimport crypto from 'crypto';\r\nlet jwt = require('jsonwebtoken');\r\n\r\nmodule.exports = class extends Base {\r\n    async indexAction() {\r\n        let body = this.ctx.request.body.post;\r\n        let username = body.username;\r\n        let password = body.password;\r\n        let userService = this.service('user');\r\n        let user = await userService.getAdminByUsername(username);\r\n        if (!user.username) {\r\n            return this.fail(2000, '用户不存在');\r\n        }\r\n        let md5 = crypto.createHash('md5');\r\n        md5.update(password);\r\n        password = md5.digest('hex');\r\n        if (password !== user.password) {\r\n            return this.fail(2001, '密码错误');\r\n        }\r\n        let tokenData = {\r\n            username: user.username,\r\n            email: user.email,\r\n            user_ID: user.id\r\n        };\r\n        tokenData = JSON.stringify(tokenData);\r\n        md5 = crypto.createHash('md5');\r\n        md5.update(tokenData);\r\n        tokenData = md5.digest('hex');\r\n        let token = jwt.sign({ data: tokenData}, 'Jeremy');\r\n        let tokenService = this.service('token');\r\n        let result = await tokenService.saveToken(token, user.id);\r\n        this.cookie('userinfo',\r\n            JSON.stringify({username: user.username, token: token}), {\r\n                maxAge: 60000 * 12,\r\n                httpOnly: false\r\n        });\r\n        return this.success({token: token}, '登录成功');\r\n    }\r\n};\r\n"
+    ]
+}
