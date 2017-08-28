@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "../../src/config/config.js"
+        "..\\..\\src\\config\\config.js"
     ],
     "names": [
         "module",
@@ -14,8 +14,8 @@
         "validateDefaultErrno"
     ],
     "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACbC,UAAM,IADO;AAEbC,eAAW,UAFE;AAGbC,gBAAY,MAHC,EAGO;AACpBC,iBAAa,KAJA,EAIO;AACpBC,kBAAc,IALD,EAKO;AACpBC,0BAAsB,IANT,CAMc;AANd,CAAjB",
-    "file": "../../src/config/config.js",
+    "file": "..\\..\\src\\config\\config.js",
     "sourcesContent": [
-        "// default config\nmodule.exports = {\n    port: 8090,\n    uploadURL: '/upload/',\n    errnoField: 'code', // errno field\n    errmsgField: 'msg', // errmsg field\n    defaultErrno: 1000, // default errno\n    validateDefaultErrno: 2001 // validate default errno\n};\n"
+        "// default config\r\nmodule.exports = {\r\n    port: 8090,\r\n    uploadURL: 'uploads/',\r\n    errnoField: 'code', // errno field\r\n    errmsgField: 'msg', // errmsg field\r\n    defaultErrno: 1000, // default errno\r\n    validateDefaultErrno: 2001 // validate default errno\r\n};\r\n"
     ]
 }

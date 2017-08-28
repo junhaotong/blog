@@ -1,0 +1,26 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\src\\model\\user.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Model",
+        "relation",
+        "token",
+        "type",
+        "HAS_ONE",
+        "getUserByUsername",
+        "username",
+        "where",
+        "find",
+        "getUserByToken"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvC,QAAIC,QAAJ,GAAe;AACX,eAAO;AACHC,mBAAO;AACHC,sBAAMJ,MAAMC,KAAN,CAAYI;AADf;AADJ,SAAP;AAKH;;AAED;;;;;;AAMAC,sBAAkBC,QAAlB,EAA4BH,IAA5B,EAAkC;AAC9B,eAAO,KAAKI,KAAL,CAAW,EAACD,UAAUA,QAAX,EAAqBH,MAAMA,IAA3B,EAAX,EAA6CK,IAA7C,EAAP;AACH;;AAEDC,mBAAeP,KAAf,EAAsB,CAErB;AArBsC,CAA3C",
+    "file": "..\\..\\src\\model\\user.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Model {\r\n    get relation() {\r\n        return {\r\n            token: {\r\n                type: think.Model.HAS_ONE\r\n            }\r\n        };\r\n    }\r\n\r\n    /**\r\n     * 通过用户名获取用户\r\n     * @param username\r\n     * @param type\r\n     * @returns {Promise|T}\r\n     */\r\n    getUserByUsername(username, type) {\r\n        return this.where({username: username, type: type}).find();\r\n    }\r\n\r\n    getUserByToken(token) {\r\n\r\n    }\r\n};\r\n"
+    ]
+}

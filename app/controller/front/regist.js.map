@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "../../../src/controller/front/regist.js"
+        "..\\..\\..\\src\\controller\\front\\regist.js"
     ],
     "names": [
         "Base",
@@ -12,8 +12,8 @@
         "display"
     ],
     "mappings": "AAAA,MAAMA,OAAOC,QAAQ,YAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChCI,kBAAc;AACV,eAAO,KAAKC,OAAL,EAAP;AACH;AAH+B,CAApC",
-    "file": "../../../src/controller/front/regist.js",
+    "file": "..\\..\\..\\src\\controller\\front\\regist.js",
     "sourcesContent": [
-        "const Base = require('../base.js');\n\nmodule.exports = class extends Base {\n    indexAction() {\n        return this.display();\n    }\n};\n"
+        "const Base = require('../base.js');\r\n\r\nmodule.exports = class extends Base {\r\n    indexAction() {\r\n        return this.display();\r\n    }\r\n};\r\n"
     ]
 }

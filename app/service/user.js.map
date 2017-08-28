@@ -1,0 +1,23 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\src\\service\\user.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Service",
+        "getAdminByUsername",
+        "username",
+        "userModel",
+        "model",
+        "user",
+        "getUserByUsername"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzC;;;;AAIAC,uBAAmBC,QAAnB,EAA6B;AACzB,YAAIC,YAAY,KAAKC,KAAL,CAAW,MAAX,CAAhB;AACA,YAAIC,OAAOF,UAAUG,iBAAV,CAA4BJ,QAA5B,EAAsC,CAAtC,CAAX;AACA,eAAOG,IAAP;AACH;AATwC,CAA7C",
+    "file": "..\\..\\src\\service\\user.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Service {\r\n    /**\r\n     * 通过用户名获取管理员\r\n     * @param username\r\n     */\r\n    getAdminByUsername(username) {\r\n        let userModel = this.model('user');\r\n        let user = userModel.getUserByUsername(username, 2);\r\n        return user;\r\n    }\r\n};\r\n"
+    ]
+}

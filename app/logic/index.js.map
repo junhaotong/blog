@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\src\\logic\\upload.js"
+        "..\\..\\src\\logic\\index.js"
     ],
     "names": [
         "module",
@@ -11,7 +11,7 @@
         "indexAction"
     ],
     "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,gBAAc,CAEb;AAHwC,CAA3C",
-    "file": "..\\..\\src\\logic\\upload.js",
+    "file": "..\\..\\src\\logic\\index.js",
     "sourcesContent": [
         "module.exports = class extends think.Logic {\r\n  indexAction() {\r\n\r\n  }\r\n};\r\n"
     ]

@@ -1,0 +1,22 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\src\\service\\token.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Service",
+        "saveToken",
+        "token",
+        "user_ID",
+        "tokenModel",
+        "model"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzCC,cAAUC,KAAV,EAAiBC,OAAjB,EAA0B;AACtB,YAAIC,aAAa,KAAKC,KAAL,CAAW,OAAX,CAAjB;AACA,eAAOD,WAAWH,SAAX,CAAqBC,KAArB,EAA4BC,OAA5B,CAAP;AACH;AAJwC,CAA7C",
+    "file": "..\\..\\src\\service\\token.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Service {\r\n    saveToken(token, user_ID) {\r\n        let tokenModel = this.model('token');\r\n        return tokenModel.saveToken(token, user_ID)\r\n    }\r\n};\r\n"
+    ]
+}

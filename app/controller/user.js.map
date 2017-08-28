@@ -1,0 +1,24 @@
+{
+    "version": 3,
+    "sources": [
+        "..\\..\\src\\controller\\user.js"
+    ],
+    "names": [
+        "BaseRest",
+        "require",
+        "module",
+        "exports",
+        "getAction",
+        "user",
+        "model",
+        "data",
+        "getList",
+        "success",
+        "msg"
+    ],
+    "mappings": ";;AAAA,MAAMA,WAAWC,QAAQ,WAAR,CAAjB;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,QAAd,CAAuB;AAC9BI,aAAN,GAAkB;AAAA;;AAAA;AACd,gBAAIC,OAAO,MAAKC,KAAL,CAAW,MAAX,CAAX;AACA,gBAAIC,OAAO,MAAMF,KAAKG,OAAL,EAAjB;AACA,mBAAO,MAAKC,OAAL,CAAa,EAACC,KAAKH,IAAN,EAAb,CAAP;AAHc;AAIjB;AALmC,CAAxC",
+    "file": "..\\..\\src\\controller\\user.js",
+    "sourcesContent": [
+        "const BaseRest = require('./rest.js');\r\n\r\nmodule.exports = class extends BaseRest {\r\n    async getAction() {\r\n        let user = this.model('user');\r\n        let data = await user.getList();\r\n        return this.success({msg: data});\r\n    }\r\n};\r\n"
+    ]
+}
