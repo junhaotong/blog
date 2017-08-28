@@ -80,8 +80,8 @@
              * 上传头像成功回调
              */
             uploadSuccess(res, file, fileList) {
-                if (res.code === '10000') {
-                    this.UserForm.avatar = res.avatar;
+                if (res.code === 0) {
+                    this.UserForm.avatar = res.data.avatar;
                 } else {
                     this.$Message.error(res.msg);
                 }
@@ -94,7 +94,7 @@
                     if (valid) {
                         this.axios.post('/admin/regist', this.UserForm)
                             .then(res => {
-                                if (res.data.code === '10000') {
+                                if (res.data.code === 0) {
                                     this.$Message.success(res.data.msg);
                                 } else {
                                     this.$Message.error(res.data.msg);
