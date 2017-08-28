@@ -1,31 +1,33 @@
 const Base = require('./base.js');
 const multer = require('multer');
 const crypto = require('crypto');
+const fs = require('fs');
+const multiparty = require('multiparty');
 
 module.exports = class extends Base {
     imageAction() {
-        let storage = multer.diskStorage({
-            destination: 'upload/',
-            filename: function (req, file, callback) {
-                var fileFormat = (file.originalname).split(".");
-                let random = Math.round(Math.random() * 1000);
-                let time = Date.now() + random;
-                let md5 = crypto.createHash('md5');
-                md5.update(time.toString());
-                let fileName = md5.digest('hex');
-                callback(null, fileName + "." + fileFormat[fileFormat.length - 1]);
-            }
-        });
+        // console.log(this.ctx.file('image').path);
+        // let file = fs.realpathSync(this.ctx.file('image').path);
+        // let md5 = crypto.createHash('md5');
+        // let imageName = this.ctx.file('image').name + Date.
+        // fs.writeFile('')
+        // console.log(this.config('uploadURL'));
+        // let form = multiparty.Form({
+        //     autoFiles: true,
+        //     uploadDir: this.config('uploadURL')
+        // });
+        // console.log('wocao?');
+        // form.parse(this.ctx.request, (err) => {
+        //     return this.success('test');
+        // });
 
-        let upload = multer({storage: storage}).single('image');
-        // console.log(this.ctx.req);
-        // return this.success('上传成功')
-
-        upload(this.ctx.request, this.ctx.response, (err) => {
+        var upload = multer({ dest: 'upload/' }).single('image');
+        upload(this.ctx.req, this.ctx.res, (err) => {
             if (err) {
-                return this.fail('2000', '上传失败');
+                return this.fail(2000, err);
+            } else {
+                return this.success('上传成功');
             }
-            return this.success('上传成功')
         })
     }
 };

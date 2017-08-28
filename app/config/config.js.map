@@ -7,14 +7,15 @@
         "module",
         "exports",
         "port",
+        "uploadURL",
         "errnoField",
         "errmsgField",
         "defaultErrno",
         "validateDefaultErrno"
     ],
-    "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACbC,UAAM,IADO;AAEbC,gBAAY,MAFC,EAEO;AACpBC,iBAAa,KAHA,EAGO;AACpBC,kBAAc,IAJD,EAIO;AACpBC,0BAAsB,IALT,CAKc;AALd,CAAjB",
+    "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACbC,UAAM,IADO;AAEbC,eAAW,UAFE;AAGbC,gBAAY,MAHC,EAGO;AACpBC,iBAAa,KAJA,EAIO;AACpBC,kBAAc,IALD,EAKO;AACpBC,0BAAsB,IANT,CAMc;AANd,CAAjB",
     "file": "../../src/config/config.js",
     "sourcesContent": [
-        "// default config\nmodule.exports = {\n    port: 8090,\n    errnoField: 'code', // errno field\n    errmsgField: 'msg', // errmsg field\n    defaultErrno: 1000, // default errno\n    validateDefaultErrno: 2001 // validate default errno\n};\n"
+        "// default config\nmodule.exports = {\n    port: 8090,\n    uploadURL: '/upload/',\n    errnoField: 'code', // errno field\n    errmsgField: 'msg', // errmsg field\n    defaultErrno: 1000, // default errno\n    validateDefaultErrno: 2001 // validate default errno\n};\n"
     ]
 }
