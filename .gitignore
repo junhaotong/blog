@@ -33,3 +33,5 @@ output.tar.gz
 runtime/
 
 /src/config/adapter.js
+/www/uploads/
+/www/uploads
