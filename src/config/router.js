@@ -1,4 +1,5 @@
 module.exports = [
+    [/^\//, 'index', 'get'],
     [/^\/admin/, 'index/admin', 'get'],
     ['/api/admin/login', 'admin/login', 'post'],
     ['/api/regist', 'front/regist', 'post'],
