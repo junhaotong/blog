@@ -1,12 +1,11 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\src\\controller\\upload.js"
+        "../../src/controller/upload.js"
     ],
     "names": [
         "Base",
         "require",
-        "crypto",
         "images",
         "module",
         "exports",
@@ -14,26 +13,26 @@
         "path",
         "ctx",
         "file",
-        "md5",
-        "createHash",
         "fileName",
         "config",
-        "update",
+        "think",
+        "md5",
         "name",
         "Date",
         "now",
-        "digest",
         "type",
         "split",
         "result",
         "size",
         "save",
+        "isFile",
         "success",
-        "avatar"
+        "avatar",
+        "fail"
     ],
-    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,SAASD,QAAQ,QAAR,CAAf;AACA,MAAME,SAAQF,QAAQ,QAAR,CAAd;;AAEAG,OAAOC,OAAP,GAAiB,cAAcL,IAAd,CAAmB;AAChCM,kBAAc;AACV,YAAIC,OAAO,KAAKC,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBF,IAAlC;AACA,YAAIG,MAAMR,OAAOS,UAAP,CAAkB,KAAlB,CAAV;AACA;AACA,YAAIC,WAAW,KAAKC,MAAL,CAAY,WAAZ,CAAf;AACAH,YAAII,MAAJ,CAAW,KAAKN,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBM,IAAvB,GAA8BC,KAAKC,GAAL,EAAzC;AACAL,oBAAYF,IAAIQ,MAAJ,CAAW,KAAX,CAAZ;AACA;AACAN,oBAAY,MAAM,KAAKJ,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBU,IAAvB,CAA4BC,KAA5B,CAAkC,GAAlC,EAAuC,CAAvC,CAAlB;AACA,YAAIC,SAASlB,OAAOI,IAAP,EAAae,IAAb,CAAkB,GAAlB,EACRC,IADQ,CACH,SAASX,QADN,CAAb;AAEA,eAAO,KAAKY,OAAL,CAAa,EAACC,QAAQb,QAAT,EAAb,EAAiC,MAAjC,CAAP;AACH;AAb+B,CAApC",
-    "file": "..\\..\\src\\controller\\upload.js",
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,SAAQD,QAAQ,QAAR,CAAd;;AAEAE,OAAOC,OAAP,GAAiB,cAAcJ,IAAd,CAAmB;AAChCK,kBAAc;AACV,YAAIC,OAAO,KAAKC,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBF,IAAlC;AACA;AACA,YAAIG,WAAW,KAAKC,MAAL,CAAY,WAAZ,CAAf;AACAD,oBAAYE,MAAMC,GAAN,CAAU,KAAKL,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBK,IAAvB,GAA8BC,KAAKC,GAAL,EAAxC,CAAZ;AACA;AACAN,oBAAY,MAAM,KAAKF,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBQ,IAAvB,CAA4BC,KAA5B,CAAkC,GAAlC,EAAuC,CAAvC,CAAlB;AACA,YAAIC,SAAShB,OAAOI,IAAP,EAAaa,IAAb,CAAkB,GAAlB,EACRC,IADQ,CACH,SAASX,QADN,CAAb;AAEA,YAAIE,MAAMU,MAAN,CAAa,SAASZ,QAAtB,CAAJ,EAAqC;AACjC,mBAAO,KAAKa,OAAL,CAAa,EAACC,QAAQd,QAAT,EAAb,EAAiC,MAAjC,CAAP;AACH,SAFD,MAEO;AACH,mBAAO,KAAKe,IAAL,CAAU,IAAV,EAAgB,MAAhB,CAAP;AACH;AACJ;AAf+B,CAApC",
+    "file": "../../src/controller/upload.js",
     "sourcesContent": [
-        "const Base = require('./base.js');\r\nconst crypto = require('crypto');\r\nconst images= require('images');\r\n\r\nmodule.exports = class extends Base {\r\n    imageAction() {\r\n        let path = this.ctx.file('image').path;\r\n        let md5 = crypto.createHash('md5');\r\n        // 使用图片名称加时间戳重命名图片\r\n        let fileName = this.config('uploadURL');\r\n        md5.update(this.ctx.file('image').name + Date.now());\r\n        fileName += md5.digest('hex');\r\n        // 个图图片添加后缀\r\n        fileName += '.' + this.ctx.file('image').type.split('/')[1];\r\n        let result = images(path).size(500)\r\n            .save('www/' + fileName);\r\n        return this.success({avatar: fileName}, '上传成功');\r\n    }\r\n};\r\n"
+        "const Base = require('./base.js');\nconst images= require('images');\n\nmodule.exports = class extends Base {\n    imageAction() {\n        let path = this.ctx.file('image').path;\n        // 使用图片名称加时间戳重命名图片\n        let fileName = this.config('uploadURL');\n        fileName += think.md5(this.ctx.file('image').name + Date.now());\n        // 个图图片添加后缀\n        fileName += '.' + this.ctx.file('image').type.split('/')[1];\n        let result = images(path).size(500)\n            .save('www/' + fileName);\n        if (think.isFile('www/' + fileName)) {\n            return this.success({avatar: fileName}, '上传成功');\n        } else {\n            return this.fail(2000, '上传失败');\n        }\n    }\n};\n"
     ]
 }

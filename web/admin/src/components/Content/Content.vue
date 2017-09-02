@@ -2,7 +2,12 @@
     <Row class="layout" type="flex">
         <div class="menu-left">
             <div class="logo">Jeremy</div>
-            <Menu theme="dark" width="auto" :active-name="$route.path" :open-names="[$route.matched[0].path]">
+            <Menu
+                    theme="dark"
+                    width="auto"
+                    :active-name="$route.path"
+                    :open-names="[$route.matched[0].path]"
+                    @on-select="changeLeftMenu">
                 <Submenu
                         v-for="(route,index) in $router.options.routes"
                         v-if="!route.hidden"
@@ -71,63 +76,14 @@
                         cookie.remove('userinfo');
                         this.$router.push('/login');
                     })
+            },
+            changeLeftMenu(path) {
+                this.$router.push(path);
             }
         }
     };
 </script>
 
 <style lang="less" scoped rel="stylesheet/less">
-    .layout {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        .menu-left {
-            background: #464c5b;
-            flex: 0 0 200px;
-            overflow-y: auto;
-            .logo {
-                width: 90%;
-                height: 30px;
-                background: #5b6270;
-                border-radius: 3px;
-                margin: 15px auto;
-                color: #fff;
-                font-size: 15px;
-                line-height: 30px;
-                text-align: center;
-            }
-            .menu-icon {
-                font-size: 15px;
-            }
-        }
-        .content-right {
-            flex: 1;
-            overflow-y: auto;
-            .layout-ceiling{
-                background: #464c5b;
-                padding: 10px 10px;
-                overflow: hidden;
-                height: 60px;
-                .cailing-item {
-                    line-height: 40px;
-                    color: #fff;
-                    font-size: 14px;
-                    display: inline-block;
-                    padding: 0 20px;
-                    a {
-                        color: #fff;
-                    }
-                }
-            }
-            .main {
-                .bread {
-                    background: #F7F7F7;
-                    padding: 15px;
-                }
-                .content {
-                    padding: 15px;
-                }
-            }
-        }
-    }
+    @import "Content";
 </style>

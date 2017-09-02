@@ -1,0 +1,26 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/controller/admin/user.js"
+    ],
+    "names": [
+        "BaseRest",
+        "require",
+        "module",
+        "exports",
+        "getAction",
+        "user_id",
+        "get",
+        "userService",
+        "service",
+        "page",
+        "userList",
+        "getUserList",
+        "success"
+    ],
+    "mappings": ";;AAAA,MAAMA,WAAWC,QAAQ,YAAR,CAAjB;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,QAAd,CAAuB;AAC9BI,aAAN,GAAkB;AAAA;;AAAA;AACd,gBAAIC,UAAU,MAAKC,GAAL,CAAS,IAAT,CAAd;AACA,gBAAIC,cAAc,MAAKC,OAAL,CAAa,MAAb,CAAlB;AACA,gBAAIH,OAAJ,EAAa;AACT;AACH,aAFD,MAEO;AACH;AACA,oBAAII,OAAQ,MAAKH,GAAL,CAAS,MAAT,CAAZ;AACA,oBAAII,WAAW,MAAMH,YAAYI,WAAZ,CAAwBF,IAAxB,CAArB;AACA,uBAAO,MAAKG,OAAL,CAAaF,QAAb,CAAP;AACH;AAVa;AAWjB;AAZmC,CAAxC",
+    "file": "../../../src/controller/admin/user.js",
+    "sourcesContent": [
+        "const BaseRest = require('../rest.js');\n\nmodule.exports = class extends BaseRest {\n    async getAction() {\n        let user_id = this.get('id');\n        let userService = this.service('user');\n        if (user_id) {\n            // 用户详情\n        } else {\n            // 用户列表\n            let page =  this.get('page');\n            let userList = await userService.getUserList(page);\n            return this.success(userList);\n        }\n    }\n};\n"
+    ]
+}

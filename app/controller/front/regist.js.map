@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\..\\src\\controller\\front\\regist.js"
+        "../../../src/controller/front/regist.js"
     ],
     "names": [
         "Base",
@@ -9,11 +9,19 @@
         "module",
         "exports",
         "indexAction",
-        "display"
+        "userService",
+        "service",
+        "user_id",
+        "addUser",
+        "post",
+        "think",
+        "md5",
+        "success",
+        "fail"
     ],
-    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,YAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChCI,kBAAc;AACV,eAAO,KAAKC,OAAL,EAAP;AACH;AAH+B,CAApC",
-    "file": "..\\..\\..\\src\\controller\\front\\regist.js",
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,YAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChCI,kBAAc;AACV,YAAIC,cAAc,KAAKC,OAAL,CAAa,MAAb,CAAlB;AACA,YAAIC,UAAUF,YAAYG,OAAZ,CAAoB,KAAKC,IAAL,CAAU,UAAV,CAApB,EAA2C,KAAKA,IAAL,CAAU,OAAV,CAA3C,EAA+DC,MAAMC,GAAN,CAAU,KAAKF,IAAL,CAAU,UAAV,CAAV,CAA/D,EAAiG,KAAKA,IAAL,CAAU,QAAV,CAAjG,EAAsH,CAAtH,EAAyH,CAAzH,CAAd;AACA,YAAIF,OAAJ,EAAa;AACT,mBAAO,KAAKK,OAAL,CAAa,MAAb,CAAP;AACH,SAFD,MAEO;AACH,mBAAO,KAAKC,IAAL,CAAU,IAAV,EAAgB,MAAhB,CAAP;AACH;AACJ;AAT+B,CAApC",
+    "file": "../../../src/controller/front/regist.js",
     "sourcesContent": [
-        "const Base = require('../base.js');\r\n\r\nmodule.exports = class extends Base {\r\n    indexAction() {\r\n        return this.display();\r\n    }\r\n};\r\n"
+        "const Base = require('../base.js');\n\nmodule.exports = class extends Base {\n    indexAction() {\n        let userService = this.service('user');\n        let user_id = userService.addUser(this.post('username'), this.post('email'), think.md5(this.post('password')), this.post('avatar'), 1, 0);\n        if (user_id) {\n            return this.success('注册成功');\n        } else {\n            return this.fail(1000, '注册失败');\n        }\n    }\n};\n"
     ]
 }

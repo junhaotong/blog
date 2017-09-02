@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\src\\config\\middleware.js"
+        "../../src/config/middleware.js"
     ],
     "names": [
         "path",
@@ -21,11 +21,19 @@
         "publicPath",
         "gzip",
         "isCli",
-        "debug"
+        "debug",
+        "match",
+        "ctx",
+        "validator",
+        "app",
+        "routers",
+        "forEach",
+        "route",
+        "test"
     ],
-    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,MAAR,CAAb;AACA,MAAMC,QAAQ,IAAd;;AAEAC,OAAOC,OAAP,GAAiB,CACb;AACIC,YAAQ,MADZ;AAEIC,aAAS;AACLC,oBAAYL,KADP;AAELM,0BAAkBN;AAFb;AAFb,CADa,EAQb;AACIG,YAAQ,UADZ;AAEII,YAAQP,KAFZ;AAGII,aAAS;AACLI,cAAMV,KAAKW,IAAL,CAAUC,MAAMC,SAAhB,EAA2B,KAA3B,CADD;AAELC,oBAAY,kCAFP;AAGLC,cAAM;AAHD;AAHb,CARa,EAiBb;AACIV,YAAQ,OADZ;AAEII,YAAQ,CAACG,MAAMI,KAFnB;AAGIV,aAAS;AACLW,eAAOf;AADF;AAHb,CAjBa,EAwBb;AACIG,YAAQ,SADZ;AAEIC,aAAS;AAFb,CAxBa,EA4Bb;AACID,YAAQ,QADZ;AAEIC,aAAS;AAFb,CA5Ba,EAgCb,OAhCa,EAiCb,YAjCa,CAAjB",
-    "file": "..\\..\\src\\config\\middleware.js",
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,MAAR,CAAb;AACA,MAAMC,QAAQ,IAAd;;AAEAC,OAAOC,OAAP,GAAiB,CACb;AACIC,YAAQ,MADZ;AAEIC,aAAS;AACLC,oBAAYL,KADP;AAELM,0BAAkBN;AAFb;AAFb,CADa,EAQb;AACIG,YAAQ,UADZ;AAEII,YAAQP,KAFZ;AAGII,aAAS;AACLI,cAAMV,KAAKW,IAAL,CAAUC,MAAMC,SAAhB,EAA2B,KAA3B,CADD;AAELC,oBAAY,kCAFP;AAGLC,cAAM;AAHD;AAHb,CARa,EAiBb;AACIV,YAAQ,OADZ;AAEII,YAAQ,CAACG,MAAMI,KAFnB;AAGIV,aAAS;AACLW,eAAOf;AADF;AAHb,CAjBa,EAwBb;AACIG,YAAQ,SADZ;AAEIC,aAAS;AAFb,CAxBa,EA4Bb;AACID,YAAQ,QADZ;AAEIC,aAAS;AAFb,CA5Ba,EAgCb;AACID,YAAQ,iBADZ;AAEIa,WAAOC,OAAO;AACV,YAAIC,YAAY,KAAhB;AACAR,cAAMS,GAAN,CAAUC,OAAV,CAAkBC,OAAlB,CAA0BC,SAAS;AAC/B,gBAAIA,MAAMN,KAAN,CAAYO,IAAZ,CAAiBN,IAAInB,IAArB,CAAJ,EAAgC;AAC5BoB,4BAAYI,MAAMlB,OAAN,CAAcc,SAA1B;AACH;AACJ,SAJD;AAKA,YAAIA,SAAJ,EAAe,OAAO,IAAP,CAAf,KACK,OAAO,KAAP;AACR;AAXL,CAhCa,EA6Cb,OA7Ca,EA8Cb,YA9Ca,CAAjB",
+    "file": "../../src/config/middleware.js",
     "sourcesContent": [
-        "const path = require('path');\r\nconst isDev = true;\r\n\r\nmodule.exports = [\r\n    {\r\n        handle: 'meta',\r\n        options: {\r\n            logRequest: isDev,\r\n            sendResponseTime: isDev\r\n        }\r\n    },\r\n    {\r\n        handle: 'resource',\r\n        enable: isDev,\r\n        options: {\r\n            root: path.join(think.ROOT_PATH, 'www'),\r\n            publicPath: /^\\/(static|uploads|favicon\\.ico)/,\r\n            gzip: true\r\n        }\r\n    },\r\n    {\r\n        handle: 'trace',\r\n        enable: !think.isCli,\r\n        options: {\r\n            debug: isDev\r\n        }\r\n    },\r\n    {\r\n        handle: 'payload',\r\n        options: {}\r\n    },\r\n    {\r\n        handle: 'router',\r\n        options: {}\r\n    },\r\n    'logic',\r\n    'controller'\r\n];\r\n"
+        "const path = require('path');\nconst isDev = true;\n\nmodule.exports = [\n    {\n        handle: 'meta',\n        options: {\n            logRequest: isDev,\n            sendResponseTime: isDev\n        }\n    },\n    {\n        handle: 'resource',\n        enable: isDev,\n        options: {\n            root: path.join(think.ROOT_PATH, 'www'),\n            publicPath: /^\\/(static|uploads|favicon\\.ico)/,\n            gzip: true\n        }\n    },\n    {\n        handle: 'trace',\n        enable: !think.isCli,\n        options: {\n            debug: isDev\n        }\n    },\n    {\n        handle: 'payload',\n        options: {}\n    },\n    {\n        handle: 'router',\n        options: {}\n    },\n    {\n        handle: 'validationtoken',\n        match: ctx => {\n            let validator = false;\n            think.app.routers.forEach(route => {\n                if (route.match.test(ctx.path)) {\n                    validator = route.options.validator;\n                }\n            })\n            if (validator) return true;\n            else return false;\n        }\n    },\n    'logic',\n    'controller'\n];\n"
     ]
 }

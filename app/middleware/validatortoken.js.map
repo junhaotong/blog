@@ -1,0 +1,23 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/middleware/validatortoken.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "options",
+        "app",
+        "ctx",
+        "next",
+        "console",
+        "log",
+        "req",
+        "url"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CAACC,OAAD,EAAUC,GAAV,KAAkB;AAC/B,WAAO,CAACC,GAAD,EAAMC,IAAN,KAAe;AAClBC,gBAAQC,GAAR,CAAYH,IAAII,GAAJ,CAAQC,GAApB;AACA,eAAOJ,MAAP;AACH,KAHD;AAIH,CALD",
+    "file": "../../src/middleware/validatortoken.js",
+    "sourcesContent": [
+        "module.exports = (options, app) => {\n    return (ctx, next) => {\n        console.log(ctx.req.url);\n        return next();\n    };\n};\n"
+    ]
+}

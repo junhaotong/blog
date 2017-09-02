@@ -17,7 +17,44 @@ module.exports = class extends think.Model {
         return this.where({username: username, type: type}).find();
     }
 
+    /**
+     * 通过token获取用户
+     * @param token
+     */
     getUserByToken(token) {
+        return this
+            .join([{
+            table: 'token',
+            join: 'inner',
+            as: 't',
+            on: ['`user`.`id`', '`t`.`user_ID`']
+        }])
+            .where({'t.token': token}).find();
+    }
 
+    /**
+     * 添加用户
+     * @param user
+     * @returns {Promise|*}
+     */
+    addUser(user) {
+        return this.add(user);
+    }
+
+    /**
+     * 通过type查询用户列表
+     * @param type
+     * @param limit
+     */
+    getUserByType(type, limit) {
+        return this.where({type: type}).fieldReverse('password').limit(limit).select();
+    }
+
+    /**
+     * 通过用户ID获取用户信息
+     * @param id
+     */
+    getUserById(id) {
+        return this.where({id: id}).find();
     }
 };

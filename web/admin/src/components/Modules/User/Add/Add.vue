@@ -11,7 +11,9 @@
                         <div class="upload">
                             <img v-if="UserForm.avatar" :src="'/' + UserForm.avatar" alt="">
                             <template v-else>
-                                <Icon type="ios-cloud-upload-outline"></Icon>上传头像
+                                <Icon type="ios-cloud-upload-outline"></Icon>
+                                上传头像
+
                             </template>
                         </div>
                     </Upload>
@@ -92,7 +94,7 @@
             regist() {
                 this.$refs.UserForm.validate(valid => {
                     if (valid) {
-                        this.axios.post('/admin/regist', this.UserForm)
+                        this.axios.post('/regist', this.UserForm)
                             .then(res => {
                                 if (res.data.code === 0) {
                                     this.$Message.success(res.data.msg);

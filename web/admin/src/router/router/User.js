@@ -20,6 +20,7 @@ export default [{
     }, {
         path: 'list',
         name: '用户列表',
-        icon: 'list'
+        icon: 'list',
+        component: Modules.User.List
     }]
 }]

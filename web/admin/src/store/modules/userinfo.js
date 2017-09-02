@@ -3,6 +3,7 @@
  */
 import cookie from 'js-cookie';
 import * as types from '../mutation-types';
+import axios from 'axios';
 
 const state = {
     userinfo: cookie.getJSON('userinfo') || {}
@@ -28,7 +29,8 @@ const mutations = {
         state.userinfo = {};
     },
     [types.UPDATE_USERINFO] (state) {
-        state.userinfo = cookie.getJSON('userinfo') || {}
+        state.userinfo = cookie.getJSON('userinfo') || {};
+        axios.defaults.headers.common['Authorization'] = state.userinfo.token;
     }
 }
 
