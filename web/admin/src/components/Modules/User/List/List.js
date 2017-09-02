@@ -24,7 +24,7 @@ export default {
                 render: (h, row) => {
                     return h('img', {
                         attrs: {
-                            src: row.row.avatar
+                            src: `/${row.row.avatar}`
                         },
                         'class': {
                             avatar: true
