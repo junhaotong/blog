@@ -1,6 +1,7 @@
 // default config
 module.exports = {
     port: 8090,
+    workers: 1,
     uploadURL: 'uploads/',
     errnoField: 'code', // errno field
     errmsgField: 'msg', // errmsg field

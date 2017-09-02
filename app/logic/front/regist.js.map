@@ -1,18 +1,31 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\..\\src\\logic\\front\\regist.js"
+        "../../../src/logic/front/regist.js"
     ],
     "names": [
         "module",
         "exports",
         "think",
         "Logic",
-        "indexAction"
+        "indexAction",
+        "rules",
+        "username",
+        "string",
+        "required",
+        "trim",
+        "aliasName",
+        "email",
+        "pwd",
+        "length",
+        "min",
+        "max",
+        "re_pwd",
+        "equals"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvCC,kBAAc,CAEb;AAHsC,CAA3C",
-    "file": "..\\..\\..\\src\\logic\\front\\regist.js",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvCC,kBAAc;AACV,aAAKC,KAAL,GAAa;AACTC,sBAAU;AACNC,wBAAQ,IADF;AAENC,0BAAU,IAFJ;AAGNC,sBAAM,IAHA;AAINC,2BAAW;AAJL,aADD;AAOTC,mBAAO;AACHH,0BAAU,IADP;AAEHG,uBAAO,IAFJ;AAGHD,2BAAW;AAHR,aAPE;AAYTE,iBAAK;AACDJ,0BAAU,IADT;AAEDK,wBAAQ,EAACC,KAAK,CAAN,EAASC,KAAK,EAAd,EAFP;AAGDL,2BAAW;AAHV,aAZI;AAiBTM,oBAAQ;AACJR,0BAAU,IADN;AAEJS,wBAAQ,KAFJ;AAGJP,2BAAW;AAHP;AAjBC,SAAb;AAuBH;AAzBsC,CAA3C",
+    "file": "../../../src/logic/front/regist.js",
     "sourcesContent": [
-        "module.exports = class extends think.Logic {\r\n    indexAction() {\r\n\r\n    }\r\n};\r\n"
+        "module.exports = class extends think.Logic {\n    indexAction() {\n        this.rules = {\n            username: {\n                string: true,\n                required: true,\n                trim: true,\n                aliasName: '用户名'\n            },\n            email: {\n                required: true,\n                email: true,\n                aliasName: '邮箱'\n            },\n            pwd: {\n                required: true,\n                length: {min: 6, max: 20},\n                aliasName: '密码'\n            },\n            re_pwd: {\n                required: true,\n                equals: 'pwd',\n                aliasName: '再次输入密码'\n            }\n        }\n    }\n};\n"
     ]
 }

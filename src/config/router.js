@@ -1,7 +1,8 @@
 module.exports = [
-    [/^\/admin/, 'index/admin', 'get'],
+    ['/webhook', 'webhook', 'post'],
+    [/^\/admin$/, 'index/admin', 'get'],
     ['/api/admin/login', 'admin/login', 'post'],
     ['/api/regist', 'front/regist', 'post'],
     ['/api/upload/image', 'upload/image', 'post'],
-    ['/webhook', 'webhook', 'post']
+    [/^\/api\/admin\/user(?:\/(\d+))?$/, 'admin/user?id=:1', 'rest', {validator: true}]
 ];

@@ -10,21 +10,20 @@ import 'nprogress/nprogress.css';
 
 import store from './store'
 
-// import axios
-import './util/axios';
-
 //import iview
 import iView from 'iview';
 
 Vue.use(iView);
 
+// import axios
+import './util/axios';
+
 Vue.config.productionTip = false
 
 router.beforeEach((to, from, next) => {
-    window.scroll(0,0);
+    window.scroll(0, 0);
     Nprogress.start();
     let userinfo = store.state.userinfo.userinfo;
-    console.log(userinfo);
     if (!userinfo.token && to.path !== '/login') {
         next('/login');
     } else {
@@ -35,6 +34,7 @@ router.beforeEach((to, from, next) => {
             next();
         }
     }
+    next();
 });
 
 router.afterEach(() => {
@@ -42,7 +42,7 @@ router.afterEach(() => {
 });
 
 /* eslint-disable no-new */
-new Vue({
+window.vm = new Vue({
     el: '#app',
     router,
     store,

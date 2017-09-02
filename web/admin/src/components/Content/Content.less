@@ -1,0 +1,58 @@
+.layout {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    .menu-left {
+        background: #464c5b;
+        flex: 0 0 200px;
+        overflow-y: auto;
+        .logo {
+            width: 90%;
+            height: 30px;
+            background: #5b6270;
+            border-radius: 3px;
+            margin: 15px auto;
+            color: #fff;
+            font-size: 15px;
+            line-height: 30px;
+            text-align: center;
+        }
+        .menu-icon {
+            font-size: 15px;
+        }
+    }
+    .content-right {
+        flex: 1;
+        overflow-y: auto;
+        .layout-ceiling {
+            background: #464c5b;
+            padding: 10px 10px;
+            height: 60px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 200px;
+            z-index: 1;
+            .cailing-item {
+                line-height: 40px;
+                color: #fff;
+                font-size: 14px;
+                display: inline-block;
+                padding: 0 20px;
+                a {
+                    color: #fff;
+                }
+            }
+        }
+        .main {
+            margin-top: 60px;
+            .bread {
+                background: #F7F7F7;
+                padding: 15px;
+            }
+            .content {
+                padding: 15px;
+            }
+        }
+    }
+}

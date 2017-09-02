@@ -27,4 +27,15 @@ module.exports = [{
 }, {
     handle: 'router',
     options: {}
+}, {
+    handle: 'validationtoken',
+    match: ctx => {
+        let validator = false;
+        think.app.routers.forEach(route => {
+            if (route.match.test(ctx.path)) {
+                validator = route.options.validator;
+            }
+        });
+        if (validator) return true;else return false;
+    }
 }, 'logic', 'controller'];

@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\src\\logic\\upload.js"
+        "../../src/logic/upload.js"
     ],
     "names": [
         "module",
@@ -16,8 +16,8 @@
         "fail"
     ],
     "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,kBAAc;AACV,YAAI,KAAKC,GAAL,CAASC,IAAT,CAAc,OAAd,EAAuBC,IAAvB,CAA4BC,KAA5B,CAAkC,GAAlC,EAAuC,CAAvC,MAA8C,OAAlD,EAA2D;AACvD,mBAAO,KAAKC,IAAL,CAAU,IAAV,EAAgB,SAAhB,CAAP;AACH;AACJ;AALwC,CAA3C",
-    "file": "..\\..\\src\\logic\\upload.js",
+    "file": "../../src/logic/upload.js",
     "sourcesContent": [
-        "module.exports = class extends think.Logic {\r\n  imageAction() {\r\n      if (this.ctx.file('image').type.split('/')[0] !== 'image') {\r\n          return this.fail(2000, '图片格式不正确');\r\n      }\r\n  }\r\n};\r\n"
+        "module.exports = class extends think.Logic {\n  imageAction() {\n      if (this.ctx.file('image').type.split('/')[0] !== 'image') {\n          return this.fail(2000, '图片格式不正确');\n      }\n  }\n};\n"
     ]
 }

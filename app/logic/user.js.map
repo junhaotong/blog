@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\src\\logic\\user.js"
+        "../../src/logic/user.js"
     ],
     "names": [
         "module",
@@ -10,9 +10,9 @@
         "Logic",
         "indexAction"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvCC,kBAAc,CAEb;AAHsC,CAA3C",
-    "file": "..\\..\\src\\logic\\user.js",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,gBAAc,CAEb;AAHwC,CAA3C",
+    "file": "../../src/logic/user.js",
     "sourcesContent": [
-        "module.exports = class extends think.Logic {\r\n    indexAction() {\r\n\r\n    }\r\n};\r\n"
+        "module.exports = class extends think.Logic {\n  indexAction() {\n\n  }\n};\n"
     ]
 }

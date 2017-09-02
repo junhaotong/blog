@@ -1,23 +1,43 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\src\\service\\user.js"
+        "../../src/service/user.js"
     ],
     "names": [
+        "moment",
+        "require",
         "module",
         "exports",
         "think",
         "Service",
+        "constructor",
+        "props",
+        "User",
+        "model",
         "getAdminByUsername",
         "username",
         "userModel",
-        "model",
         "user",
-        "getUserByUsername"
+        "getUserByUsername",
+        "addUser",
+        "email",
+        "password",
+        "avatar",
+        "type",
+        "status",
+        "create_at",
+        "Date",
+        "format",
+        "getUserList",
+        "page",
+        "userList",
+        "getUserByType",
+        "getUserByToken",
+        "token"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzC;;;;AAIAC,uBAAmBC,QAAnB,EAA6B;AACzB,YAAIC,YAAY,KAAKC,KAAL,CAAW,MAAX,CAAhB;AACA,YAAIC,OAAOF,UAAUG,iBAAV,CAA4BJ,QAA5B,EAAsC,CAAtC,CAAX;AACA,eAAOG,IAAP;AACH;AATwC,CAA7C",
-    "file": "..\\..\\src\\service\\user.js",
+    "mappings": ";;AAAA,MAAMA,SAASC,QAAQ,QAAR,CAAf;;AAEAC,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzCC,gBAAYC,KAAZ,EAAmB;AACf,cAAMA,KAAN;AACA,aAAKC,IAAL,GAAY,KAAKC,KAAL,CAAW,MAAX,CAAZ;AACH;AACD;;;;AAIAC,uBAAmBC,QAAnB,EAA6B;AACzB,YAAIC,YAAY,KAAKH,KAAL,CAAW,MAAX,CAAhB;AACA,YAAII,OAAOD,UAAUE,iBAAV,CAA4BH,QAA5B,EAAsC,CAAtC,CAAX;AACA,eAAOE,IAAP;AACH;;AAED;;;;;;;;;AASAE,YAAQJ,QAAR,EAAkBK,KAAlB,EAAyBC,QAAzB,EAAmCC,MAAnC,EAA2CC,IAA3C,EAAiDC,MAAjD,EAAyD;AACrD,YAAIP,OAAO;AACPF,oBADO;AAEPK,iBAFO;AAGPC,oBAHO;AAIPC,kBAJO;AAKPG,uBAAWrB,OAAO,IAAIsB,IAAJ,EAAP,EAAmBC,MAAnB,CAA0B,qBAA1B,CALJ;AAMPJ,gBANO;AAOPC;AAPO,SAAX;AASA,YAAIR,YAAY,KAAKH,KAAL,CAAW,MAAX,CAAhB;AACA,eAAOG,UAAUG,OAAV,CAAkBF,IAAlB,CAAP;AACH;;AAED;;;;;AAKMW,eAAN,CAAkBC,OAAO,CAAzB,EAA4B;AAAA;;AAAA;AACxB,gBAAIb,YAAY,MAAKH,KAAL,CAAW,MAAX,CAAhB;AACA,gBAAIiB,WAAW,MAAMd,UAAUe,aAAV,CAAwB,CAAxB,EAA2BF,OAAO,EAAlC,CAArB;AACA,mBAAOC,QAAP;AAHwB;AAI3B;;AAED;;;;;AAKME,kBAAN,CAAqBC,KAArB,EAA4B;AAAA;;AAAA;AACxB,gBAAIhB,OAAO,MAAM,OAAKL,IAAL,CAAUoB,cAAV,CAAyBC,KAAzB,CAAjB;AACA,mBAAOhB,IAAP;AAFwB;AAG3B;AAzDwC,CAA7C",
+    "file": "../../src/service/user.js",
     "sourcesContent": [
-        "module.exports = class extends think.Service {\r\n    /**\r\n     * 通过用户名获取管理员\r\n     * @param username\r\n     */\r\n    getAdminByUsername(username) {\r\n        let userModel = this.model('user');\r\n        let user = userModel.getUserByUsername(username, 2);\r\n        return user;\r\n    }\r\n};\r\n"
+        "const moment = require('moment');\n\nmodule.exports = class extends think.Service {\n    constructor(props) {\n        super(props);\n        this.User = this.model('user');\n    }\n    /**\n     * 通过用户名获取管理员\n     * @param username\n     */\n    getAdminByUsername(username) {\n        let userModel = this.model('user');\n        let user = userModel.getUserByUsername(username, 2);\n        return user;\n    }\n\n    /**\n     * 新增用户\n     * @param username\n     * @param email\n     * @param password\n     * @param avatar\n     * @param type\n     * @param status\n     */\n    addUser(username, email, password, avatar, type, status) {\n        let user = {\n            username,\n            email,\n            password,\n            avatar,\n            create_at: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),\n            type,\n            status,\n        };\n        let userModel = this.model('user');\n        return userModel.addUser(user);\n    }\n\n    /**\n     * 获取用户列表\n     * @param page\n     * @returns {*}\n     */\n    async getUserList(page = 1) {\n        let userModel = this.model('user');\n        let userList = await userModel.getUserByType(1, page * 20);\n        return userList;\n    }\n\n    /**\n     * 通过token获取用户\n     * @param token\n     * @returns {Promise.<Promise|*>}\n     */\n    async getUserByToken(token) {\n        let user = await this.User.getUserByToken(token);\n        return user;\n    }\n};\n"
     ]
 }
