@@ -18,9 +18,9 @@
         "console",
         "log"
     ],
-    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,QAAQD,QAAQ,OAAR,CAAd;;AAEAE,OAAOC,OAAP,GAAiB,cAAcJ,IAAd,CAAmB;AAChCK,kBAAc;AACV,YAAIC,UAAU,CAAC,gCAAD,EAAmC,cAAnC,EAAmD,UAAnD,EAA+D,aAA/D,EAA8E,6BAA9E,EAA6GC,IAA7G,CAAkH,IAAlH,CAAd;AACAL,cAAMM,KAAN,CAAYF,OAAZ,EAAqBG,IAArB,CAA0BC,UAAU;AAChCC,oBAAQC,GAAR,CAAY,OAAZ;AACH,SAFD;AAGH;AAN+B,CAApC",
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,QAAQD,QAAQ,OAAR,CAAd;;AAEAE,OAAOC,OAAP,GAAiB,cAAcJ,IAAd,CAAmB;AAChCK,kBAAc;AACV,YAAIC,UAAU,CAAC,gCAAD,EAAmC,cAAnC,EAAmD,UAAnD,EAA+D,aAA/D,EAA8E,6BAA9E,EAA6GC,IAA7G,CAAkH,IAAlH,CAAd;AACAL,cAAMM,KAAN,CAAYF,OAAZ,EAAqBG,IAArB,CAA0BC,UAAU;AAChCC,oBAAQC,GAAR,CAAYF,MAAZ;AACH,SAFD;AAGH;AAN+B,CAApC",
     "file": "../../src/controller/webhook.js",
     "sourcesContent": [
-        "const Base = require('./base.js');\nconst execa = require('execa');\n\nmodule.exports = class extends Base {\n    indexAction() {\n        let command = ['git reset --hard origin/master', 'git clean -f', 'git pull', 'npm install', 'pm2 sendSignal SIGUSR2 blog'].join('&&')\n        execa.shell(command).then(result => {\n            console.log('更新成功!');\n        });\n    }\n};\n"
+        "const Base = require('./base.js');\nconst execa = require('execa');\n\nmodule.exports = class extends Base {\n    indexAction() {\n        let command = ['git reset --hard origin/master', 'git clean -f', 'git pull', 'npm install', 'pm2 sendSignal SIGUSR2 blog'].join('&&')\n        execa.shell(command).then(result => {\n            console.log(result);\n        });\n    }\n};\n"
     ]
 }
