@@ -10,8 +10,7 @@ module.exports = class extends think.Service {
      * @param username
      */
     getAdminByUsername(username) {
-        let userModel = this.model('user');
-        let user = userModel.getUserByUsername(username, 2);
+        let user = this.User.getUserByUsername(username, 2);
         return user;
     }
 
@@ -34,8 +33,7 @@ module.exports = class extends think.Service {
             type,
             status,
         };
-        let userModel = this.model('user');
-        return userModel.addUser(user);
+        return this.User.addUser(user);
     }
 
     /**
@@ -44,8 +42,7 @@ module.exports = class extends think.Service {
      * @returns {*}
      */
     async getUserList(page = 1) {
-        let userModel = this.model('user');
-        let userList = await userModel.getUserByType(1, page * 20);
+        let userList = await this.User.getUserByType(1, page * 20);
         return userList;
     }
 
@@ -57,5 +54,27 @@ module.exports = class extends think.Service {
     async getUserByToken(token) {
         let user = await this.User.getUserByToken(token);
         return user;
+    }
+
+    /**
+     * 验证email是否已注册
+     * @param email
+     * @returns {Promise.<boolean>}
+     */
+    async checkEmail(email) {
+        let user = await this.User.getUserbyEmail(email);
+        if (user.id) return true;
+        else return false;
+    }
+
+    /**
+     * 验证用户名是否已注册
+     * @param username
+     * @returns {Promise.<boolean>}
+     */
+    async checkUserName(username) {
+        let user = await this.User.getUserByUsername(username);
+        if (user.id) return true;
+        else return false;
     }
 };

@@ -11,17 +11,23 @@
         "indexAction",
         "userService",
         "service",
+        "usernameStatus",
+        "checkUserName",
+        "post",
+        "console",
+        "log",
+        "fail",
+        "emailStatus",
+        "checkEmail",
         "user_id",
         "addUser",
-        "post",
         "think",
         "md5",
-        "success",
-        "fail"
+        "success"
     ],
-    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,YAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChCI,kBAAc;AACV,YAAIC,cAAc,KAAKC,OAAL,CAAa,MAAb,CAAlB;AACA,YAAIC,UAAUF,YAAYG,OAAZ,CAAoB,KAAKC,IAAL,CAAU,UAAV,CAApB,EAA2C,KAAKA,IAAL,CAAU,OAAV,CAA3C,EAA+DC,MAAMC,GAAN,CAAU,KAAKF,IAAL,CAAU,UAAV,CAAV,CAA/D,EAAiG,KAAKA,IAAL,CAAU,QAAV,CAAjG,EAAsH,CAAtH,EAAyH,CAAzH,CAAd;AACA,YAAIF,OAAJ,EAAa;AACT,mBAAO,KAAKK,OAAL,CAAa,IAAb,EAAmB,MAAnB,CAAP;AACH,SAFD,MAEO;AACH,mBAAO,KAAKC,IAAL,CAAU,IAAV,EAAgB,MAAhB,CAAP;AACH;AACJ;AAT+B,CAApC",
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,YAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC1BI,eAAN,GAAoB;AAAA;;AAAA;AAChB,gBAAIC,cAAc,MAAKC,OAAL,CAAa,MAAb,CAAlB;AACA,gBAAIC,iBAAiB,MAAMF,YAAYG,aAAZ,CAA0B,MAAKC,IAAL,CAAU,UAAV,CAA1B,CAA3B;AACAC,oBAAQC,GAAR,CAAYJ,cAAZ;;AAEA,gBAAIA,cAAJ,EAAoB,OAAO,MAAKK,IAAL,CAAU,IAAV,EAAgB,QAAhB,CAAP;AACpB,gBAAIC,cAAc,MAAMR,YAAYS,UAAZ,CAAuB,MAAKL,IAAL,CAAU,OAAV,CAAvB,CAAxB;AACA,gBAAII,WAAJ,EAAiB,OAAO,MAAKD,IAAL,CAAU,IAAV,EAAgB,OAAhB,CAAP;AACjB,gBAAIG,UAAU,MAAMV,YAAYW,OAAZ,CAAoB,MAAKP,IAAL,CAAU,UAAV,CAApB,EAA2C,MAAKA,IAAL,CAAU,OAAV,CAA3C,EAA+DQ,MAAMC,GAAN,CAAU,MAAKT,IAAL,CAAU,UAAV,CAAV,CAA/D,EAAiG,MAAKA,IAAL,CAAU,QAAV,CAAjG,EAAsH,CAAtH,EAAyH,CAAzH,CAApB;AACA,gBAAIM,OAAJ,EAAa;AACT,uBAAO,MAAKI,OAAL,CAAa,EAAb,EAAiB,MAAjB,CAAP;AACH,aAFD,MAEO;AACH,uBAAO,MAAKP,IAAL,CAAU,IAAV,EAAgB,MAAhB,CAAP;AACH;AAbe;AAcnB;AAf+B,CAApC",
     "file": "../../../src/controller/front/regist.js",
     "sourcesContent": [
-        "const Base = require('../base.js');\n\nmodule.exports = class extends Base {\n    indexAction() {\n        let userService = this.service('user');\n        let user_id = userService.addUser(this.post('username'), this.post('email'), think.md5(this.post('password')), this.post('avatar'), 1, 0);\n        if (user_id) {\n            return this.success(null, '注册成功');\n        } else {\n            return this.fail(1000, '注册失败');\n        }\n    }\n};\n"
+        "const Base = require('../base.js');\n\nmodule.exports = class extends Base {\n    async indexAction() {\n        let userService = this.service('user');\n        let usernameStatus = await userService.checkUserName(this.post('username'));\n        console.log(usernameStatus);\n\n        if (usernameStatus) return this.fail(1000, '用户名已注册');\n        let emailStatus = await userService.checkEmail(this.post('email'));\n        if (emailStatus) return this.fail(1000, '邮箱已注册');\n        let user_id = await userService.addUser(this.post('username'), this.post('email'), think.md5(this.post('password')), this.post('avatar'), 1, 0);\n        if (user_id) {\n            return this.success([], '注册成功');\n        } else {\n            return this.fail(1000, '注册失败');\n        }\n    }\n};\n"
     ]
 }

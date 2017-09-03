@@ -9,8 +9,8 @@ module.exports = (options, app) => {
             }
             let userService = ctx.service('user');
             let user = yield userService.getUserByToken(token);
-
-            if (!user.type || ctx.url.indexOf('/admin') >= 0 && user.type < 2) {
+            if (!user.id) return ctx.fail(3000, '未登录');
+            if (ctx.url.indexOf('/admin') >= 0 && user.type < 2) {
                 // 无权限访问后台接口
                 return ctx.fail(3000, '未登录');
             }

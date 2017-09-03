@@ -14,7 +14,10 @@ module.exports = class extends think.Model {
      * @returns {Promise|T}
      */
     getUserByUsername(username, type) {
-        return this.where({username: username, type: type}).find();
+        let query = {};
+        if (username) query['username'] = username;
+        if (type) query['type'] = type;
+        return this.where(query).find();
     }
 
     /**
@@ -56,5 +59,13 @@ module.exports = class extends think.Model {
      */
     getUserById(id) {
         return this.where({id: id}).find();
+    }
+
+    /**
+     * 通过邮箱获取用户
+     * @param email
+     */
+    getUserbyEmail(email) {
+        return this.where({email: email}).find();
     }
 };
