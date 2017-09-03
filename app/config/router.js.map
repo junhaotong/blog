@@ -8,9 +8,9 @@
         "exports",
         "validator"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CACb,CAAC,UAAD,EAAa,SAAb,EAAwB,MAAxB,CADa,EAEb,CAAC,WAAD,EAAc,aAAd,EAA6B,KAA7B,CAFa,EAGb,CAAC,kBAAD,EAAqB,aAArB,EAAoC,MAApC,CAHa,EAIb,CAAC,aAAD,EAAgB,cAAhB,EAAgC,MAAhC,CAJa,EAKb,CAAC,mBAAD,EAAsB,cAAtB,EAAsC,MAAtC,CALa,EAMb,CAAC,kCAAD,EAAqC,kBAArC,EAAyD,MAAzD,EAAiE,EAACC,WAAW,IAAZ,EAAjE,CANa,CAAjB",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CACb,CAAC,UAAD,EAAa,SAAb,EAAwB,MAAxB,CADa,EAEb,CAAC,WAAD,EAAc,aAAd,EAA6B,KAA7B,CAFa,EAGb,CAAC,wBAAD,EAA2B,gBAA3B,EAA6C,KAA7C,CAHa,EAIb,CAAC,kBAAD,EAAqB,aAArB,EAAoC,MAApC,CAJa,EAKb,CAAC,aAAD,EAAgB,cAAhB,EAAgC,MAAhC,CALa,EAMb,CAAC,mBAAD,EAAsB,cAAtB,EAAsC,MAAtC,CANa,EAOb,CAAC,kCAAD,EAAqC,kBAArC,EAAyD,MAAzD,EAAiE,EAACC,WAAW,IAAZ,EAAjE,CAPa,CAAjB",
     "file": "../../src/config/router.js",
     "sourcesContent": [
-        "module.exports = [\n    ['/webhook', 'webhook', 'post'],\n    [/^\\/admin$/, 'index/admin', 'get'],\n    ['/api/admin/login', 'admin/login', 'post'],\n    ['/api/regist', 'front/regist', 'post'],\n    ['/api/upload/image', 'upload/image', 'post'],\n    [/^\\/api\\/admin\\/user(?:\\/(\\d+))?$/, 'admin/user?id=:1', 'rest', {validator: true}]\n];\n"
+        "module.exports = [\n    ['/webhook', 'webhook', 'post'],\n    [/^\\/admin$/, 'index/admin', 'get'],\n    [/^\\/api\\/captchas\\/new$/, 'front/captchas', 'get'],\n    ['/api/admin/login', 'admin/login', 'post'],\n    ['/api/regist', 'front/regist', 'post'],\n    ['/api/upload/image', 'upload/image', 'post'],\n    [/^\\/api\\/admin\\/user(?:\\/(\\d+))?$/, 'admin/user?id=:1', 'rest', {validator: true}]\n];\n"
     ]
 }

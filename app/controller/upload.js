@@ -9,11 +9,12 @@ module.exports = class extends Base {
         fileName += think.md5(this.ctx.file('image').name + Date.now());
         // 个图图片添加后缀
         fileName += '.' + this.ctx.file('image').type.split('/')[1];
-        let result = images(path).size(500).save('www/' + fileName);
-        if (think.isFile('www/' + fileName)) {
+        let result = images(path).size(500).save('www' + fileName);
+        if (think.isFile('www' + fileName)) {
             return this.success({ avatar: fileName }, '上传成功');
         } else {
             return this.fail(2000, '上传失败');
         }
     }
 };
+//# sourceMappingURL=upload.js.map

@@ -1,6 +1,7 @@
 module.exports = [
     ['/webhook', 'webhook', 'post'],
     [/^\/admin$/, 'index/admin', 'get'],
+    [/^\/api\/captchas\/new$/, 'front/captchas', 'get'],
     ['/api/admin/login', 'admin/login', 'post'],
     ['/api/regist', 'front/regist', 'post'],
     ['/api/upload/image', 'upload/image', 'post'],

@@ -1,1 +1,2 @@
-module.exports = [['/webhook', 'webhook', 'post'], [/^\/admin$/, 'index/admin', 'get'], ['/api/admin/login', 'admin/login', 'post'], ['/api/regist', 'front/regist', 'post'], ['/api/upload/image', 'upload/image', 'post'], [/^\/api\/admin\/user(?:\/(\d+))?$/, 'admin/user?id=:1', 'rest', { validator: true }]];
+module.exports = [['/webhook', 'webhook', 'post'], [/^\/admin$/, 'index/admin', 'get'], [/^\/api\/captchas\/new$/, 'front/captchas', 'get'], ['/api/admin/login', 'admin/login', 'post'], ['/api/regist', 'front/regist', 'post'], ['/api/upload/image', 'upload/image', 'post'], [/^\/api\/admin\/user(?:\/(\d+))?$/, 'admin/user?id=:1', 'rest', { validator: true }]];
+//# sourceMappingURL=router.js.map
