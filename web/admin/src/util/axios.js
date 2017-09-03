@@ -29,6 +29,7 @@ axios.defaults.transformResponse = data => {
     data = JSON.parse(data);
     if (data.code === 3000) {
         window.vm.$Message.error(data.msg);
+        window.vm.$store.dispatch('logout');
         window.vm.$router.push('/login');
     }
     return data;

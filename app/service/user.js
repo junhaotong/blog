@@ -12,8 +12,7 @@ module.exports = class extends think.Service {
      * @param username
      */
     getAdminByUsername(username) {
-        let userModel = this.model('user');
-        let user = userModel.getUserByUsername(username, 2);
+        let user = this.User.getUserByUsername(username, 2);
         return user;
     }
 
@@ -36,8 +35,7 @@ module.exports = class extends think.Service {
             type,
             status
         };
-        let userModel = this.model('user');
-        return userModel.addUser(user);
+        return this.User.addUser(user);
     }
 
     /**
@@ -49,8 +47,7 @@ module.exports = class extends think.Service {
         var _this = this;
 
         return _asyncToGenerator(function* () {
-            let userModel = _this.model('user');
-            let userList = yield userModel.getUserByType(1, page * 20);
+            let userList = yield _this.User.getUserByType(1, page * 20);
             return userList;
         })();
     }
@@ -66,6 +63,34 @@ module.exports = class extends think.Service {
         return _asyncToGenerator(function* () {
             let user = yield _this2.User.getUserByToken(token);
             return user;
+        })();
+    }
+
+    /**
+     * 验证email是否已注册
+     * @param email
+     * @returns {Promise.<boolean>}
+     */
+    checkEmail(email) {
+        var _this3 = this;
+
+        return _asyncToGenerator(function* () {
+            let user = yield _this3.User.getUserbyEmail(email);
+            if (user.id) return true;else return false;
+        })();
+    }
+
+    /**
+     * 验证用户名是否已注册
+     * @param username
+     * @returns {Promise.<boolean>}
+     */
+    checkUserName(username) {
+        var _this4 = this;
+
+        return _asyncToGenerator(function* () {
+            let user = yield _this4.User.getUserByUsername(username);
+            if (user.id) return true;else return false;
         })();
     }
 };
