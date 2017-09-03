@@ -1,6 +1,6 @@
 <template>
     <Row class="login-wrapper">
-        <canvas id="login"></canvas>
+        <div id="login"></div>
         <div class="login-dialog">
             <div class="title">登录</div>
             <Form ref="loginForm" :model="loginForm" :rules="loginRules">
@@ -17,7 +17,8 @@
 </template>
 
 <script>
-    import '../../assets/lib/dot';
+    import '../../../node_modules/particles.js/particles';
+    import particlesJSON from '../../../static/particles.json';
 
     export default {
         name: 'AdminLogin',
@@ -59,10 +60,8 @@
             }
         },
         mounted() {
-            Dot('login', {
-                cW: 1500,
-                cH: 650
-            });
+            console.log(particlesJSON);
+            particlesJS('login', particlesJSON);
         }
     };
 </script>
@@ -74,12 +73,10 @@
         left: 0;
         height: 100%;
         width: 100%;
+        overflow: hidden;
         #login {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
             width: 100%;
+            height: 100%;
             background: rgba(8, 22, 35, 0.89);
         }
     }
