@@ -9,4 +9,3 @@ module.exports = class extends Base {
         });
     }
 };
-//# sourceMappingURL=webhook.js.map
