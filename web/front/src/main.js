@@ -15,6 +15,8 @@ import iView from 'iview';
 
 Vue.use(iView);
 
+import 'normalize.css';
+
 // import axios
 import './util/axios';
 
@@ -24,10 +26,10 @@ router.beforeEach((to, from, next) => {
     window.scroll(0, 0);
     Nprogress.start();
     let userinfo = store.state.userinfo.userinfo;
-    if (!userinfo.token && to.path !== '/login') {
-        next('/login');
+    if (!userinfo.token && to.path !== '/sign') {
+        next('/sign');
     } else {
-        if (userinfo.token && to.path === '/login') {
+        if (userinfo.token && to.path === '/sign') {
             Nprogress.done();
             next('/');
         } else {
