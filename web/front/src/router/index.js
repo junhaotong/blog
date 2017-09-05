@@ -16,10 +16,10 @@ export default new Router({
             resolve(Components.Content);
         },
     }, {
-        path: '/login',
+        path: '/sign',
         hidden: true,
         component: resolve => {
-            resolve(Components.Login);
+            resolve(Components.Sign);
         },
     }]
         .concat(User)

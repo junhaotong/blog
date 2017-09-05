@@ -12,7 +12,7 @@ module.exports = [{
     enable: isDev,
     options: {
         root: path.join(think.ROOT_PATH, 'www'),
-        publicPath: /^\/(static|uploads|favicon\.ico)/,
+        publicPath: /^\/(static|front|uploads|favicon\.ico)/,
         gzip: true
     }
 }, {
@@ -39,3 +39,4 @@ module.exports = [{
         if (validator) return true;else return false;
     }
 }, 'logic', 'controller'];
+//# sourceMappingURL=middleware.js.map
