@@ -11,7 +11,7 @@ module.exports = class extends Base {
             let success = yield captchasController.validateCaptchas();
             if (success) {
                 // 验证码二次验证通过
-                return _this.success('验证通过');
+                return _this.success(null, '验证通过');
             } else {
                 return _this.fail(1000, '验证码错误或已失效');
             }
