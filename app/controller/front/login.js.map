@@ -1,0 +1,23 @@
+{
+    "version": 3,
+    "sources": [
+        "../../../src/controller/front/login.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "indexAction",
+        "captchasController",
+        "controller",
+        "success",
+        "validateCaptchas",
+        "fail"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,YAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC1BI,eAAN,GAAoB;AAAA;;AAAA;AAChB,gBAAIC,qBAAqB,MAAKC,UAAL,CAAgB,gBAAhB,CAAzB;AACA,gBAAIC,UAAU,MAAMF,mBAAmBG,gBAAnB,EAApB;AACA,gBAAID,OAAJ,EAAa;AACT;AACA,uBAAO,MAAKA,OAAL,CAAa,MAAb,CAAP;AACH,aAHD,MAGO;AACH,uBAAO,MAAKE,IAAL,CAAU,IAAV,EAAgB,WAAhB,CAAP;AACH;AARe;AASnB;AAV+B,CAApC",
+    "file": "../../../src/controller/front/login.js",
+    "sourcesContent": [
+        "const Base = require('../base.js');\n\nmodule.exports = class extends Base {\n    async indexAction() {\n        let captchasController = this.controller('front/captchas');\n        let success = await captchasController.validateCaptchas();\n        if (success) {\n            // 验证码二次验证通过\n            return this.success('验证通过');\n        } else {\n            return this.fail(1000, '验证码错误或已失效');\n        }\n    }\n};\n"
+    ]
+}

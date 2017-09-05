@@ -67,7 +67,8 @@
                 },
                 usernameError: '',
                 passwordError: '',
-                captchaStatus: true
+                captchaStatus: true,
+                captcha: {}
             }
         },
         methods: {
@@ -85,6 +86,7 @@
                             new_captcha: res.data.data.new_captcha,
                             product: 'float'
                         }, captchaObj => {
+                            this.captcha = captchaObj;
                             captchaObj.appendTo('#captcha');
                             captchaObj.onReady(() => {
                                 this.captchaStatus = false;
@@ -98,7 +100,25 @@
             login() {
                 this.$refs.loginForm.validate(valid => {
                     if (valid) {
-                        this.$Message.success('登陆成功');
+                        let captcha = this.captcha.getValidate();
+                        if (captcha) {
+                            this.axios.post('/login', {
+                                geetest_challenge: captcha.geetest_challenge,
+                                geetest_validate: captcha.geetest_validate,
+                                geetest_seccode: captcha.geetest_seccode,
+                                username: this.loginForm.username,
+                                password: this.loginForm.password
+                            })
+                                .then(res => {
+                                    if (res.data.code === 0) {
+                                        this.$Message.success(res.data.msg);
+                                    } else {
+                                        this.$Message.error(res.data.msg);
+                                    }
+                                })
+                        } else {
+                            this.$Message.error('验证码错误');
+                        }
                     }
                 })
             }
@@ -112,10 +132,6 @@
 <style lang="less" rel="stylesheet/less">
     #captcha {
         margin-top: 20px;
-        .geetest_logo,
-        .geetest_success_logo{
-            display: none;
-        }
     }
 
     .form-item {
