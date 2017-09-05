@@ -39,4 +39,3 @@ module.exports = [{
         if (validator) return true;else return false;
     }
 }, 'logic', 'controller'];
-//# sourceMappingURL=middleware.js.map

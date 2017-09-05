@@ -17,4 +17,3 @@ module.exports = class extends Base {
         }
     }
 };
-//# sourceMappingURL=upload.js.map
