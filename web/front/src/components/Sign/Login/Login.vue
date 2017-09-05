@@ -112,7 +112,8 @@
 <style lang="less" rel="stylesheet/less">
     #captcha {
         margin-top: 20px;
-        .geetest_logo {
+        .geetest_logo,
+        .geetest_success_logo{
             display: none;
         }
     }
