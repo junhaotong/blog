@@ -75,4 +75,3 @@ module.exports = class extends think.Model {
         return this.where(`username = '${query}' OR email = '${query}'`).find();
     }
 };
-//# sourceMappingURL=user.js.map
