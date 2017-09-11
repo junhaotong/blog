@@ -30,4 +30,3 @@ module.exports = class extends Base {
         })();
     }
 };
-//# sourceMappingURL=token.js.map

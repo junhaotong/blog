@@ -108,4 +108,3 @@ module.exports = class extends think.Service {
         })();
     }
 };
-//# sourceMappingURL=user.js.map
