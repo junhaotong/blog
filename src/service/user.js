@@ -77,4 +77,14 @@ module.exports = class extends think.Service {
         if (user.id) return true;
         else return false;
     }
+
+    /**
+     * 通过用户名或邮箱获取用户
+     * @param query
+     * @returns {Promise.<Promise|*>}
+     */
+    async getUserByUsernameOREmail(query) {
+        let user = await this.User.getUserByUsernameOREmail(query);
+        return user;
+    }
 };

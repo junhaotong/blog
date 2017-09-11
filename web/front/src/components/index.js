@@ -2,8 +2,9 @@
  * Created by apple on 2017/8/16.
  */
 import Sign from './Sign';
-import Content from './Content';
+import Modules from './Modules';
+
 export default {
     Sign,
-    Content
+    Modules
 }

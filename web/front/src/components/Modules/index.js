@@ -1,8 +1,10 @@
 /**
  * Created by tjh on 2017/8/20.
  */
-import User from './User';
+import Views from './Views';
+import Content from './Content';
 
 export default {
-    User
+    Views,
+    Content
 }

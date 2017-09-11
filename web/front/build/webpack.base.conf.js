@@ -26,7 +26,8 @@ module.exports = {
             '@': resolve('src'),
             'assets': resolve('src/assets'),
             'node_modules': resolve('/node_modules'),
-            'static': resolve('/static')
+            'static': resolve('/static'),
+            'Components': resolve('src/components/Modules/Components')
         },
         symlinks: false
     },

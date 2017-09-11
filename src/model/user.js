@@ -68,4 +68,12 @@ module.exports = class extends think.Model {
     getUserbyEmail(email) {
         return this.where({email: email}).find();
     }
+
+    /**
+     * 通过用户名或邮箱获取用户
+     * @param query
+     */
+    getUserByUsernameOREmail(query) {
+        return this.where(`username = '${query}' OR email = '${query}'`).find();
+    }
 };

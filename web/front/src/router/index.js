@@ -5,22 +5,23 @@ import Components from '../components';
 
 Vue.use(Router);
 
-import User from './router/User';
-
 export default new Router({
     routes: [{
         path: '/',
-        redirect: '/user',
-        hidden: true,
         component: resolve => {
-            resolve(Components.Content);
+            resolve(Components.Modules.Content);
         },
+        children: [{
+            path: '',
+            component: Components.Modules.Views.HomePage
+        }, {
+            path: 'post',
+            component: Components.Modules.Views.Post
+        }]
     }, {
         path: '/sign',
-        hidden: true,
         component: resolve => {
             resolve(Components.Sign);
         },
     }]
-        .concat(User)
 });

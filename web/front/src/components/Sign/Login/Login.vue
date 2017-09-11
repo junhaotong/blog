@@ -22,6 +22,7 @@
                 <div id="captcha">
                     <template v-if="captchaStatus">
                         验证码加载中...
+
                     </template>
                 </div>
             </FormItem>
@@ -112,8 +113,17 @@
                                 .then(res => {
                                     if (res.data.code === 0) {
                                         this.$Message.success(res.data.msg);
+                                        this.$store.dispatch('update_userinfo');
+                                        this.$router.push('/');
                                     } else {
-                                        this.$Message.error(res.data.msg);
+                                        if (res.data.code === 2000) {
+                                            this.usernameError = res.data.msg;
+                                        } else if (res.data.code === 2001) {
+                                            this.passwordError = res.data.msg;
+                                        } else {
+                                            this.$Message.error(res.data.msg);
+                                        }
+                                        this.captcha.reset();
                                     }
                                 })
                         } else {
@@ -138,7 +148,7 @@
         position: relative;
         margin-bottom: 0;
         input {
-            font-size: 14px;
+            font-size: 1.4rem;
             height: 40px;
             border-radius: 0;
             border-color: #dddee1 !important;
@@ -155,13 +165,14 @@
         }
         .hint {
             position: absolute;
-            right: 0;
-            top: 0;
+            right: 1px;
+            top: 1px;
+            bottom: 1px;
             padding: 0 10px;
             color: #ed3f14;
             line-height: 40px;
-            font-size: 14px;
-            background: radial-gradient(#fff, #fff, transparent);
+            font-size: 1.4rem;
+            background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 8px);
         }
 
         .login-btn {
@@ -174,11 +185,12 @@
     .slide-fade-leave-active {
         transition: all .3s ease;
     }
+
     .slide-fade-enter, .slide-fade-leave-to {
         transform: translateX(20px);
         opacity: 0;
     }
-    
+
     .ivu-form-item-error-tip {
         display: none;
     }

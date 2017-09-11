@@ -93,4 +93,19 @@ module.exports = class extends think.Service {
             if (user.id) return true;else return false;
         })();
     }
+
+    /**
+     * 通过用户名或邮箱获取用户
+     * @param query
+     * @returns {Promise.<Promise|*>}
+     */
+    getUserByUsernameOREmail(query) {
+        var _this5 = this;
+
+        return _asyncToGenerator(function* () {
+            let user = yield _this5.User.getUserByUsernameOREmail(query);
+            return user;
+        })();
+    }
 };
+//# sourceMappingURL=user.js.map
