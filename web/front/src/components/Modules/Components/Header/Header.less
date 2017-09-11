@@ -1,0 +1,79 @@
+header {
+    border-bottom: 1px solid #ddd;
+    .header {
+        background-color: #ffffff;
+        height: 60px;
+        .logo {
+            font-size: 1.8rem;
+        }
+        .search {
+            position: relative;
+            height: 32px;
+            .search-input {
+                float: right;
+                input {
+                    width: 32px;
+                    border-radius: 50px;
+                    z-index: 1;
+                    padding-right: 25px;
+                    transition: all .3s linear;
+                    border-width: 0;
+                    &:focus {
+                        width: 180px;
+                        border-width: 1px;
+                    }
+                }
+                &:hover {
+                    input {
+                        width: 180px;
+                        border-width: 1px;
+                    }
+                }
+                .ivu-input-icon {
+                    font-size: 18px;
+                }
+            }
+            .search-btn {
+                position: absolute;
+                right: 0;
+                top: 1px;
+                border-radius: 50px;
+                width: 32px;
+                padding: 2px 9px;
+                font-size: 16px;
+            }
+        }
+        .sign {
+            font-size: 14px;
+            padding: 0 10px;
+        }
+        .user {
+            padding: 0 10px;
+            .username {
+                font-size: 1.4rem;
+            }
+            .btn-post {
+                margin: 0 10px;
+                a {
+                    color: #fff;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+    }
+    &.headroom {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        transition: transform .3s ease-in;
+        &.headroom--not-top.headroom--unpinned {
+            transform: translate(0, -60px);
+        }
+        &.headroom--not-top,
+        &.headroom--not-top.headroom--pinned {
+            transform: none;
+        }
+    }
+}

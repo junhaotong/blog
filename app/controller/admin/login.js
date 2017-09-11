@@ -2,8 +2,6 @@ function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, a
 
 const Base = require('../base.js');
 
-let jwt = require('jsonwebtoken');
-
 module.exports = class extends Base {
     indexAction() {
         var _this = this;
@@ -20,21 +18,20 @@ module.exports = class extends Base {
             if (password !== user.password) {
                 return _this.fail(2001, '密码错误');
             }
-            let tokenData = {
-                username: user.username,
-                email: user.email,
-                user_ID: user.id
-            };
-            tokenData = JSON.stringify(tokenData);
-            tokenData = think.md5(tokenData);
-            let token = jwt.sign({ data: tokenData }, 'Jeremy');
-            let tokenService = _this.service('token');
-            let result = yield tokenService.saveToken(token, user.id);
-            _this.cookie('userinfo', JSON.stringify({ username: user.username, token: token }), {
-                maxAge: 360000 * 12,
-                httpOnly: false
-            });
+            let tokenController = _this.controller('token');
+            let token = yield tokenController.newToken(user);
+            // let tokenData = {
+            //     username: user.username,
+            //     email: user.email,
+            //     user_ID: user.id
+            // };
+            // tokenData = JSON.stringify(tokenData);
+            // tokenData = think.md5(tokenData);
+            // let token = jwt.sign({ data: tokenData}, 'Jeremy');
+            // let tokenService = this.service('token');
+            // let result = await tokenService.saveToken(token, user.id);
             return _this.success({ token: token }, '登录成功');
         })();
     }
 };
+//# sourceMappingURL=login.js.map

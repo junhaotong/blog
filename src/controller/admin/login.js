@@ -1,7 +1,5 @@
 const Base = require('../base.js');
 
-let jwt = require('jsonwebtoken');
-
 module.exports = class extends Base {
     async indexAction() {
         let username = this.post('username');
@@ -15,21 +13,18 @@ module.exports = class extends Base {
         if (password !== user.password) {
             return this.fail(2001, '密码错误');
         }
-        let tokenData = {
-            username: user.username,
-            email: user.email,
-            user_ID: user.id
-        };
-        tokenData = JSON.stringify(tokenData);
-        tokenData = think.md5(tokenData);
-        let token = jwt.sign({ data: tokenData}, 'Jeremy');
-        let tokenService = this.service('token');
-        let result = await tokenService.saveToken(token, user.id);
-        this.cookie('userinfo',
-            JSON.stringify({username: user.username, token: token}), {
-                maxAge: 360000 * 12,
-                httpOnly: false
-        });
+        let tokenController = this.controller('token');
+        let token = await tokenController.newToken(user);
+        // let tokenData = {
+        //     username: user.username,
+        //     email: user.email,
+        //     user_ID: user.id
+        // };
+        // tokenData = JSON.stringify(tokenData);
+        // tokenData = think.md5(tokenData);
+        // let token = jwt.sign({ data: tokenData}, 'Jeremy');
+        // let tokenService = this.service('token');
+        // let result = await tokenService.saveToken(token, user.id);
         return this.success({token: token}, '登录成功');
     }
 };

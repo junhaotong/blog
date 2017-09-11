@@ -1,0 +1,40 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/controller/token.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "jwt",
+        "module",
+        "exports",
+        "newToken",
+        "user",
+        "tokenData",
+        "username",
+        "email",
+        "user_ID",
+        "id",
+        "JSON",
+        "stringify",
+        "think",
+        "md5",
+        "token",
+        "sign",
+        "data",
+        "tokenService",
+        "service",
+        "result",
+        "saveToken",
+        "cookie",
+        "maxAge",
+        "httpOnly",
+        "fail"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;AACA,MAAMC,MAAMD,QAAQ,cAAR,CAAZ;;AAEAE,OAAOC,OAAP,GAAiB,cAAcJ,IAAd,CAAmB;AAC1BK,YAAN,CAAeC,IAAf,EAAqB;AAAA;;AAAA;AACjB,gBAAIC,YAAY;AACZC,0BAAUF,KAAKE,QADH;AAEZC,uBAAOH,KAAKG,KAFA;AAGZC,yBAASJ,KAAKK;AAHF,aAAhB;AAKAJ,wBAAYK,KAAKC,SAAL,CAAeN,SAAf,CAAZ;AACAA,wBAAYO,MAAMC,GAAN,CAAUR,SAAV,CAAZ;AACA,gBAAIS,QAAQd,IAAIe,IAAJ,CAAS,EAAEC,MAAMX,SAAR,EAAT,EAA6B,QAA7B,CAAZ;AACA,gBAAIY,eAAe,MAAKC,OAAL,CAAa,OAAb,CAAnB;AACA,gBAAIC,SAAS,MAAMF,aAAaG,SAAb,CAAuBN,KAAvB,EAA8BV,KAAKK,EAAnC,CAAnB;AACA,gBAAIU,MAAJ,EAAY;AACR,sBAAKE,MAAL,CAAY,UAAZ,EACIX,KAAKC,SAAL,CAAe,EAACL,UAAUF,KAAKE,QAAhB,EAA0BQ,OAAOA,KAAjC,EAAf,CADJ,EAC6D;AACrDQ,4BAAQ,SAAS,EADoC;AAErDC,8BAAU;AAF2C,iBAD7D;AAKA,uBAAOT,KAAP;AACH,aAPD,MAOO;AACH,uBAAO,MAAKU,IAAL,CAAU,IAAV,EAAgB,MAAhB,CAAP;AACH;AApBgB;AAqBpB;AAtB+B,CAApC",
+    "file": "../../src/controller/token.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\nconst jwt = require('jsonwebtoken');\n\nmodule.exports = class extends Base {\n    async newToken(user) {\n        let tokenData = {\n            username: user.username,\n            email: user.email,\n            user_ID: user.id\n        };\n        tokenData = JSON.stringify(tokenData);\n        tokenData = think.md5(tokenData);\n        let token = jwt.sign({ data: tokenData}, 'Jeremy');\n        let tokenService = this.service('token');\n        let result = await tokenService.saveToken(token, user.id);\n        if (result) {\n            this.cookie('userinfo',\n                JSON.stringify({username: user.username, token: token}), {\n                    maxAge: 360000 * 12,\n                    httpOnly: false\n                });\n            return token;\n        } else {\n            return this.fail(1000, '登录失败');\n        }\n    }\n};\n"
+    ]
+}
