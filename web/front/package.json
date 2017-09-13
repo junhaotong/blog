@@ -22,7 +22,8 @@
     "vue": "^2.4.2",
     "vue-axios": "^2.0.2",
     "vue-router": "^2.7.0",
-    "vuex": "^2.4.0"
+    "vuex": "^2.4.0",
+    "wangeditor": "^3.0.8"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

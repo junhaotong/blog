@@ -20,12 +20,19 @@ import 'normalize.css';
 // import axios
 import './util/axios';
 
-Vue.config.productionTip = false
+Vue.config.devtools = true;
+Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
     window.scroll(0, 0);
     Nprogress.start();
-    next();
+    let token = store.state.userinfo.userinfo.token;
+    if (token && to.path === '/sign') {
+        Nprogress.done();
+        next('/');
+    } else {
+        next();
+    }
 });
 
 router.afterEach(() => {
@@ -38,5 +45,5 @@ window.vm = new Vue({
     router,
     store,
     template: '<App/>',
-    components: {App}
+    components: { App }
 })

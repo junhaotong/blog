@@ -1,5 +1,7 @@
 <template>
-    <Table border :columns="columns" class="user-list" :data="data"></Table>
+    <Row>
+        <Table border v-loading="ladingStatus" :columns="columns" class="user-list" :data="data"></Table>
+    </Row>
 </template>
 
 <script>

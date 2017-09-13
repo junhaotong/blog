@@ -89,11 +89,8 @@ export default {
                     return option;
                 }
             }],
-            data: [
-                {
-                    name: '2324'
-                }
-            ]
+            data: [],
+            ladingStatus: false
         }
     },
     methods: {
@@ -102,12 +99,13 @@ export default {
          * @param page
          */
         getUserList(page = 1) {
+            this.ladingStatus = true;
             this.axios.get('/admin/user', {page: page})
                 .then(res => {
                     if (res.data.code === 0) {
                         this.data = res.data.data;
-                        console.log(this.data);
                     }
+                    this.ladingStatus = false;
                 })
         }
     },

@@ -15,6 +15,12 @@ import iView from 'iview';
 
 Vue.use(iView);
 
+// import element-ui
+import { Loading } from 'element-ui';
+import 'element-ui/lib/theme-default/loading.css';
+Vue.use(Loading.directive);
+Vue.prototype.$loading = Loading.service;
+
 // import axios
 import './util/axios';
 
