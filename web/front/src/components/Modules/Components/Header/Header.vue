@@ -26,7 +26,12 @@
                                 <DropdownItem>退出登录</DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
-                        <Button type="primary" icon="edit" shape="circle" class="btn-post">
+                        <Button
+                                type="primary"
+                                icon="edit"
+                                shape="circle"
+                                class="btn-post"
+                                v-if="$route.path !== '/post'">
                             <router-link to="/post">发表文章</router-link>
                         </Button>
                     </div>

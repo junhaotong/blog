@@ -26,8 +26,7 @@
             return {
                 loginForm: {
                     username: '',
-                    password: '',
-                    user_type: 2
+                    password: ''
                 },
                 loginRules: {
                     username: {required: true, message: '用户名不能为空', trigger: 'blur'},
@@ -60,7 +59,6 @@
             }
         },
         mounted() {
-            console.log(particlesJSON);
             particlesJS('login', particlesJSON);
         }
     };

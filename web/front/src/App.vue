@@ -3,7 +3,7 @@
 </template>
 
 <script>
-    import { Header } from './components/Modules/Components'
+    import {Header} from './components/Modules/Components'
 
     export default {
         name: 'app',
@@ -20,9 +20,19 @@
             appearance: none;
         }
     }
+
     main.container {
         padding-top: 20px;
     }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
     .container {
         padding: 0 15px;
         width: 992px;

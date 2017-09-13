@@ -135,6 +135,7 @@
         },
         mounted() {
             this.getCaptchas();
+
         }
     };
 </script>

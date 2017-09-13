@@ -1,0 +1,19 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/controller/category.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "getAction",
+        "postAction"
+    ],
+    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChCI,gBAAY,CAEX;;AAEDC,iBAAa,CAEZ;AAP+B,CAApC",
+    "file": "../../src/controller/category.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n    getAction() {\n\n    }\n\n    postAction() {\n\n    }\n};\n"
+    ]
+}

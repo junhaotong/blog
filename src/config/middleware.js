@@ -14,7 +14,7 @@ module.exports = [
         enable: isDev,
         options: {
             root: path.join(think.ROOT_PATH, 'www'),
-            publicPath: /^\/(static|front|uploads|favicon\.ico|robots.txt)/,
+            publicPath: /^\/(static|front|uploads|favicon.ico|robots.txt)/,
             gzip: true
         }
     },
@@ -34,7 +34,10 @@ module.exports = [
         options: {}
     },
     {
-        handle: 'validationtoken',
+        handle: 'getUser'
+    },
+    {
+        handle: 'validateAdmin',
         match: ctx => {
             let validator = false;
             think.app.routers.forEach(route => {

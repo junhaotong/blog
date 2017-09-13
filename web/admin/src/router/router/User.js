@@ -8,7 +8,7 @@ export default [{
     path: '/user',
     name: '用户管理',
     icon: 'android-person',
-    redirect: '/user/add',
+    redirect: '/user/list',
     component: resolve => {
         resolve(Components.Content);
     },

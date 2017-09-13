@@ -6,6 +6,7 @@ import Components from '../components';
 Vue.use(Router);
 
 import User from './router/User';
+import Category from './router/Category';
 
 export default new Router({
     routes: [{
@@ -23,4 +24,5 @@ export default new Router({
         },
     }]
         .concat(User)
+        .concat(Category)
 });
