@@ -9,11 +9,33 @@
         "module",
         "exports",
         "getAction",
-        "postAction"
+        "id",
+        "get",
+        "categoryService",
+        "service",
+        "category",
+        "getCategoryBuId",
+        "success",
+        "categories",
+        "getCategories",
+        "postAction",
+        "user",
+        "ctx",
+        "type",
+        "fail",
+        "config",
+        "name",
+        "post",
+        "image",
+        "description",
+        "creator_id",
+        "user_ID",
+        "result",
+        "addCategory"
     ],
-    "mappings": "AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAChCI,gBAAY,CAEX;;AAEDC,iBAAa,CAEZ;AAP+B,CAApC",
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC1BI,aAAN,GAAkB;AAAA;;AAAA;AACd,gBAAIC,KAAK,MAAKC,GAAL,CAAS,IAAT,CAAT;AACA,gBAAIC,kBAAkB,MAAKC,OAAL,CAAa,UAAb,CAAtB;AACA,gBAAIH,EAAJ,EAAQ;AACJ;AACA,oBAAII,WAAW,MAAMF,gBAAgBG,eAAhB,CAAgCL,EAAhC,CAArB;AACA,uBAAO,MAAKM,OAAL,CAAaF,QAAb,EAAuB,MAAvB,CAAP;AACH,aAJD,MAIO;AACH;AACA,oBAAIG,aAAa,MAAML,gBAAgBM,aAAhB,CAA8B,MAAKP,GAAL,CAAS,MAAT,KAAoB,CAAlD,CAAvB;AACA,uBAAO,MAAKK,OAAL,CAAaC,UAAb,EAAyB,OAAzB,CAAP;AACH;AAXa;AAYjB;;AAEKE,cAAN,GAAmB;AAAA;;AAAA;AACf,gBAAIC,OAAO,OAAKC,GAAL,CAASD,IAApB;AACA,gBAAIA,KAAKE,IAAL,GAAY,CAAhB,EAAmB;AACf,uBAAO,OAAKC,IAAL,CAAU,OAAKC,MAAL,CAAY,cAAZ,CAAV,EAAuC,MAAvC,CAAP;AACH;AACD,gBAAIZ,kBAAkB,OAAKC,OAAL,CAAa,UAAb,CAAtB;AACA,gBAAIY,OAAO,OAAKC,IAAL,CAAU,MAAV,CAAX;AACA,gBAAIC,QAAQ,OAAKD,IAAL,CAAU,OAAV,KAAsB,EAAlC;AACA,gBAAIE,cAAc,OAAKF,IAAL,CAAU,aAAV,KAA4B,EAA9C;AACA,gBAAIG,aAAaT,KAAKU,OAAtB;AACA,gBAAIC,SAAS,MAAMnB,gBAAgBoB,WAAhB,CAA4BP,IAA5B,EAAkCE,KAAlC,EAAyCC,WAAzC,EAAsDC,UAAtD,CAAnB;AACA,gBAAIE,OAAOT,IAAP,KAAgB,KAApB,EAA2B;AACvB,uBAAO,OAAKN,OAAL,CAAa,EAACN,IAAIqB,OAAOrB,EAAZ,EAAb,EAA8B,OAA9B,CAAP;AACA;AACH,aAHD,MAGO,IAAIqB,OAAOT,IAAP,KAAgB,OAApB,EAA6B;AAChC;AACA,uBAAO,OAAKC,IAAL,CAAU,OAAKC,MAAL,CAAY,cAAZ,CAAV,EAAuC,SAAvC,CAAP;AACH;AAjBc;AAkBlB;AAjC+B,CAApC",
     "file": "../../src/controller/category.js",
     "sourcesContent": [
-        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n    getAction() {\n\n    }\n\n    postAction() {\n\n    }\n};\n"
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n    async getAction() {\n        let id = this.get('id');\n        let categoryService = this.service('category');\n        if (id) {\n            // 详情\n            let category = await categoryService.getCategoryBuId(id);\n            return this.success(category, '查询成功');\n        } else {\n            // 列表\n            let categories = await categoryService.getCategories(this.get('page') || 1);\n            return this.success(categories, '查询成功!');\n        }\n    }\n\n    async postAction() {\n        let user = this.ctx.user;\n        if (user.type < 2) {\n            return this.fail(this.config('unLoginErrno'), '没有权限');\n        }\n        let categoryService = this.service('category');\n        let name = this.post('name');\n        let image = this.post('image') || '';\n        let description = this.post('description') || '';\n        let creator_id = user.user_ID;\n        let result = await categoryService.addCategory(name, image, description, creator_id);\n        if (result.type === 'add') {\n            return this.success({id: result.id}, '添加成功!');\n            // 新增成功\n        } else if (result.type === 'exist') {\n            // 已存在\n            return this.fail(this.config('defaultErrno'), '该分类已存在!');\n        }\n    }\n};\n"
     ]
 }

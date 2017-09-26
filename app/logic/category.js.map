@@ -8,11 +8,19 @@
         "exports",
         "think",
         "Logic",
-        "indexAction"
+        "indexAction",
+        "postAction",
+        "rules",
+        "name",
+        "string",
+        "required",
+        "aliasName",
+        "image",
+        "description"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,gBAAc,CAEb;AAHwC,CAA3C",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvCC,kBAAc,CAEb;;AAEDC,iBAAa;AACT,aAAKC,KAAL,GAAa;AACTC,kBAAM;AACFC,wBAAQ,IADN;AAEFC,0BAAU,IAFR;AAGFC,2BAAW;AAHT,aADG;AAMTC,mBAAO;AACHH,wBAAQ;AADL,aANE;AASTI,yBAAa;AACTJ,wBAAQ;AADC;AATJ,SAAb;AAaH;AAnBsC,CAA3C",
     "file": "../../src/logic/category.js",
     "sourcesContent": [
-        "module.exports = class extends think.Logic {\n  indexAction() {\n\n  }\n};\n"
+        "module.exports = class extends think.Logic {\n    indexAction() {\n\n    }\n\n    postAction() {\n        this.rules = {\n            name: {\n                string: true,\n                required: true,\n                aliasName: '分类名'\n            },\n            image: {\n                string: true,\n            },\n            description: {\n                string: true\n            }\n        }\n    }\n};\n"
     ]
 }

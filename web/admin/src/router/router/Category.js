@@ -13,8 +13,17 @@ export default [{
         resolve(Components.Content);
     },
     children: [{
+        path: 'list',
+        name: '分类列表',
+        component: Modules.Category.List
+    }, {
         path: 'add',
-        name: '新增文章分类',
+        name: '新增分类',
         component: Modules.Category.Add
+    }, {
+        path: 'show',
+        name: '分类详情',
+        hidden: true,
+        component: Modules.Category.Show
     }]
 }]

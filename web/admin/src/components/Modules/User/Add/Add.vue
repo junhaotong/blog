@@ -13,7 +13,6 @@
                             <template v-else>
                                 <Icon type="ios-cloud-upload-outline"></Icon>
                                 上传头像
-
                             </template>
                         </div>
                     </Upload>
@@ -110,19 +109,5 @@
 </script>
 
 <style lang="less" rel="stylesheet/less">
-    .upload {
-        width: 150px;
-        height: 150px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 14px;
-        cursor: pointer;
-        overflow: hidden;
-        img {
-            width: 100%;
-        }
-    }
+    
 </style>

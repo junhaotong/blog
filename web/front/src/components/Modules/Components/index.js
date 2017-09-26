@@ -3,8 +3,10 @@
  */
 import Header from './Header';
 import ToTop from './ToTop';
+import Footer from './Footer'
 
 export {
     Header,
-    ToTop
+    ToTop,
+    Footer
 }

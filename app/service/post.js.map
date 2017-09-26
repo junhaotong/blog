@@ -1,0 +1,30 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/service/post.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Service",
+        "constructor",
+        "props",
+        "Post",
+        "model",
+        "addPost",
+        "title",
+        "content",
+        "category_id",
+        "creator_id",
+        "post",
+        "create_time",
+        "Date",
+        "now"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzCC,gBAAYC,KAAZ,EAAmB;AACf,cAAMA,KAAN;AACA,aAAKC,IAAL,GAAY,KAAKC,KAAL,CAAW,MAAX,CAAZ;AACH;;AAED;;;;;;;;AAQAC,YAAQC,KAAR,EAAeC,OAAf,EAAwBC,WAAxB,EAAqCC,UAArC,EAAiD;AAC7C,YAAIC,OAAO;AACPJ,mBAAOA,KADA;AAEPC,qBAASA,OAFF;AAGPC,yBAAaA,WAHN;AAIPC,wBAAYA,UAJL;AAKPE,yBAAaC,KAAKC,GAAL;AALN,SAAX;;AAQA,eAAO,KAAKV,IAAL,CAAUE,OAAV,CAAkBK,IAAlB,CAAP;AACH;AAxBwC,CAA7C",
+    "file": "../../src/service/post.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Service {\n    constructor(props) {\n        super(props);\n        this.Post = this.model('post');\n    }\n\n    /**\n     * 新增文章\n     * @param title\n     * @param content\n     * @param category_id\n     * @param creator_id\n     * @returns {*|Promise}\n     */\n    addPost(title, content, category_id, creator_id) {\n        let post = {\n            title: title,\n            content: content,\n            category_id: category_id,\n            creator_id: creator_id,\n            create_time: Date.now()\n        }\n\n        return this.Post.addPost(post);\n    }\n};\n"
+    ]
+}

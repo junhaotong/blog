@@ -4,11 +4,15 @@
         <main class="container">
             <router-view></router-view>
         </main>
+        <appFooter></appFooter>
     </Row>
 </template>
 
 <script>
-    import { Header } from 'Components'
+    import {
+        Header,
+        Footer
+    } from 'Components'
 
     export default {
         name: 'app',
@@ -28,7 +32,8 @@
             }
         },
         components: {
-            appHeader: Header
+            appHeader: Header,
+            appFooter: Footer
         }
     }
 </script>

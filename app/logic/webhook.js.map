@@ -1,7 +1,7 @@
 {
     "version": 3,
     "sources": [
-        "..\\..\\src\\logic\\webhook.js"
+        "../../src/logic/webhook.js"
     ],
     "names": [
         "module",
@@ -11,9 +11,9 @@
         "indexAction",
         "allowMethods"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvCC,kBAAc;AACV,aAAKC,YAAL,GAAoB,MAApB,CADU,CACkB;AAE/B;AAJsC,CAA3C",
-    "file": "..\\..\\src\\logic\\webhook.js",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvCC,kBAAc;AACV,aAAKC,YAAL,GAAoB,MAApB,CADU,CACkB;AAC/B;AAHsC,CAA3C",
+    "file": "../../src/logic/webhook.js",
     "sourcesContent": [
-        "module.exports = class extends think.Logic {\r\n    indexAction() {\r\n        this.allowMethods = 'post'; //  只允许 POST 请求类型\r\n\r\n    }\r\n};\r\n"
+        "module.exports = class extends think.Logic {\n    indexAction() {\n        this.allowMethods = 'post'; //  只允许 POST 请求类型\n    }\n};\n"
     ]
 }

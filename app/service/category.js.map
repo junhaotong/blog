@@ -1,0 +1,34 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/service/category.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Service",
+        "constructor",
+        "props",
+        "Category",
+        "model",
+        "addCategory",
+        "name",
+        "image",
+        "description",
+        "creator_id",
+        "category",
+        "create_at",
+        "Date",
+        "now",
+        "id",
+        "getCategories",
+        "page",
+        "getCategoryBuId"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzCC,gBAAYC,KAAZ,EAAmB;AACf,cAAMA,KAAN;AACA,aAAKC,QAAL,GAAgB,KAAKC,KAAL,CAAW,UAAX,CAAhB;AACH;;AAED;;;;;;;;AAQAC,gBAAYC,IAAZ,EAAkBC,KAAlB,EAAyBC,WAAzB,EAAsCC,UAAtC,EAAkD;AAC9C,YAAIC,WAAW;AACXJ,kBAAMA,IADK;AAEXC,mBAAOA,KAFI;AAGXC,yBAAaA,WAHF;AAIXC,wBAAYA,UAJD;AAKXE,uBAAWC,KAAKC,GAAL;AALA,SAAf;AAOA,YAAIC,KAAK,KAAKX,QAAL,CAAcE,WAAd,CAA0BK,QAA1B,CAAT;AACA,eAAOI,EAAP;AACH;;AAED;;;;;AAKAC,kBAAcC,IAAd,EAAoB;AAChB,YAAIA,OAAO,CAAX,EAAcA,QAAQ,CAAR;AACd,eAAO,KAAKb,QAAL,CAAcY,aAAd,CAA4BC,IAA5B,CAAP;AACH;;AAED;;;;;AAKAC,oBAAgBH,EAAhB,EAAoB;AAChB,eAAO,KAAKX,QAAL,CAAcc,eAAd,CAA8BH,EAA9B,CAAP;AACH;AA3CwC,CAA7C",
+    "file": "../../src/service/category.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Service {\n    constructor(props) {\n        super(props);\n        this.Category = this.model('category');\n    }\n\n    /**\n     * 新增文章分类\n     * @param name\n     * @param image\n     * @param description\n     * @param creator_id\n     * @returns {*|Promise}\n     */\n    addCategory(name, image, description, creator_id) {\n        let category = {\n            name: name,\n            image: image,\n            description: description,\n            creator_id: creator_id,\n            create_at: Date.now()\n        }\n        let id = this.Category.addCategory(category);\n        return id;\n    }\n\n    /**\n     * 获取所有文章分类\n     * @param page\n     * @returns {*}\n     */\n    getCategories(page) {\n        if (page > 0) page -= 1;\n        return this.Category.getCategories(page);\n    }\n\n    /**\n     * 通过categoryId获取分类\n     * @param id\n     * @returns {*}\n     */\n    getCategoryBuId(id) {\n        return this.Category.getCategoryBuId(id);\n    }\n};\n"
+    ]
+}
