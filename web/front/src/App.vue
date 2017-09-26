@@ -21,6 +21,10 @@
         }
     }
 
+    body {
+        font-size: 14px;
+    }
+
     main.container {
         padding-top: 20px;
     }
@@ -44,4 +48,5 @@
             width: 100%;
         }
     }
+
 </style>

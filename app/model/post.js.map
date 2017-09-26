@@ -1,0 +1,25 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/model/post.js"
+    ],
+    "names": [
+        "module",
+        "exports",
+        "think",
+        "Model",
+        "addPost",
+        "post",
+        "add",
+        "updatePost",
+        "id",
+        "newPost",
+        "where",
+        "update"
+    ],
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvC;;;;;AAKAC,YAAQC,IAAR,EAAc;AACV,eAAO,KAAKC,GAAL,CAASD,IAAT,CAAP;AACH;;AAED;;;;;AAKAE,eAAWC,EAAX,EAAeC,OAAf,EAAwB;AACpB,eAAO,KAAKC,KAAL,CAAW,EAACF,IAAIA,EAAL,EAAX,EAAqBG,MAArB,CAA4BF,OAA5B,CAAP;AACH;AAjBsC,CAA3C",
+    "file": "../../src/model/post.js",
+    "sourcesContent": [
+        "module.exports = class extends think.Model {\n    /**\n     * 新增文章\n     * @param post\n     * @returns {Promise}\n     */\n    addPost(post) {\n        return this.add(post);\n    }\n\n    /**\n     * 更新文章\n     * @param id\n     * @param newPost\n     */\n    updatePost(id, newPost) {\n        return this.where({id: id}).update(newPost);\n    }\n};\n"
+    ]
+}

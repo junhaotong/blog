@@ -22,7 +22,6 @@ module.exports = class extends Base {
                     this.session('fallback', true);
                     return this.success(data);
                     // 2. 使用自己提供的备用方案
-                    // todo
                 } else {
                     // 正常模式
                     this.session('fallback', false);

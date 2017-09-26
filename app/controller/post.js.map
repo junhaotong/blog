@@ -1,0 +1,29 @@
+{
+    "version": 3,
+    "sources": [
+        "../../src/controller/post.js"
+    ],
+    "names": [
+        "Base",
+        "require",
+        "module",
+        "exports",
+        "postAction",
+        "ctx",
+        "user",
+        "user_ID",
+        "fail",
+        "config",
+        "postService",
+        "service",
+        "id",
+        "addPost",
+        "post",
+        "success"
+    ],
+    "mappings": ";;AAAA,MAAMA,OAAOC,QAAQ,WAAR,CAAb;;AAEAC,OAAOC,OAAP,GAAiB,cAAcH,IAAd,CAAmB;AAC1BI,cAAN,GAAmB;AAAA;;AAAA;AACf,gBAAI,CAAC,MAAKC,GAAL,CAASC,IAAT,CAAcC,OAAnB,EAA4B,OAAO,MAAKC,IAAL,CAAU,MAAKC,MAAL,CAAY,cAAZ,CAAV,EAAuC,KAAvC,CAAP;AAC5B,gBAAIC,cAAc,MAAKC,OAAL,CAAa,MAAb,CAAlB;AACA,gBAAIC,KAAK,MAAMF,YAAYG,OAAZ,CAAoB,MAAKC,IAAL,CAAU,OAAV,CAApB,EAAwC,MAAKA,IAAL,CAAU,SAAV,CAAxC,EAA8D,MAAKA,IAAL,CAAU,aAAV,CAA9D,EAAuF,MAAKT,GAAL,CAASC,IAAT,CAAcC,OAArG,CAAf;AACA,gBAAIK,EAAJ,EAAQ;AACJ,uBAAO,MAAKG,OAAL,CAAa,OAAb,CAAP;AACH,aAFD,MAEO;AACH,uBAAO,MAAKP,IAAL,CAAU,MAAKC,MAAL,CAAY,cAAZ,CAAV,EAAuC,OAAvC,CAAP;AACH;AARc;AASlB;AAV+B,CAApC",
+    "file": "../../src/controller/post.js",
+    "sourcesContent": [
+        "const Base = require('./base.js');\n\nmodule.exports = class extends Base {\n    async postAction() {\n        if (!this.ctx.user.user_ID) return this.fail(this.config('unLoginErrno'), '未登录');\n        let postService = this.service('post');\n        let id = await postService.addPost(this.post('title'), this.post('content'), this.post('category_id'),this.ctx.user.user_ID);\n        if (id) {\n            return this.success('发布成功!');\n        } else {\n            return this.fail(this.config('defaultErrno'), '发布失败!');\n        }\n    }\n};\n"
+    ]
+}
