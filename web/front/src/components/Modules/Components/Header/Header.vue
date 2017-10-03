@@ -17,8 +17,6 @@
                         <Dropdown>
                             <a href="javascript:void(0)" class="username">
                                 {{$store.state.userinfo.userinfo.username}}
-
-
                                 <Icon type="arrow-down-b"></Icon>
                             </a>
                             <DropdownMenu slot="list">
@@ -31,8 +29,8 @@
                                 icon="edit"
                                 shape="circle"
                                 class="btn-post"
-                                v-if="$route.path !== '/post'">
-                            <router-link to="/post">发表文章</router-link>
+                                v-if="$route.path !== '/post/add'">
+                            <router-link to="/post/add">发表文章</router-link>
                         </Button>
                     </div>
                     <router-link class="sign" to="/sign" v-else>登录</router-link>

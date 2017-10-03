@@ -8,9 +8,9 @@
         "exports",
         "validator"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CACb,CAAC,UAAD,EAAa,SAAb,EAAwB,MAAxB,CADa,EAEb,CAAC,WAAD,EAAc,aAAd,EAA6B,KAA7B,CAFa,EAGb,CAAC,uBAAD,EAA0B,aAA1B,EAAyC,MAAzC,CAHa,EAIb,CAAC,wBAAD,EAA2B,oBAA3B,EAAiD,KAAjD,CAJa,EAKb,CAAC,gBAAD,EAAmB,aAAnB,EAAkC,MAAlC,CALa,EAMb,CAAC,aAAD,EAAgB,cAAhB,EAAgC,MAAhC,CANa,EAOb,CAAC,mBAAD,EAAsB,cAAtB,EAAsC,MAAtC,CAPa,EAQb,CAAC,kCAAD,EAAqC,kBAArC,EAAyD,MAAzD,EAAiE,EAACC,WAAW,IAAZ,EAAjE,CARa,EASb,CAAC,+BAAD,EAAkC,UAAlC,EAA8C,MAA9C,CATa,EAUb,CAAC,2BAAD,EAA8B,MAA9B,EAAsC,MAAtC,CAVa,CAAjB",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,CACb,CAAC,UAAD,EAAa,SAAb,EAAwB,MAAxB,CADa,EAEb,CAAC,WAAD,EAAc,aAAd,EAA6B,KAA7B,CAFa,EAGb,CAAC,uBAAD,EAA0B,aAA1B,EAAyC,MAAzC,CAHa,EAIb,CAAC,wBAAD,EAA2B,oBAA3B,EAAiD,KAAjD,CAJa,EAKb,CAAC,gBAAD,EAAmB,aAAnB,EAAkC,MAAlC,CALa,EAMb,CAAC,aAAD,EAAgB,cAAhB,EAAgC,MAAhC,CANa,EAOb,CAAC,mBAAD,EAAsB,cAAtB,EAAsC,MAAtC,CAPa,EAQb,CAAC,kCAAD,EAAqC,kBAArC,EAAyD,MAAzD,EAAiE,EAACC,WAAW,IAAZ,EAAjE,CARa,EASb,CAAC,+BAAD,EAAkC,UAAlC,EAA8C,MAA9C,CATa,EAUb,CAAC,2BAAD,EAA8B,YAA9B,EAA4C,MAA5C,CAVa,CAAjB",
     "file": "../../src/config/router.js",
     "sourcesContent": [
-        "module.exports = [\n    ['/webhook', 'webhook', 'post'],\n    [/^\\/admin$/, 'index/admin', 'get'],\n    [/^\\/api\\/admin\\/login$/, 'admin/login', 'post'],\n    [/^\\/api\\/captchas\\/new$/, 'front/captchas/new', 'get'],\n    [/^\\/api\\/login$/, 'front/login', 'post'],\n    ['/api/regist', 'front/regist', 'post'],\n    ['/api/upload/image', 'upload/image', 'post'],\n    [/^\\/api\\/admin\\/user(?:\\/(\\d+))?$/, 'admin/user?id=:1', 'rest', {validator: true}],\n    [/^\\/api\\/category(?:\\/(\\d+))?$/, 'category', 'rest'],\n    [/^\\/api\\/post(?:\\/(\\d+))?$/, 'post', 'rest'],\n];\n"
+        "module.exports = [\n    ['/webhook', 'webhook', 'post'],\n    [/^\\/admin$/, 'index/admin', 'get'],\n    [/^\\/api\\/admin\\/login$/, 'admin/login', 'post'],\n    [/^\\/api\\/captchas\\/new$/, 'front/captchas/new', 'get'],\n    [/^\\/api\\/login$/, 'front/login', 'post'],\n    ['/api/regist', 'front/regist', 'post'],\n    ['/api/upload/image', 'upload/image', 'post'],\n    [/^\\/api\\/admin\\/user(?:\\/(\\d+))?$/, 'admin/user?id=:1', 'rest', {validator: true}],\n    [/^\\/api\\/category(?:\\/(\\d+))?$/, 'category', 'rest'],\n    [/^\\/api\\/post(?:\\/(\\d+))?$/, 'post?id=:1', 'rest'],\n];\n"
     ]
 }

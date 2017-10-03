@@ -1,5 +1,6 @@
 const path = require('path');
 const isDev = true;
+const qs = require('think-qs');
 
 module.exports = [
     {
@@ -20,13 +21,19 @@ module.exports = [
     },
     {
         handle: 'trace',
-        enable: !think.isCli,
+        // enable: !think.isCli,
         options: {
-            debug: isDev
+            error(err, ctx) {
+                return console.error(err);
+            }
         }
     },
     {
         handle: 'payload',
+        options: {}
+    },
+    {
+        handle: qs,
         options: {}
     },
     {

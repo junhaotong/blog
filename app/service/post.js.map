@@ -17,14 +17,20 @@
         "content",
         "category_id",
         "creator_id",
+        "tags",
+        "description",
         "post",
-        "create_time",
-        "Date",
-        "now"
+        "JSON",
+        "stringify",
+        "getPostsByHot",
+        "page",
+        "getPostById",
+        "id",
+        "updateHot"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzCC,gBAAYC,KAAZ,EAAmB;AACf,cAAMA,KAAN;AACA,aAAKC,IAAL,GAAY,KAAKC,KAAL,CAAW,MAAX,CAAZ;AACH;;AAED;;;;;;;;AAQAC,YAAQC,KAAR,EAAeC,OAAf,EAAwBC,WAAxB,EAAqCC,UAArC,EAAiD;AAC7C,YAAIC,OAAO;AACPJ,mBAAOA,KADA;AAEPC,qBAASA,OAFF;AAGPC,yBAAaA,WAHN;AAIPC,wBAAYA,UAJL;AAKPE,yBAAaC,KAAKC,GAAL;AALN,SAAX;;AAQA,eAAO,KAAKV,IAAL,CAAUE,OAAV,CAAkBK,IAAlB,CAAP;AACH;AAxBwC,CAA7C",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,OAApB,CAA4B;AACzCC,gBAAYC,KAAZ,EAAmB;AACf,cAAMA,KAAN;AACA,aAAKC,IAAL,GAAY,KAAKC,KAAL,CAAW,MAAX,CAAZ;AACH;;AAED;;;;;;;;;;AAUAC,YAAQC,KAAR,EAAeC,OAAf,EAAwBC,WAAxB,EAAqCC,UAArC,EAAiDC,IAAjD,EAAuDC,WAAvD,EAAoE;AAChE,YAAIC,OAAO;AACPN,mBAAOA,KADA;AAEPC,qBAASA,OAFF;AAGPC,yBAAaA,WAHN;AAIPC,wBAAYA,UAJL;AAKPC,kBAAMG,KAAKC,SAAL,CAAeJ,IAAf,CALC;AAMPC,yBAAaA;AANN,SAAX;AAQA,eAAO,KAAKR,IAAL,CAAUE,OAAV,CAAkBO,IAAlB,CAAP;AACH;;AAED;;;;;AAKAG,kBAAcC,IAAd,EAAoB;AAChB,eAAO,KAAKb,IAAL,CAAUY,aAAV,CAAwBC,IAAxB,CAAP;AACH;;AAED;;;;;AAKAC,gBAAYC,EAAZ,EAAgB;AACZ,eAAO,KAAKf,IAAL,CAAUc,WAAV,CAAsBC,EAAtB,CAAP;AACH;;AAED;;;;;AAKAC,cAAUD,EAAV,EAAc;AACV,eAAO,KAAKf,IAAL,CAAUgB,SAAV,CAAoBD,EAApB,CAAP;AACH;AArDwC,CAA7C",
     "file": "../../src/service/post.js",
     "sourcesContent": [
-        "module.exports = class extends think.Service {\n    constructor(props) {\n        super(props);\n        this.Post = this.model('post');\n    }\n\n    /**\n     * 新增文章\n     * @param title\n     * @param content\n     * @param category_id\n     * @param creator_id\n     * @returns {*|Promise}\n     */\n    addPost(title, content, category_id, creator_id) {\n        let post = {\n            title: title,\n            content: content,\n            category_id: category_id,\n            creator_id: creator_id,\n            create_time: Date.now()\n        }\n\n        return this.Post.addPost(post);\n    }\n};\n"
+        "module.exports = class extends think.Service {\n    constructor(props) {\n        super(props);\n        this.Post = this.model('post');\n    }\n\n    /**\n     * 新增文章\n     * @param title\n     * @param content\n     * @param category_id\n     * @param creator_id\n     * @param tags\n     * @param description\n     * @returns {*|Promise}\n     */\n    addPost(title, content, category_id, creator_id, tags, description) {\n        let post = {\n            title: title,\n            content: content,\n            category_id: category_id,\n            creator_id: creator_id,\n            tags: JSON.stringify(tags),\n            description: description\n        }\n        return this.Post.addPost(post);\n    }\n\n    /**\n     * 获取文章列表根据热度排序\n     * @param  {[type]} page [description]\n     * @return {[type]}      [description]\n     */\n    getPostsByHot(page) {\n        return this.Post.getPostsByHot(page);\n    }\n\n    /**\n     * 获取文章详情\n     * @param id\n     * @returns {*}\n     */\n    getPostById(id) {\n        return this.Post.getPostById(id);\n    }\n\n    /**\n     * 文章热度+1\n     * @param id\n     * @returns {*|Promise}\n     */\n    updateHot(id) {\n        return this.Post.updateHot(id);\n    }\n};\n"
     ]
 }

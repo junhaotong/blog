@@ -15,7 +15,9 @@ axios.defaults.baseURL = '/api';
 
 let userinfo = cookie.getJSON('userinfo') || {};
 if (userinfo.token) axios.defaults.headers.common['Authorization'] = userinfo.token;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// axios.defaults.headers.post['Content-Type'] = 'application/json';
+// 
+axios.defaults.headers.Accept = 'application/json';
 
 axios.defaults.transformRequest = data => {
     // 对 data 进行任意转换处理

@@ -8,5 +8,5 @@ module.exports = [
     ['/api/upload/image', 'upload/image', 'post'],
     [/^\/api\/admin\/user(?:\/(\d+))?$/, 'admin/user?id=:1', 'rest', {validator: true}],
     [/^\/api\/category(?:\/(\d+))?$/, 'category', 'rest'],
-    [/^\/api\/post(?:\/(\d+))?$/, 'post', 'rest'],
+    [/^\/api\/post(?:\/(\d+))?$/, 'post?id=:1', 'rest'],
 ];

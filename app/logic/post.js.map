@@ -8,11 +8,24 @@
         "exports",
         "think",
         "Logic",
-        "indexAction"
+        "indexAction",
+        "postAction",
+        "rules",
+        "title",
+        "string",
+        "required",
+        "length",
+        "max",
+        "content",
+        "category_id",
+        "int",
+        "tabs",
+        "array",
+        "default"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACzCC,gBAAc,CAEb;AAHwC,CAA3C",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AAC1CC,gBAAc,CAEX;;AAEDC,eAAa;AACZ,SAAKC,KAAL,GAAa;AACLC,aAAO;AACNC,gBAAQ,IADF;AAENC,kBAAU,IAFJ;AAGNC,gBAAQ,EAACC,KAAK,EAAN;AAHF,OADF;AAMLC,eAAS;AACRJ,gBAAQ,IADA;AAERC,kBAAU;AAFF,OANJ;AAULI,mBAAa;AACZC,aAAK,IADO;AAEZL,kBAAU;AAFE,OAVR;AAcLM,YAAM;AACLC,eAAO,IADF;AAELC,iBAAS;AAFJ;AAdD,KAAb;AAmBA;AAzBuC,CAA3C",
     "file": "../../src/logic/post.js",
     "sourcesContent": [
-        "module.exports = class extends think.Logic {\n  indexAction() {\n\n  }\n};\n"
+        "module.exports = class extends think.Logic {\n\tindexAction() {\n\n  \t}\n\n  \tpostAction() {\n  \t\tthis.rules = {\n            title: {\n            \tstring: true,\n            \trequired: true,\n            \tlength: {max: 20}\n            },\n            content: {\n            \tstring: true,\n            \trequired: true\n            },\n            category_id: {\n            \tint: true,\n            \trequired: true\n            },\n            tabs: {\n            \tarray: true,\n            \tdefault: []\n            }\n        }\n  \t}\n};\n"
     ]
 }

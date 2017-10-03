@@ -15,8 +15,11 @@ export default new Router({
             path: '',
             component: Components.Modules.Views.HomePage
         }, {
-            path: 'post',
-            component: Components.Modules.Views.Post
+            path: 'post/add',
+            component: Components.Modules.Views.Post.Add
+        }, {
+            path: 'post/show/:id',
+            component: Components.Modules.Views.Post.Show
         }]
     }, {
         path: '/sign',

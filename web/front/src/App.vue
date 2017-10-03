@@ -21,12 +21,18 @@
         }
     }
 
-    body {
-        font-size: 14px;
-    }
-
     main.container {
         padding-top: 20px;
+    }
+
+    body {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        padding-bottom: 110px;
+        min-height: 100%;
+        font-size: 14px;
     }
 
     ol {
@@ -47,6 +53,10 @@
         @media (max-width: 768px) {
             width: 100%;
         }
+    }
+
+    .text-center {
+        text-align: center;
     }
 
 </style>

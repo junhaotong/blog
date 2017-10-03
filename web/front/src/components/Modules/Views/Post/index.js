@@ -1,5 +1,10 @@
 /**
- * Created by apple on 2017/9/8.
+ * Created by apple on 2017/10/3.
  */
-import Post from './Post.vue';
-export default Post;
+import Add from './Add';
+import Show from './Show';
+
+export default {
+    Add,
+    Show
+}
