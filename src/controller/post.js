@@ -1,7 +1,7 @@
 const Base = require('./base.js');
 const striptags = require('striptags');
 const moment = require('moment');
-moment.lang('zh-cn');
+moment.locale('zh-cn');
 
 module.exports = class extends Base {
     async getAction() {

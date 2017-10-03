@@ -6,7 +6,9 @@
                 <TabPane label="登录" name="login">
                     <Login></Login>
                 </TabPane>
-                <TabPane label="注册" name="regist">注册</TabPane>
+                <TabPane label="注册" name="regist">
+                    <Regist></Regist>
+                </TabPane>
             </Tabs>
         </div>
     </Row>
@@ -17,6 +19,7 @@
     import particlesJSON from 'static/particles.json';
 
     import Login from './Login';
+    import Regist from './Regist';
 
     export default {
         name: 'Sign',
@@ -51,7 +54,8 @@
             particlesJS('particles-js', particlesJSON);
         },
         components: {
-            Login
+            Login,
+            Regist
         }
     };
 </script>

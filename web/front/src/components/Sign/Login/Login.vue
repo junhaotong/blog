@@ -22,7 +22,6 @@
                 <div id="captcha">
                     <template v-if="captchaStatus">
                         验证码加载中...
-
                     </template>
                 </div>
             </FormItem>
@@ -141,59 +140,60 @@
 </script>
 
 <style lang="less" rel="stylesheet/less">
-    #captcha {
-        margin-top: 20px;
-    }
-
-    .form-item {
-        position: relative;
-        margin-bottom: 0;
-        input {
-            font-size: 1.4rem;
-            height: 40px;
-            border-radius: 0;
-            border-color: #dddee1 !important;
-            &:focus,
-            &:hover {
-                box-shadow: none !important;
-                border-color: #dddee1;
-            }
+    .sign-wrapper {
+        #captcha {
+            margin-top: 20px;
         }
-        & + .form-item {
+
+        .form-item {
+            position: relative;
+            margin-bottom: 0;
             input {
-                border-top: 0;
+                font-size: 1.4rem;
+                height: 40px;
+                border-radius: 0;
+                border-color: #dddee1 !important;
+                &:focus,
+                &:hover {
+                    box-shadow: none !important;
+                    border-color: #dddee1;
+                }
+            }
+            & + .form-item {
+                input {
+                    border-top: 0;
+                }
+            }
+            .hint {
+                position: absolute;
+                right: 1px;
+                top: 1px;
+                bottom: 1px;
+                padding: 0 10px;
+                color: #ed3f14;
+                line-height: 40px;
+                font-size: 1.4rem;
+                background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 8px);
+            }
+
+            .login-btn {
+                width: 100%;
+                height: 35px;
             }
         }
-        .hint {
-            position: absolute;
-            right: 1px;
-            top: 1px;
-            bottom: 1px;
-            padding: 0 10px;
-            color: #ed3f14;
-            line-height: 40px;
-            font-size: 1.4rem;
-            background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff 8px);
+
+        .slide-fade-enter-active,
+        .slide-fade-leave-active {
+            transition: all .3s ease;
         }
 
-        .login-btn {
-            width: 100%;
-            height: 35px;
+        .slide-fade-enter, .slide-fade-leave-to {
+            transform: translateX(20px);
+            opacity: 0;
+        }
+
+        .ivu-form-item-error-tip {
+            display: none;
         }
     }
-
-    .slide-fade-enter-active,
-    .slide-fade-leave-active {
-        transition: all .3s ease;
-    }
-
-    .slide-fade-enter, .slide-fade-leave-to {
-        transform: translateX(20px);
-        opacity: 0;
-    }
-
-    .ivu-form-item-error-tip {
-        display: none;
-    }
-
 </style>
