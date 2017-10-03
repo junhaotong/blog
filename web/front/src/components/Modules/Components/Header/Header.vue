@@ -21,7 +21,7 @@
                             </a>
                             <DropdownMenu slot="list">
                                 <DropdownItem>修改个人信息</DropdownItem>
-                                <DropdownItem>退出登录</DropdownItem>
+                                <DropdownItem><span @click="logout">退出登录</span></DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
                         <Button
@@ -53,6 +53,9 @@
         methods: {
             change() {
                 this.searchStatus = !this.searchStatus;
+            },
+            logout() {
+                this.$store.dispatch('logout');
             }
         },
         mounted() {

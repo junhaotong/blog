@@ -27,6 +27,7 @@ const actions = {
 const mutations = {
     [types.LOG_OUT] (state) {
         state.userinfo = {};
+        cookie.remove('userinfo');
     },
     [types.UPDATE_USERINFO] (state) {
         state.userinfo = cookie.getJSON('userinfo') || {};

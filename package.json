@@ -16,6 +16,7 @@
     "images": "^2.2.1",
     "jsonwebtoken": "^7.4.3",
     "moment": "^2.18.1",
+    "nodemailer": "^4.1.2",
     "striptags": "^3.1.0",
     "think-cache": "^1.0.0",
     "think-cache-file": "^1.0.8",

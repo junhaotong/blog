@@ -9,4 +9,5 @@ module.exports = [
     [/^\/api\/admin\/user(?:\/(\d+))?$/, 'admin/user?id=:1', 'rest', {validator: true}],
     [/^\/api\/category(?:\/(\d+))?$/, 'category', 'rest'],
     [/^\/api\/post(?:\/(\d+))?$/, 'post?id=:1', 'rest'],
+    [/^\/api\/send_code$/, 'mail/sendCode', 'post']
 ];
