@@ -15,11 +15,12 @@
         "validateDefaultErrno",
         "unLoginErrno",
         "geetest_id",
-        "geetest_key"
+        "geetest_key",
+        "pagesize"
     ],
-    "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACbC,UAAM,IADO;AAEbC,aAAS,CAFI;AAGbC,eAAW,WAHE;AAIbC,gBAAY,MAJC,EAIO;AACpBC,iBAAa,KALA,EAKO;AACpBC,kBAAc,IAND,EAMO;AACpBC,0BAAsB,IAPT,EAOe;AAC5BC,kBAAc,IARD,EAQO;AACpBC,gBAAY,kCATC;AAUbC,iBAAa;AAVA,CAAjB",
+    "mappings": "AAAA;AACAA,OAAOC,OAAP,GAAiB;AACbC,UAAM,IADO;AAEbC,aAAS,CAFI;AAGbC,eAAW,WAHE;AAIbC,gBAAY,MAJC,EAIO;AACpBC,iBAAa,KALA,EAKO;AACpBC,kBAAc,IAND,EAMO;AACpBC,0BAAsB,IAPT,EAOe;AAC5BC,kBAAc,IARD,EAQO;AACpBC,gBAAY,kCATC;AAUbC,iBAAa,kCAVA;AAWbC,cAAU,EAXG,CAWA;AAXA,CAAjB",
     "file": "../../src/config/config.js",
     "sourcesContent": [
-        "// default config\nmodule.exports = {\n    port: 8090,\n    workers: 1,\n    uploadURL: '/uploads/',\n    errnoField: 'code', // errno field\n    errmsgField: 'msg', // errmsg field\n    defaultErrno: 1000, // default errno\n    validateDefaultErrno: 2001, // validate default errno\n    unLoginErrno: 3000, // 未登录错误码\n    geetest_id: '808636df6a319439462e73dc6d06eeed',\n    geetest_key: 'a322d17e12d1f4b4a20b00bd40aba53a'\n};\n"
+        "// default config\nmodule.exports = {\n    port: 8090,\n    workers: 1,\n    uploadURL: '/uploads/',\n    errnoField: 'code', // errno field\n    errmsgField: 'msg', // errmsg field\n    defaultErrno: 1000, // default errno\n    validateDefaultErrno: 2001, // validate default errno\n    unLoginErrno: 3000, // 未登录错误码\n    geetest_id: '808636df6a319439462e73dc6d06eeed',\n    geetest_key: 'a322d17e12d1f4b4a20b00bd40aba53a',\n    pagesize: 10 // 数据库查询默认页数\n};\n"
     ]
 }

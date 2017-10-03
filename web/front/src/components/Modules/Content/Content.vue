@@ -1,5 +1,5 @@
 <template>
-    <Row>
+    <Row class="body">
         <appHeader v-if="$route.path !== '/sign'"></appHeader>
         <main class="container">
             <router-view></router-view>
@@ -51,5 +51,10 @@
         @media (max-width: 768px) {
             width: 100%;
         }
+    }
+
+    .body {
+        height: 100%;
+        position: initial;
     }
 </style>

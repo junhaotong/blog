@@ -15,11 +15,26 @@
         "id",
         "newPost",
         "where",
-        "update"
+        "update",
+        "getPostsByHot",
+        "page",
+        "alias",
+        "config",
+        "order",
+        "join",
+        "table",
+        "as",
+        "on",
+        "field",
+        "countSelect",
+        "getPostById",
+        "find",
+        "updateHot",
+        "increment"
     ],
-    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvC;;;;;AAKAC,YAAQC,IAAR,EAAc;AACV,eAAO,KAAKC,GAAL,CAASD,IAAT,CAAP;AACH;;AAED;;;;;AAKAE,eAAWC,EAAX,EAAeC,OAAf,EAAwB;AACpB,eAAO,KAAKC,KAAL,CAAW,EAACF,IAAIA,EAAL,EAAX,EAAqBG,MAArB,CAA4BF,OAA5B,CAAP;AACH;AAjBsC,CAA3C",
+    "mappings": "AAAAA,OAAOC,OAAP,GAAiB,cAAcC,MAAMC,KAApB,CAA0B;AACvC;;;;;AAKAC,YAAQC,IAAR,EAAc;AACV,eAAO,KAAKC,GAAL,CAASD,IAAT,CAAP;AACH;;AAED;;;;;AAKAE,eAAWC,EAAX,EAAeC,OAAf,EAAwB;AACpB,eAAO,KAAKC,KAAL,CAAW,EAACF,IAAIA,EAAL,EAAX,EAAqBG,MAArB,CAA4BF,OAA5B,CAAP;AACH;;AAED;;;;;AAKAG,kBAAcC,IAAd,EAAoB;AAChB,eAAO,KACFC,KADE,CACI,GADJ,EAEFD,IAFE,CAEGA,IAFH,EAESX,MAAMa,MAAN,CAAa,UAAb,CAFT,EAGFC,KAHE,CAGI,UAHJ,EAIFC,IAJE,CAIG;AACFC,mBAAO,MADL;AAEFD,kBAAM,MAFJ;AAGFE,gBAAI,GAHF;AAIFC,gBAAI,CAAC,YAAD,EAAe,IAAf;AAJF,SAJH,EAUFC,KAVE,CAUI,iGAVJ,EAWFC,WAXE,EAAP;AAYH;;AAED;;;;AAIAC,gBAAYf,EAAZ,EAAgB;AACZ,eAAO,KACFM,KADE,CACI,GADJ,EAEFJ,KAFE,CAEI,EAAC,QAAQF,EAAT,EAFJ,EAGFS,IAHE,CAGG;AACFC,mBAAO,MADL;AAEFD,kBAAM,MAFJ;AAGFE,gBAAI,GAHF;AAIFC,gBAAI,CAAC,YAAD,EAAe,IAAf;AAJF,SAHH,EASFC,KATE,CASI,6FATJ,EAUFG,IAVE,EAAP;AAWH;;AAED;;;;;AAKAC,cAAUjB,EAAV,EAAc;AACV,eAAO,KAAKE,KAAL,CAAW,EAACF,IAAIA,EAAL,EAAX,EAAqBkB,SAArB,CAA+B,KAA/B,EAAsC,CAAtC,CAAP;AACH;AAhEsC,CAA3C",
     "file": "../../src/model/post.js",
     "sourcesContent": [
-        "module.exports = class extends think.Model {\n    /**\n     * 新增文章\n     * @param post\n     * @returns {Promise}\n     */\n    addPost(post) {\n        return this.add(post);\n    }\n\n    /**\n     * 更新文章\n     * @param id\n     * @param newPost\n     */\n    updatePost(id, newPost) {\n        return this.where({id: id}).update(newPost);\n    }\n};\n"
+        "module.exports = class extends think.Model {\n    /**\n     * 新增文章\n     * @param post\n     * @returns {Promise}\n     */\n    addPost(post) {\n        return this.add(post);\n    }\n\n    /**\n     * 更新文章\n     * @param id\n     * @param newPost\n     */\n    updatePost(id, newPost) {\n        return this.where({id: id}).update(newPost);\n    }\n\n    /**\n     * 获取所有文章热度排序\n     * @param  {[type]} page [description]\n     * @return {[type]}      [description]\n     */\n    getPostsByHot(page) {\n        return this\n            .alias('p')\n            .page(page, think.config('pagesize'))\n            .order('hot DESC')\n            .join({\n                table: 'user',\n                join: 'left',\n                as: 'u',\n                on: ['creator_id', 'id']\n            })\n            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')\n            .countSelect();\n    }\n\n    /**\n     * 获取文章详情ById\n     * @param id\n     */\n    getPostById(id) {\n        return this\n            .alias('p')\n            .where({'p.id': id})\n            .join({\n                table: 'user',\n                join: 'left',\n                as: 'u',\n                on: ['creator_id', 'id']\n            })\n            .field('p.id, p.title, p.content, p.tags, p.hot, p.create_time, p.update_time, u.username AS author')\n            .find();\n    }\n\n    /**\n     * 文章热度+1\n     * @param id\n     * @returns {Promise}\n     */\n    updateHot(id) {\n        return this.where({id: id}).increment('hot', 1);\n    }\n};\n"
     ]
 }

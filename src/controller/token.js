@@ -16,7 +16,7 @@ module.exports = class extends Base {
         if (result) {
             this.cookie('userinfo',
                 JSON.stringify({username: user.username, token: token}), {
-                    maxAge: 360000 * 12,
+                    // maxAge: 360000 * 12,
                     httpOnly: false
                 });
             return token;

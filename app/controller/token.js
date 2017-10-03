@@ -20,7 +20,7 @@ module.exports = class extends Base {
             let result = yield tokenService.saveToken(token, user.id);
             if (result) {
                 _this.cookie('userinfo', JSON.stringify({ username: user.username, token: token }), {
-                    maxAge: 360000 * 12,
+                    // maxAge: 360000 * 12,
                     httpOnly: false
                 });
                 return token;

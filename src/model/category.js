@@ -13,12 +13,17 @@ module.exports = class extends think.Model {
      * @param page
      */
     getCategories(page) {
-        return this.alias('c').join({
-            table: 'user',
-            join: 'left',
-            as: 'u',
-            on: ['creator_id', 'id'] //ON 条件
-        }).page(page, 20).field('c.id, c.name, c.image, c.create_time, u.username').select();
+        return this
+            .alias('c')
+            .join({
+                table: 'user',
+                join: 'left',
+                as: 'u',
+                on: ['creator_id', 'id'] //ON 条件
+            })
+            .page(page, 20)
+            .field('c.id, c.name, c.image, c.create_time, u.username')
+            .select();
     }
 
     /**
