@@ -7,7 +7,7 @@
                     <Login></Login>
                 </TabPane>
                 <TabPane label="注册" name="regist">
-                    <Regist></Regist>
+                    <Regist :tabName.sync="tabName"></Regist>
                 </TabPane>
             </Tabs>
         </div>
