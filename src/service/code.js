@@ -44,8 +44,6 @@ module.exports = class extends think.Service {
     getCodeByEmail(email) {
         let code = this.Code.getCodeByEmail(email);
         let valid = moment(Date.now()).isBefore(code.end_time);
-        console.log(valid);
-        console.log(code);
         if (valid) {
             return code;
         } else {
