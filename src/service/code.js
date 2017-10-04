@@ -41,8 +41,8 @@ module.exports = class extends think.Service {
      * @param email
      * @returns {*}
      */
-    getCodeByEmail(email) {
-        let code = this.Code.getCodeByEmail(email);
+    async getCodeByEmail(email) {
+        let code = await this.Code.getCodeByEmail(email);
         let valid = moment(Date.now()).isBefore(code.end_time);
         if (valid) {
             return code;
