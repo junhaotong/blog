@@ -20,6 +20,15 @@ export default new Router({
         }, {
             path: 'post/show/:id',
             component: Components.Modules.Views.Post.Show
+        }, {
+            path: 'search',
+            component: Components.Modules.Views.HomePage
+        }, {
+            path: 'category/:id',
+            component: Components.Modules.Views.HomePage
+        }, {
+            path: 'author/:id',
+            component: Components.Modules.Views.HomePage
         }]
     }, {
         path: '/sign',

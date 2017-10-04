@@ -15,7 +15,14 @@ module.exports = class extends Base {
             post.time = moment(post.update_time || post.create_time).fromNow();
             return this.success(post, '查询成功!');
         } else {
-            let posts = await postService.getPostsByHot(this.get('page') || 1);
+            let posts;
+            if (this.get('category_id')) {
+                posts = await postService.getPostsByCategoryId(this.get('page') || 1, this.get('category_id'));
+            } else if(this.get('creator_id')) {
+                posts = await postService.getPostsByAuthorId(this.get('page') || 1, this.get('creator_id'));
+            } else {
+                posts = await postService.getPostsByHot(this.get('page') || 1, this.get('search'));
+            }
             posts.data.forEach(post => {
                 post.tags = JSON.parse(post.tags);
                 post.time = moment(post.update_time || post.create_time).fromNow();
@@ -30,9 +37,10 @@ module.exports = class extends Base {
         if (this.post('tags').length > 5) return this.fail(this.config('defaultErrno'), '最多添加5个标签');
         let postService = this.service('post');
 
+        let title = striptags(this.post('title'));
         let description = striptags(this.post('content'));
         description = description.substr(0, 300);
-        let id = await postService.addPost(this.post('title'), this.post('content'), this.post('category_id'),this.ctx.user.user_ID, this.post('tags'), description);
+        let id = await postService.addPost(title, this.post('content'), this.post('category_id'),this.ctx.user.user_ID, this.post('tags'), description);
         if (id) {
             return this.success({id: id}, '发布成功!');
         } else {

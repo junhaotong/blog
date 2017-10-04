@@ -19,10 +19,11 @@ module.exports = class extends think.Model {
 
     /**
      * 获取所有文章热度排序
-     * @param  {[type]} page [description]
-     * @return {[type]}      [description]
+     * @param page
+     * @param search
+     * @returns {promise}
      */
-    getPostsByHot(page) {
+    getPostsByHot(page, search) {
         return this
             .alias('p')
             .page(page, think.config('pagesize'))
@@ -34,6 +35,55 @@ module.exports = class extends think.Model {
                 on: ['creator_id', 'id']
             })
             .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .where(`title LIKE '%${search}%' OR content LIKE '%${search}%'`)
+            .countSelect();
+    }
+
+    /**
+     * 通过文章分类ID获取文章列表热度排序
+     * @param page
+     * @param categoryId
+     * @returns {promise}
+     */
+    getPostsByCategoryId(page, categoryId) {
+        return this
+            .alias('p')
+            .page(page, think.config('pagesize'))
+            .order('hot DESC')
+            .join({
+                table: 'user',
+                join: 'left',
+                as: 'u',
+                on: ['creator_id', 'id']
+            })
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .where({
+                category_id: categoryId
+            })
+            .countSelect();
+    }
+
+    /**
+     * 通过作者ID获取文章列表热度排序
+     * @param page
+     * @param creatorId
+     * @returns {promise}
+     */
+    getPostsByAuthorId(page, creatorId) {
+        return this
+            .alias('p')
+            .page(page, think.config('pagesize'))
+            .order('hot DESC')
+            .join({
+                table: 'user',
+                join: 'left',
+                as: 'u',
+                on: ['creator_id', 'id']
+            })
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .where({
+                creator_id: creatorId
+            })
             .countSelect();
     }
 
@@ -51,7 +101,13 @@ module.exports = class extends think.Model {
                 as: 'u',
                 on: ['creator_id', 'id']
             })
-            .field('p.id, p.title, p.content, p.tags, p.hot, p.create_time, p.update_time, u.username AS author')
+            .join({
+                table: 'category',
+                join: 'left',
+                as: 'c',
+                on: ['category_id', 'id']
+            })
+            .field('p.id, p.title, p.creator_id, p.content, p.tags, p.hot, p.create_time, p.update_time, u.username AS author, c.id AS category_id, c.name AS category')
             .find();
     }
 

@@ -8,7 +8,8 @@
                 <Row type="flex" align="middle">
                     <div class="search">
                         <Input
-                                @on-blur="change"
+                                @on-enter="onSearch"
+                                v-model="search"
                                 class="search-input"
                                 icon="ios-search-strong"
                                 placeholder="请输入搜索内容"/>
@@ -47,12 +48,17 @@
         name: 'heaer',
         data() {
             return {
-                searchStatus: false
+                search: ''
             }
         },
         methods: {
-            change() {
-                this.searchStatus = !this.searchStatus;
+            onSearch() {
+                this.$router.push({
+                    path: '/search',
+                    query: {
+                        search: this.search
+                    }
+                })
             },
             logout() {
                 this.$store.dispatch('logout');

@@ -2,8 +2,8 @@
         <router-link :to="`/post/show/${article.id}`" class="article-item">
             <Card>
                 <div>
-                    <h2 class="title">{{article.title}}</h2>
-                    <p class="description">{{article.description}}</p>
+                    <h2 class="title" v-html="article.title"></h2>
+                    <p class="description" v-html="article.description"></p>
                     <div class="footer">
                         <div class="tags">
                             <Tag v-for="tag in article.tags" :key="tag" color="blue">{{tag}}</Tag>

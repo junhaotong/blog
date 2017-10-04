@@ -5,7 +5,7 @@
                 <h1 class="title">{{post.title}}</h1>
                 <div class="info">
                     <div class="author">
-                        <div class="name">{{post.author}}</div>
+                        <router-link :to="'/author/' + post.creator_id" class="name">{{post.author}}</router-link>
                         <Tag type="border" color="blue">作者</Tag>
                     </div>
                     <div class="meta">
@@ -13,6 +13,9 @@
                         <div class="hot">
                             <Icon type="fireball"></Icon>
                             {{post.hot}}
+                        </div>
+                        <div class="category">
+                            <router-link :to="'/category/' + post.category_id">{{post.category}}</router-link>
                         </div>
                     </div>
                 </div>
@@ -76,6 +79,7 @@
                     font-size: 16px;
                     .name {
                         margin-right: 10px;
+                        color: #80848f;
                     }
                 }
                 .meta {
@@ -85,6 +89,10 @@
                     margin-left: 20px;
                     .hot {
                         margin-left: 10px;
+                    }
+                    .category {
+                        margin-left: 15px;
+                        font-size: 14px;
                     }
                 }
             }
