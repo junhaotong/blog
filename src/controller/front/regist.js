@@ -13,7 +13,7 @@ module.exports = class extends Base {
         let code = await codeService.getCodeByEmail(this.post('email'));
         console.log(code);
         if (code.code === this.post('code')) {
-            let user_id = await userService.addUser(this.post('username'), this.post('email'), think.md5(this.post('password')), this.post('avatar'), 1, 0);
+            let user_id = await userService.addUser(this.post('username'), this.post('email'), think.md5(this.post('pwd')), this.post('avatar'), 1, 0);
             if (user_id) {
                 return this.success({}, '注册成功');
             } else {

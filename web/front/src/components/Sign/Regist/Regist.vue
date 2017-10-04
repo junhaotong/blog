@@ -159,6 +159,7 @@
                                 countDown --;
                                 if (countDown === 0) {
                                     this.codeStatus = false;
+                                    this.codeMsg = '重新发送';
                                     clearInterval(interval);
                                 }
                             }, 1000);
