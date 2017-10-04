@@ -55,21 +55,48 @@
             getArticles() {
                 if (!this.hasMore) return;
                 if (this.loadingStatus) return;
+                let isSearch = false;
+                let isCategory = false;
+                let isAuthor = false;
                 this.loadingStatus = true;
+                let data = {
+                    page: this.page
+                }
+
+                if (this.$route.path === '/search' && this.$route.query.search != '') {
+                    // 搜索
+                    data['search'] = this.$route.query.search;
+                    isSearch = true;
+                } else if (this.$route.path.includes('/category')) {
+                    // 文章分类ID
+                    isCategory = true;
+                    data['category_id'] = this.$route.params.id;
+                } else if (this.$route.path.includes('/author')) {
+                    // 作者Id
+                    isAuthor = true;
+                    data['creator_id'] = this.$route.params.id;
+                }
+
                 this.axios.get('/post', {
-                    params: {
-                        page: this.page
-                    }
+                    params: data
                 })
                     .then(res => {
                         if (res.data.code === 0) {
                             res.data.data.data.forEach((item, index) => {
                                 item._index = index;
-                            })
+                                if (isSearch) {
+                                    let keyword = this.$route.query.search;
+                                    item.title = item.title.replace(new RegExp(keyword, 'ig'), `<span style="color:#c7254e">${keyword}</span>`)
+                                    item.description = item.description.replace(new RegExp(keyword, 'ig'), `<span style="color:#c7254e">${keyword}</span>`)
+                                }
+                            });
                             this.articles = this.articles.concat(res.data.data.data);
                             if (res.data.data.data.length) {
                                 this.page++;
                             } else {
+                                this.hasMore = false;
+                            }
+                            if (res.data.data.data.length < 10) {
                                 this.hasMore = false;
                             }
                         } else {
@@ -106,6 +133,14 @@
                         this.getArticles();
                     }
                 })
+            }
+        },
+        watch: {
+            '$route' (to, from) {
+                this.articles = [];
+                this.page = 1;
+                this.hasMore = true;
+                this.getArticles();
             }
         },
         mounted() {

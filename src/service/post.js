@@ -28,11 +28,33 @@ module.exports = class extends think.Service {
 
     /**
      * 获取文章列表根据热度排序
-     * @param  {[type]} page [description]
-     * @return {[type]}      [description]
+     * @param page
+     * @param search
+     * @returns {*|promise|type[]}
      */
-    getPostsByHot(page) {
-        return this.Post.getPostsByHot(page);
+    getPostsByHot(page, search = '') {
+        return this.Post.getPostsByHot(page, search);
+    }
+
+    /**
+     * 通过文章分类ID获取文章列表热度排序
+     * @param page
+     * @param categoryId
+     * @returns {*|promise}
+     */
+    getPostsByCategoryId(page, categoryId) {
+        return this.Post.getPostsByCategoryId(page, categoryId);
+
+    }
+
+    /**
+     * 通过作者ID获取文章列表热度排序
+     * @param page
+     * @param creatorId
+     * @returns {*|promise}
+     */
+    getPostsByAuthorId(page, creatorId) {
+        return this.Post.getPostsByAuthorId(page, creatorId);
     }
 
     /**
