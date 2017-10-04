@@ -12,6 +12,10 @@ module.exports = class extends think.Logic {
                 email: true,
                 aliasName: '邮箱'
             },
+            code: {
+                required: true,
+                aliasName: '验证码'
+            },
             pwd: {
                 required: true,
                 length: {min: 6, max: 20},

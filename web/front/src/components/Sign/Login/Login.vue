@@ -26,7 +26,7 @@
                 </div>
             </FormItem>
             <FormItem class="form-item">
-                <Button type="primary" class="login-btn" @click="login">登录</Button>
+                <Button type="primary" class="login-btn" long @click="login">登录</Button>
             </FormItem>
         </Form>
     </Row>
@@ -134,7 +134,6 @@
         },
         mounted() {
             this.getCaptchas();
-
         }
     };
 </script>
@@ -177,7 +176,6 @@
             }
 
             .login-btn {
-                width: 100%;
                 height: 35px;
             }
         }
