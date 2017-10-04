@@ -185,9 +185,10 @@
                 this.axios.post('/regist', this.registForm)
                     .then(res => {
                         if (res.data.code === 0) {
-                            this.$Message.success('注册成功')
+                            this.$Message.success('注册成功');
+                            this.$emit('update:tabName', 'login');
                         } else {
-                            this.$Message.error('注册失败')
+                            this.$Message.error(res.data.msg);
                         }
                     })
             }
