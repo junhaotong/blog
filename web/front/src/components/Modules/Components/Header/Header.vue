@@ -20,8 +20,8 @@
                                 {{$store.state.userinfo.userinfo.username}}
                                 <Icon type="arrow-down-b"></Icon>
                             </a>
-                            <DropdownMenu slot="list">
-                                <DropdownItem>修改个人信息</DropdownItem>
+                            <DropdownMenu class="menu" slot="list">
+                                <DropdownItem><router-link to="/setting">修改个人信息</router-link></DropdownItem>
                                 <DropdownItem><span @click="logout">退出登录</span></DropdownItem>
                             </DropdownMenu>
                         </Dropdown>
