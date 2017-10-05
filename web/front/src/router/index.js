@@ -29,6 +29,9 @@ export default new Router({
         }, {
             path: 'author/:id',
             component: Components.Modules.Views.HomePage
+        }, {
+            path: 'setting',
+            component: Components.Modules.Views.Setting
         }]
     }, {
         path: '/sign',

@@ -3,8 +3,10 @@
  */
 import HomePage from './HomePage';
 import Post from './Post';
+import Setting from './Setting';
 
 export default {
     HomePage,
-    Post
+    Post,
+    Setting
 }
