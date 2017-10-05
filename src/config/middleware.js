@@ -21,7 +21,7 @@ module.exports = [
     },
     {
         handle: 'trace',
-        // enable: !think.isCli,
+        enable: !think.isCli,
         options: {
             error(err, ctx) {
                 return console.error(err);

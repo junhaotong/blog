@@ -31,7 +31,12 @@ export default new Router({
             component: Components.Modules.Views.HomePage
         }, {
             path: 'setting',
-            component: Components.Modules.Views.Setting
+            component: Components.Modules.Views.Setting.Setting,
+            redirect: '/setting/basic',
+            children: [{
+                path: 'basic',
+                component: Components.Modules.Views.Setting.Basic
+            }]
         }]
     }, {
         path: '/sign',

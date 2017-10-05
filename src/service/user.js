@@ -74,8 +74,7 @@ module.exports = class extends think.Service {
      */
     async checkUserName(username) {
         let user = await this.User.getUserByUsername(username);
-        if (user.id) return true;
-        else return false;
+        return user.id;
     }
 
     /**
@@ -86,5 +85,26 @@ module.exports = class extends think.Service {
     async getUserByUsernameOREmail(query) {
         let user = await this.User.getUserByUsernameOREmail(query);
         return user;
+    }
+
+    /**
+     *
+     * @param id
+     * @param avatar
+     * @param username
+     * @returns {*}
+     */
+    async updateUser(id, avatar, username) {
+        let line = await this.User.updateUser(id, avatar, username);
+        return line;
+    }
+
+    /**
+     * 通过用户ID获取用户
+     * @param id
+     * @returns {*}
+     */
+    getUserById(id) {
+        return this.User.getUserById(id);
     }
 };
