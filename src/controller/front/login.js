@@ -19,7 +19,10 @@ module.exports = class extends Base {
             }
             let tokenController = this.controller('token');
             let token = await tokenController.newToken(user);
-            return this.success({token: token}, '登录成功');
+            user['token'] = {
+                token: token
+            }
+            return this.success(user, '登录成功');
         } else {
             return this.fail(1000, '验证码错误或已失效');
         }

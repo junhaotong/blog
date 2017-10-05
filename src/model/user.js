@@ -58,7 +58,7 @@ module.exports = class extends think.Model {
      * @param id
      */
     getUserById(id) {
-        return this.where({id: id}).find();
+        return this.where({id: id}).fieldReverse('password').find();
     }
 
     /**
@@ -75,5 +75,22 @@ module.exports = class extends think.Model {
      */
     getUserByUsernameOREmail(query) {
         return this.where(`username = '${query}' OR email = '${query}'`).find();
+    }
+
+    /**
+     * 更新用户信息
+     * @param id
+     * @param avatar
+     * @param username
+     */
+    updateUser(id, avatar, username) {
+        return this
+            .where({
+                id: id
+            })
+            .update({
+            avatar: avatar,
+            username: username
+        })
     }
 };
