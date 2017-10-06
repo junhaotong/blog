@@ -52,7 +52,7 @@
                 this.axios.post('/userinfo')
                     .then(res => {
                         if (res.data.code === 0) {
-                            this.avatar = res.data.data.avatar;
+                            this.avatar = res.data.data.thumb_avatar;
                             this.username = res.data.data.username;
                         } else {
                             this.$Message.error(res.data.msg);
@@ -66,7 +66,7 @@
              */
             uploadSuccess(res, file) {
                 if (res.code === 0) {
-                    this.avatar = res.data.avatar;
+                    this.avatar = res.data.thumb_avatar;
                 } else {
                     this.$Message.error(res.msg);
                 }

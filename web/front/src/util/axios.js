@@ -32,7 +32,7 @@ axios.defaults.transformResponse = data => {
     if (data.code === 3000) {
         window.vm.$Message.error(data.msg);
         window.vm.$store.dispatch('logout');
-        window.vm.$router.push('/login');
+        window.vm.$router.push('/sign');
     }
     return data;
 };
