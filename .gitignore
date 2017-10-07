@@ -36,6 +36,7 @@ runtime/
 /src/config/config.js
 /www/uploads/
 /www/uploads
-
+/www/thumbUploads
+/www/thumbUploads/
 /app
 /app/*

@@ -4,17 +4,27 @@
             <tr>
                 <td>
                     <div class="avatar">
-                        <img :src="avatar" :alt="username">
+                        <img :src="avatar">
                     </div>
                 </td>
                 <td>
-                    <Upload
-                            action="/api/upload/image"
-                            name="image"
-                            :show-upload-list="false"
-                            :on-success="uploadSuccess">
-                        <Button>更改头像</Button>
-                    </Upload>
+                    <CropUpload
+                            @crop-upload-success="uploadSuccess"
+                            field="image"
+                            :width="300"
+                            :height="300"
+                            url="/api/upload/image"
+                            v-model="show">
+                    </CropUpload>
+                    <Button @click="toggleShow">更改头像</Button>
+
+                    <!--<Upload-->
+                            <!--action="/api/upload/image"-->
+                            <!--name="image"-->
+                            <!--:show-upload-list="false"-->
+                            <!--:on-success="uploadSuccess">-->
+                        <!--<Button>更改头像</Button>-->
+                    <!--</Upload>-->
                 </td>
             </tr>
             <tr>
@@ -30,7 +40,7 @@
             <tr>
                 <td>
                     <div class="save">
-                        <Button type="success" @click="saveInfo">保存</Button>
+                        <Button type="primary" @click="saveInfo">保存</Button>
                     </div>
                 </td>
             </tr>
@@ -39,12 +49,16 @@
 </template>
 
 <script>
+    import CropUpload from 'vue-image-crop-upload';
+
     export default {
         name: 'SettingBasic',
         data() {
             return {
                 avatar: '',
-                username: ''
+//                thumb_avatar: '',
+                username: '',
+                show: false
             }
         },
         methods: {
@@ -52,7 +66,8 @@
                 this.axios.post('/userinfo')
                     .then(res => {
                         if (res.data.code === 0) {
-                            this.avatar = res.data.data.thumb_avatar;
+                            this.avatar = res.data.data.avatar;
+//                            this.thumb_avatar = res.data.data.thumb_avatar;
                             this.username = res.data.data.username;
                         } else {
                             this.$Message.error(res.data.msg);
@@ -65,8 +80,10 @@
              * @param file
              */
             uploadSuccess(res, file) {
+                this.show = false;
                 if (res.code === 0) {
-                    this.avatar = res.data.thumb_avatar;
+                    this.avatar = res.data.avatar;
+//                    this.thumb_avatar = res.data.thumb_avatar;
                 } else {
                     this.$Message.error(res.msg);
                 }
@@ -95,10 +112,17 @@
                             this.$Message.error(res.data.msg);
                         }
                     })
-            }
+            },
+            toggleShow() {
+                this.show = !this.show;
+            },
+
         },
         mounted() {
             this.getUserinfo();
+        },
+        components: {
+            CropUpload
         }
     };
 </script>
@@ -126,7 +150,7 @@
     }
     table.basic {
         td:first-child {
-            width: 180px;
+            width: 150px;
         }
     }
 </style>

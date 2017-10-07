@@ -57,6 +57,10 @@ module.exports = class extends think.Service {
         return this.Post.getPostsByAuthorId(page, creatorId);
     }
 
+    getPostsByTime(page) {
+        return this.Post.getPostsByTime(page);
+    }
+
     /**
      * 获取文章详情
      * @param id

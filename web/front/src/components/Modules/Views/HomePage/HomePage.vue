@@ -25,7 +25,14 @@
             <div v-if="!hasMore" class="articles-footer text-center">暂无更多数据!</div>
         </div>
         <div class="TopstorySideBar">
-
+            <div class="bar-list">
+                <router-link class="bar-item" to="/new">
+                    <Icon type="ios-book"></Icon>最新文章
+                </router-link>
+                <router-link class="bar-item" to="/">
+                    <Icon type="fireball"></Icon>最热文章
+                </router-link>
+            </div>
         </div>
     </Row>
 </template>
@@ -75,6 +82,8 @@
                     // 作者Id
                     isAuthor = true;
                     data['creator_id'] = this.$route.params.id;
+                } else if (this.$route.path.includes('/new')) {
+                    data['order_by'] = 'time';
                 }
 
                 this.axios.get('/post', {
@@ -157,11 +166,29 @@
 
 <style lang="less" scoped rel="stylesheet/less">
     .content {
+        display: flex;
         .article-list {
             width: calc(~'100% - 300px');
         }
         .TopstorySideBar {
             width: 300px;
+            padding-left: 30px;
+            .bar-list {
+                border: 1px solid #e9eaec;
+                border-radius: 4px;
+                padding: 15px;
+                .bar-item {
+                    display: block;
+                    color: #495060;
+                    font-size: 16px;
+                    i {
+                        margin-right: 10px;
+                    }
+                    & + .bar-item {
+                        padding-top: 10px;
+                    }
+                }
+            }
         }
     }
 

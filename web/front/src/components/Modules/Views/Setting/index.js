@@ -3,8 +3,10 @@
  */
 import Setting from './Setting.vue';
 import Basic from './Basic';
+import Account from './Account';
 
 export default {
     Setting,
-    Basic
+    Basic,
+    Account
 };

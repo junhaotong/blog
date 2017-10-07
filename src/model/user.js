@@ -93,4 +93,19 @@ module.exports = class extends think.Model {
             username: username
         })
     }
+
+    /**
+     * 更新用户密码
+     * @param id
+     * @param new_pwd
+     */
+    updatePassword(id, new_pwd) {
+        return this
+            .where({
+                id: id
+            })
+            .update({
+                password: new_pwd
+            })
+    }
 };
