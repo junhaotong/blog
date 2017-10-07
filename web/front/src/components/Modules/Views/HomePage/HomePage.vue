@@ -84,6 +84,8 @@
                     data['creator_id'] = this.$route.params.id;
                 } else if (this.$route.path.includes('/new')) {
                     data['order_by'] = 'time';
+                } else if(this.$route.path.includes('/my_posts')) {
+                    data['type'] = 'own';
                 }
 
                 this.axios.get('/post', {
@@ -153,7 +155,6 @@
             }
         },
         mounted() {
-            window.scrollY = 0;
             this.getArticles();
             this.initScroll();
         },

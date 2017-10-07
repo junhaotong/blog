@@ -59,6 +59,14 @@
         text-align: center;
     }
 
+    .pull-right {
+        float: right !important;
+    }
+
+    .pull-left {
+        float: left !important;
+    }
+
     .slide-fade-enter-active,
     .slide-fade-leave-active {
         transition: all .3s ease;

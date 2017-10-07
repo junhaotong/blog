@@ -27,6 +27,29 @@ module.exports = class extends think.Service {
     }
 
     /**
+     * 更新文章
+     * @param id
+     * @param title
+     * @param content
+     * @param category_id
+     * @param creator_id
+     * @param tags
+     * @param description
+     * @returns {*}
+     */
+    updatePost(id, title, content, category_id, creator_id, tags, description) {
+    let post = {
+        title: title,
+        content: content,
+        category_id: category_id,
+        creator_id: creator_id,
+        tags: JSON.stringify(tags),
+        description: description
+    }
+    return this.Post.updatePost(id, post);
+}
+
+    /**
      * 获取文章列表根据热度排序
      * @param page
      * @param search
@@ -77,5 +100,13 @@ module.exports = class extends think.Service {
      */
     updateHot(id) {
         return this.Post.updateHot(id);
+    }
+
+    /**
+     * 删除文章
+     * @param id
+     */
+    deletePost(id) {
+        return this.Post.deletePost(id);
     }
 };

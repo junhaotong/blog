@@ -10,9 +10,12 @@
             <Input class="tanName" placeholder="标签名" v-model="tagName"/>
             <Button icon="ios-plus-empty" type="dashed" @click="addTag">添加标签</Button>
             (最多添加5个标签)
+
         </i-col>
         <i-col>
-            <Tag v-for="tag in postForm.tags" color="blue" :key="tag" :name="tag" closable @on-close="removeTag">{{tag}}</Tag>
+            <Tag v-for="tag in postForm.tags" color="blue" :key="tag" :name="tag" closable @on-close="removeTag">
+                {{tag}}
+            </Tag>
         </i-col>
         <i-col>
             <Form :label-width="90">
@@ -23,6 +26,7 @@
                                 :value="category.id"
                                 :key="category.id">
                             {{category.name}}
+
                         </Option>
                     </Select>
                 </FormItem>
@@ -30,6 +34,9 @@
         </i-col>
         <i-col>
             <Button type="primary" size="large" @click="submit">发布文章</Button>
+        </i-col>
+        <i-col class="spin-col" v-if="spinShow" span="24">
+            <Spin size="large" fix></Spin>
         </i-col>
     </Row>
 </template>
@@ -53,5 +60,14 @@
 
     .ivu-tag {
         margin-bottom: 20px;
+    }
+
+    .spin-col {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
     }
 </style>

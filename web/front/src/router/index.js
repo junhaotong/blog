@@ -21,6 +21,9 @@ export default new Router({
             path: 'post/show/:id',
             component: Components.Modules.Views.Post.Show
         }, {
+            path: 'post/edit/:id',
+            component: Components.Modules.Views.Post.Add
+        }, {
             path: 'search',
             component: Components.Modules.Views.HomePage
         }, {
@@ -31,6 +34,9 @@ export default new Router({
             component: Components.Modules.Views.HomePage
         }, {
             path: 'new',
+            component: Components.Modules.Views.HomePage
+        }, {
+            path: '/my_posts',
             component: Components.Modules.Views.HomePage
         }, {
             path: 'setting',

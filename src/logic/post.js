@@ -1,27 +1,49 @@
 module.exports = class extends think.Logic {
-	indexAction() {
+    indexAction() {
 
-  	}
+    }
 
-  	postAction() {
-  		this.rules = {
+    postAction() {
+        this.rules = {
             title: {
-            	string: true,
-            	required: true,
-            	length: {max: 20}
+                string: true,
+                required: true,
+                length: {max: 20}
             },
             content: {
-            	string: true,
-            	required: true
+                string: true,
+                required: true
             },
             category_id: {
-            	int: true,
-            	required: true
+                int: true,
+                required: true
             },
             tabs: {
-            	array: true,
-            	default: []
+                array: true,
+                default: []
             }
         }
-  	}
+    }
+
+    putAction() {
+        this.rules = {
+            title: {
+                string: true,
+                required: true,
+                length: {max: 20}
+            },
+            content: {
+                string: true,
+                required: true
+            },
+            category_id: {
+                int: true,
+                required: true
+            },
+            tabs: {
+                array: true,
+                default: []
+            }
+        }
+    }
 };
