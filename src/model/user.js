@@ -32,7 +32,10 @@ module.exports = class extends think.Model {
             as: 't',
             on: ['`user`.`id`', '`t`.`user_ID`']
         }])
-            .where({'t.token': token}).find();
+            .where({
+                't.token': token,
+                'user.status': 0
+            }).find();
     }
 
     /**
@@ -58,7 +61,10 @@ module.exports = class extends think.Model {
      * @param id
      */
     getUserById(id) {
-        return this.where({id: id}).fieldReverse('password').find();
+        return this.where({
+            id: id,
+            status: 0
+        }).fieldReverse('password').find();
     }
 
     /**
@@ -66,7 +72,10 @@ module.exports = class extends think.Model {
      * @param email
      */
     getUserbyEmail(email) {
-        return this.where({email: email}).find();
+        return this.where({
+            email: email,
+            status: 0
+        }).find();
     }
 
     /**
@@ -74,7 +83,7 @@ module.exports = class extends think.Model {
      * @param query
      */
     getUserByUsernameOREmail(query) {
-        return this.where(`username = '${query}' OR email = '${query}'`).find();
+        return this.where(`username = '${query}' OR email = '${query}' AND status = 0`).find();
     }
 
     /**

@@ -34,8 +34,9 @@ module.exports = class extends think.Model {
                 as: 'u',
                 on: ['creator_id', 'id']
             })
-            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.status, p.creator_id, p.update_time, u.username AS author')
             .where(`title LIKE '%${search}%' OR content LIKE '%${search}%'`)
+            .where({'p.status': 0})
             .countSelect();
     }
 
@@ -55,7 +56,8 @@ module.exports = class extends think.Model {
                 as: 'u',
                 on: ['creator_id', 'id']
             })
-            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.creator_id, p.update_time, u.username AS author')
+            .where({'p.status': 0})
             .countSelect();
     }
 
@@ -76,9 +78,10 @@ module.exports = class extends think.Model {
                 as: 'u',
                 on: ['creator_id', 'id']
             })
-            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.creator_id, p.create_time, p.update_time, u.username AS author')
             .where({
-                category_id: categoryId
+                category_id: categoryId,
+                'p.status': 0
             })
             .countSelect();
     }
@@ -100,9 +103,10 @@ module.exports = class extends think.Model {
                 as: 'u',
                 on: ['creator_id', 'id']
             })
-            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.creator_id, p.update_time, u.username AS author')
             .where({
-                creator_id: creatorId
+                creator_id: creatorId,
+                'p.status': 0
             })
             .countSelect();
     }
@@ -127,7 +131,7 @@ module.exports = class extends think.Model {
                 as: 'c',
                 on: ['category_id', 'id']
             })
-            .field('p.id, p.title, p.creator_id, p.content, p.tags, p.hot, p.create_time, p.update_time, u.username AS author, c.id AS category_id, c.name AS category')
+            .field('p.id, p.title, p.creator_id, p.content, p.tags, p.hot, p.create_time, p.creator_id, p.update_time, u.username AS author, c.id AS category_id, c.name AS category')
             .find();
     }
 
@@ -138,5 +142,13 @@ module.exports = class extends think.Model {
      */
     updateHot(id) {
         return this.where({id: id}).increment('hot', 1);
+    }
+
+    /**
+     * 删除文章
+     * @param id
+     */
+    deletePost(id) {
+        return this.where({id: id}).update({status: -1})
     }
 };

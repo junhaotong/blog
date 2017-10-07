@@ -1,20 +1,23 @@
 <template>
-        <router-link :to="`/post/show/${article.id}`" class="article-item">
-            <Card>
-                <div>
-                    <h2 class="title" v-html="article.title"></h2>
-                    <p class="description" v-html="article.description"></p>
-                    <div class="footer">
-                        <div class="tags">
-                            <Tag v-for="tag in article.tags" :key="tag" color="blue">{{tag}}</Tag>
-                        </div>
-                        <div class="author">
-                            {{article.author}} | {{article.time}} | <Icon type="fireball icon"></Icon>{{article.hot}}
-                    </div>
-                    </div>
+    <Card v-show="status">
+        <div>
+            <router-link :to="`/post/show/${article.id}`" class="article-item">
+                <h2 class="title" v-html="article.title"></h2>
+                <p class="description" v-html="article.description"></p>
+            </router-link>
+            <div class="footer">
+                <div class="tags">
+                    <Tag v-for="tag in article.tags" :key="tag" color="blue">{{tag}}</Tag>
                 </div>
-            </Card>
-        </router-link>
+                <div class="author">
+                    <Button type="text" style="color: #bbbec4;" @click="deleteArticle">删除</Button>
+                    {{article.author}} | {{article.time}} |
+                    <Icon type="fireball icon"></Icon>
+                    {{article.hot}}
+                </div>
+            </div>
+        </div>
+    </Card>
 </template>
 
 <script>
@@ -23,6 +26,34 @@
             article: {
                 type: Object,
                 default: {}
+            }
+        },
+        data() {
+            return {
+                status: true
+            }
+        },
+        methods: {
+            deleteArticle() {
+                this.$Modal.confirm({
+                    title: '提示',
+                    content: '<p>是否确认删除?</p>',
+                    onOk: () => {
+                        this.axios.delete('/post', {
+                            params: {
+                                id: this.article.id
+                            }
+                        })
+                            .then(res => {
+                                if (res.data.code === 0) {
+                                    this.$Message.success(res.data.msg);
+                                    this.status = false;
+                                } else {
+                                    this.$Message.error(res.data.msg);
+                                }
+                            })
+                    }
+                });
             }
         }
     };
@@ -58,7 +89,7 @@
                 width: calc(~'100% - 200px');
             }
             .author {
-                display: flex;
+                /*display: flex;*/
                 align-items: center;
                 justify-content: flex-end;
                 width: 200px;

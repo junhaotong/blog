@@ -1,6 +1,6 @@
 <template>
     <Row class="article-content">
-        <i-col>
+        <i-col v-if="post.id">
             <div class="article-head">
                 <h1 class="title">{{post.title}}</h1>
                 <div class="info">
@@ -17,6 +17,9 @@
                         <div class="category">
                             <router-link :to="'/category/' + post.category_id">{{post.category}}</router-link>
                         </div>
+                    </div>
+                    <div class="edit" v-if="$store.state.userinfo.userinfo.id === post.creator_id">
+                        <Button @click="$router.push(`/post/edit/${post.id}`)"><Icon type="edit"></Icon> 编辑文章</Button>
                     </div>
                 </div>
             </div>
@@ -46,8 +49,8 @@
                         if (res.data.code === 0) {
                             this.post = res.data.data;
                         } else {
-                            this.$Message.error('文章获取失败');
-                            this.$router.go(-1);
+                            this.$Message.error(res.data.msg);
+                            this.$router.push('/');
                         }
                     })
             }
@@ -84,6 +87,8 @@
                 }
                 .meta {
                     display: flex;
+                    align-items: center;
+                    flex: 1;
                     color: #80848f;
                     font-size: 12px;
                     margin-left: 20px;

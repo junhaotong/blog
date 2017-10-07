@@ -34,7 +34,8 @@ export default {
                 'code',  // 插入代码
                 'undo',  // 撤销
                 'redo'  // 重复
-            ]
+            ],
+            spinShow: true
         }
     },
     methods: {
@@ -98,11 +99,35 @@ export default {
             })
         },
         /**
+         * 获取文章详情
+         */
+        getDetail() {
+            this.axios.get(`/post/${this.$route.params.id}`)
+                .then(res => {
+                    if (res.data.code === 0) {
+                        // this.postForm: {
+                        //     title: '',
+                        //         content: '',
+                        //         category_id: '',
+                        //         tags: []
+                        // }
+                        this.postForm.id = res.data.data.id;
+                        this.postForm.title = res.data.data.title;
+                        this.editor.txt.html(res.data.data.content);
+                        this.postForm.tags = res.data.data.tags;
+                        this.postForm.category_id = res.data.data.category_id;
+                        this.spinShow = false;
+                    } else {
+                        this.$Message.error(res.data.msg);
+                    }
+                });
+        },
+        /**
          * 发布文章
          */
         submit() {
             this.postForm.content = this.editor.txt.html();
-            
+
             if (this.postForm.title === '') {
                 this.$Message.error('文章标题不能为空');
                 return;
@@ -115,15 +140,27 @@ export default {
                 this.$Message.error('请选择文章分类');
                 return;
             }
-
-            this.axios.post('post', this.postForm)
-                .then(res => {
-                    if (res.data.code === 0) {
-                        this.$Message.success(res.data.msg);
-                    } else {
-                        this.$Message.error(res.data.msg);
-                    }
-                })
+            if (this.$route.params.id) {
+                this.axios.put('post', this.postForm)
+                    .then(res => {
+                        if (res.data.code === 0) {
+                            this.$Message.success(res.data.msg);
+                            this.$router.push('/');
+                        } else {
+                            this.$Message.error(res.data.msg);
+                        }
+                    })
+            } else {
+                this.axios.post('post', this.postForm)
+                    .then(res => {
+                        if (res.data.code === 0) {
+                            this.$Message.success(res.data.msg);
+                            this.$router.push('/');
+                        } else {
+                            this.$Message.error(res.data.msg);
+                        }
+                    })
+            }
         }
     },
     created() {
@@ -134,6 +171,13 @@ export default {
     },
     mounted() {
         this.initEditor();
-        this.getCategories();
+        this.getCategories()
+            .then(() => {
+                if(this.$route.params.id) {
+                    this.getDetail();
+                } else {
+                    this.spinShow = false;
+                }
+            })
     }
 };

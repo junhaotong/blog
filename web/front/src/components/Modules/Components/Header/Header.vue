@@ -21,6 +21,7 @@
                                 <Icon type="arrow-down-b"></Icon>
                             </a>
                             <DropdownMenu class="menu" slot="list">
+                                <DropdownItem><router-link to="/my_posts">我发表的文章</router-link></DropdownItem>
                                 <DropdownItem><router-link to="/setting">修改个人信息</router-link></DropdownItem>
                                 <DropdownItem><span @click="logout">退出登录</span></DropdownItem>
                             </DropdownMenu>

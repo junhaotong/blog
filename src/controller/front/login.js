@@ -22,6 +22,9 @@ module.exports = class extends Base {
             user['token'] = {
                 token: token
             }
+            delete user.password;
+            delete user.type;
+            delete user.status;
             return this.success(user, '登录成功');
         } else {
             return this.fail(1000, '验证码错误或已失效');
