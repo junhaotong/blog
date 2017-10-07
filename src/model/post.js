@@ -40,6 +40,26 @@ module.exports = class extends think.Model {
     }
 
     /**
+     * 获取所有文章时间排序
+     * @param page
+     * @returns {promise}
+     */
+    getPostsByTime(page) {
+        return this
+            .alias('p')
+            .page(page, think.config('pagesize'))
+            .order('update_time DESC')
+            .join({
+                table: 'user',
+                join: 'left',
+                as: 'u',
+                on: ['creator_id', 'id']
+            })
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.update_time, u.username AS author')
+            .countSelect();
+    }
+
+    /**
      * 通过文章分类ID获取文章列表热度排序
      * @param page
      * @param categoryId

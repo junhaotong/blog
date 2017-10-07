@@ -18,8 +18,10 @@ module.exports = class extends Base {
             let posts;
             if (this.get('category_id')) {
                 posts = await postService.getPostsByCategoryId(this.get('page') || 1, this.get('category_id'));
-            } else if(this.get('creator_id')) {
+            } else if (this.get('creator_id')) {
                 posts = await postService.getPostsByAuthorId(this.get('page') || 1, this.get('creator_id'));
+            } else if (this.get('order_by') === 'time') {
+                posts = await postService.getPostsByTime(this.get('page') || 1);
             } else {
                 posts = await postService.getPostsByHot(this.get('page') || 1, this.get('search'));
             }
@@ -40,7 +42,7 @@ module.exports = class extends Base {
         let title = striptags(this.post('title'));
         let description = striptags(this.post('content'));
         description = description.substr(0, 300);
-        let id = await postService.addPost(title, this.post('content'), this.post('category_id'),this.ctx.user.user_ID, this.post('tags'), description);
+        let id = await postService.addPost(title, this.post('content'), this.post('category_id'), this.ctx.user.user_ID, this.post('tags'), description);
         if (id) {
             return this.success({id: id}, '发布成功!');
         } else {

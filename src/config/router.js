@@ -11,5 +11,6 @@ module.exports = [
     [/^\/api\/post(?:\/(\d+))?$/, 'post?id=:1', 'rest'],
     [/^\/api\/send_code$/, 'mail/sendCode', 'post'],
     [/^\/api\/userinfo$/, 'front/user/userinfo', 'post', {validator: true}],
-    [/^\/api\/save_info$/, 'front/user/saveInfo', 'post', {validator: true}]
+    [/^\/api\/save_info$/, 'front/user/saveInfo', 'post', {validator: true}],
+    [/^\/api\/change_password/, 'front/user/changePassword', 'post', {validator: true}]
 ];

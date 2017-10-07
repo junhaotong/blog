@@ -30,12 +30,18 @@ export default new Router({
             path: 'author/:id',
             component: Components.Modules.Views.HomePage
         }, {
+            path: 'new',
+            component: Components.Modules.Views.HomePage
+        }, {
             path: 'setting',
             component: Components.Modules.Views.Setting.Setting,
             redirect: '/setting/basic',
             children: [{
                 path: 'basic',
                 component: Components.Modules.Views.Setting.Basic
+            }, {
+                path: 'account',
+                component: Components.Modules.Views.Setting.Account
             }]
         }]
     }, {

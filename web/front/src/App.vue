@@ -59,4 +59,13 @@
         text-align: center;
     }
 
+    .slide-fade-enter-active,
+    .slide-fade-leave-active {
+        transition: all .3s ease;
+    }
+
+    .slide-fade-enter, .slide-fade-leave-to {
+        transform: translateX(20px);
+        opacity: 0;
+    }
 </style>

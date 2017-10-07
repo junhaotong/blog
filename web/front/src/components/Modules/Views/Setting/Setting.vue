@@ -7,6 +7,12 @@
                     基础信息
                 </router-link>
             </div>
+            <div class="menu-item">
+                <router-link to="/setting/account">
+                    <Icon type="settings"></Icon>
+                    账户设置
+                </router-link>
+            </div>
         </div>
         <div class="setting-content">
             <router-view></router-view>

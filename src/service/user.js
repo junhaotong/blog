@@ -29,6 +29,7 @@ module.exports = class extends think.Service {
             email,
             password,
             avatar,
+            thumb_avatar,
             create_at: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
             type,
             status,
@@ -94,8 +95,8 @@ module.exports = class extends think.Service {
      * @param username
      * @returns {*}
      */
-    async updateUser(id, avatar, username) {
-        let line = await this.User.updateUser(id, avatar, username);
+    async updateUser(id, avatar, thumb_avatar, username) {
+        let line = await this.User.updateUser(id, avatar, thumb_avatar, username);
         return line;
     }
 
@@ -106,5 +107,16 @@ module.exports = class extends think.Service {
      */
     getUserById(id) {
         return this.User.getUserById(id);
+    }
+
+    /**
+     * 修改密码
+     * @param id
+     * @param new_pwd
+     * @returns {Promise.<Promise|*>}
+     */
+    async updatePassword(id, new_pwd) {
+        let line = await this.User.updatePassword(id, new_pwd);
+        return line;
     }
 };
