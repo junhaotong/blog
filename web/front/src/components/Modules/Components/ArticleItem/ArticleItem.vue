@@ -10,7 +10,7 @@
                     <Tag v-for="tag in article.tags" :key="tag" color="blue">{{tag}}</Tag>
                 </div>
                 <div class="author">
-                    <Button type="text" style="color: #bbbec4;" @click="deleteArticle">删除</Button>
+                    <Button type="text" v-if="$store.state.userinfo.userinfo.id === article.creator_id" style="color: #bbbec4;" @click="deleteArticle">删除</Button>
                     {{article.author}} | {{article.time}} |
                     <Icon type="fireball icon"></Icon>
                     {{article.hot}}
