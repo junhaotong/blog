@@ -16,9 +16,9 @@ const actions = {
             resolve();
         })
     },
-    update_userinfo ({commit}) {
+    update_userinfo ({commit}, data) {
         return new Promise((resolve, reject) => {
-            commit(types.UPDATE_USERINFO);
+            commit(types.UPDATE_USERINFO, data);
             resolve();
         })
     }
@@ -28,7 +28,8 @@ const mutations = {
     [types.LOG_OUT] (state) {
         state.userinfo = {};
     },
-    [types.UPDATE_USERINFO] (state) {
+    [types.UPDATE_USERINFO] (state, data) {
+        cookie.set('userinfo', JSON.stringify({id: data.id, username: data.username, token: data.token.token}));
         state.userinfo = cookie.getJSON('userinfo') || {};
         axios.defaults.headers.common['Authorization'] = state.userinfo.token;
     }
