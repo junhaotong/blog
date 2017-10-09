@@ -92,7 +92,7 @@
                 /*display: flex;*/
                 align-items: center;
                 justify-content: flex-end;
-                width: 200px;
+                width: 240px;
                 text-align: right;
                 font-size: 12px;
                 color: #80848f;
