@@ -46,4 +46,4 @@ window.vm = new Vue({
     store,
     template: '<App/>',
     components: { App }
-})
+});

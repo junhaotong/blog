@@ -8,7 +8,7 @@ module.exports = class extends think.Logic {
             title: {
                 string: true,
                 required: true,
-                length: {max: 20}
+                length: {max: 30}
             },
             content: {
                 string: true,
