@@ -15,6 +15,12 @@ module.exports = class extends Base {
         }
         let tokenController = this.controller('token');
         let token = await tokenController.newToken(user);
+        user['token'] = {
+                token: token
+            }
+            delete user.password;
+            delete user.type;
+            delete user.status;
         // let tokenData = {
         //     username: user.username,
         //     email: user.email,
@@ -25,6 +31,6 @@ module.exports = class extends Base {
         // let token = jwt.sign({ data: tokenData}, 'Jeremy');
         // let tokenService = this.service('token');
         // let result = await tokenService.saveToken(token, user.id);
-        return this.success({token: token}, '登录成功');
+        return this.success(user, '登录成功');
     }
 };
