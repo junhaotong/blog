@@ -2,7 +2,7 @@
     <Row class="article-content">
         <i-col v-if="post.id">
             <div class="article-head">
-                <h1 class="title">{{post.title}}</h1>
+                <h2 class="title">{{post.title}}</h2>
                 <div class="info">
                     <div class="author">
                         <router-link :to="'/author/' + post.creator_id" class="name">{{post.author}}</router-link>
