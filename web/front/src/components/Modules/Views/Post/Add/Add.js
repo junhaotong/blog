@@ -49,6 +49,12 @@ export default {
             // 上传图片
             this.editor.customConfig.uploadImgServer = '/api/upload/image';
             this.editor.customConfig.uploadFileName = 'image';
+            this.editor.customConfig.uploadImgHooks = {
+                customInsert: function (insertImg, result, editor) {
+                    var url = result.data.avatar;
+                    insertImg(url)
+                }
+            }
             this.editor.customConfig.zIndex = 1;
             this.editor.customConfig.height = 500;
             this.editor.create();
