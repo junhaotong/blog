@@ -183,7 +183,7 @@
                     color: #495060;
                     font-size: 16px;
                     padding: 10px 15px;
-                    &.router-link-active {
+                    &.router-link-exact-active {
                         color: #fff;
                         background: #2d8cf0;
                     }
