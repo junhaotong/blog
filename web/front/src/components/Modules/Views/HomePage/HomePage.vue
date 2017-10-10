@@ -177,11 +177,16 @@
             .bar-list {
                 border: 1px solid #e9eaec;
                 border-radius: 4px;
-                padding: 15px;
+                overflow: hidden;
                 .bar-item {
                     display: block;
                     color: #495060;
                     font-size: 16px;
+                    padding: 10px 15px;
+                    & .router-link-active {
+                        color: #fff;
+                        background: #2d8cf0;
+                    }
                     i {
                         margin-right: 10px;
                     }
