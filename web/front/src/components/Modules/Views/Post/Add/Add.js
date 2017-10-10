@@ -46,8 +46,9 @@ export default {
             this.editor = new wangEditor('#editor');
             this.editor.customConfig.debug = true;
             this.editor.customConfig.menus = this.menus;
-            // 开启base64上传图片
-            this.editor.customConfig.uploadImgShowBase64 = true;
+            // 上传图片
+            this.editor.customConfig.uploadImgServer = '/api/upload/image';
+            this.editor.customConfig.uploadFileName = 'image';
             this.editor.customConfig.zIndex = 1;
             this.editor.customConfig.height = 500;
             this.editor.create();
