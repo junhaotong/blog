@@ -14,7 +14,7 @@
 <style lang="less" scoped rel="stylesheet/less">
     .footer {
         margin-top: 30px;
-        padding: 30px;
+        padding: 15px;
         background-color: #373d41;
         color: #fff;
         text-align: center;

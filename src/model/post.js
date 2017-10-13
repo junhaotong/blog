@@ -118,7 +118,10 @@ module.exports = class extends think.Model {
     getPostById(id) {
         return this
             .alias('p')
-            .where({'p.id': id})
+            .where({
+                'p.id': id,
+                'p.status': 0
+            })
             .join({
                 table: 'user',
                 join: 'left',
