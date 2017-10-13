@@ -72,7 +72,8 @@
             margin-bottom: 10px;
             border-bottom: 1px solid #e9eaec;
             .title {
-                margin: 0;
+                font-size: 25px;
+                margin: 0 0 15px 0;
             }
             .info {
                 display: flex;

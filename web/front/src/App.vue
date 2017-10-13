@@ -32,7 +32,7 @@
         top: 0;
         left: 0;
         right: 0;
-        padding-bottom: 110px;
+        padding-bottom: 150px;
         min-height: 100%;
         font-size: 14px;
     }
