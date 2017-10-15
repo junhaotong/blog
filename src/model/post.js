@@ -134,7 +134,7 @@ module.exports = class extends think.Model {
                 as: 'c',
                 on: ['category_id', 'id']
             })
-            .field('p.id, p.title, p.creator_id, p.content, p.tags, p.hot, p.create_time, p.creator_id, p.update_time, u.username AS author, c.id AS category_id, c.name AS category')
+            .field('p.id, p.title, p.creator_id, p.content, p.tags, p.hot, p.create_time, p.creator_id, p.status, p.update_time, u.username AS author, c.id AS category_id, c.name AS category')
             .find();
     }
 
@@ -153,5 +153,40 @@ module.exports = class extends think.Model {
      */
     deletePost(id) {
         return this.where({id: id}).update({status: -1})
+    }
+
+    /**
+     * 获取所有文章列表,包括已删除的文章
+     * @param page
+     * @returns {promise}
+     */
+    getAllPosts(page) {
+        return this
+            .alias('p')
+            .page(page, think.config('pagesize'))
+            .order('update_time DESC')
+            .join({
+                table: 'user',
+                join: 'left',
+                as: 'u',
+                on: ['creator_id', 'id']
+            })
+            .field('p.id, p.title, p.tags, p.description, p.hot, p.create_time, p.creator_id, p.update_time, p.status, u.username AS author')
+            .countSelect();
+    }
+
+    /**
+     * 更新文章状态
+     * @param id
+     * @param new_status
+     */
+    updateStatus(id, new_status) {
+        return this
+            .where({
+                id: id
+            })
+            .update({
+                status: new_status
+            })
     }
 };

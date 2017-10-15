@@ -119,4 +119,20 @@ module.exports = class extends think.Service {
         let line = await this.User.updatePassword(id, new_pwd);
         return line;
     }
+
+    async changeStatus(id) {
+        let user = await this.User.getUserById(id);
+        let newStatus;
+        if (user.status === 0) {
+            newStatus = -1;
+        } else {
+            newStatus = 0;
+        }
+        let line = await this.User.updateStatus(id, newStatus);
+        if (line) {
+            return newStatus;
+        } else {
+            throw new Error('更新失败');
+        }
+    }
 };

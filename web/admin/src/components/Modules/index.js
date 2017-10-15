@@ -3,8 +3,10 @@
  */
 import User from './User';
 import Category from './Category';
+import Article from './Article';
 
 export default {
     User,
-    Category
+    Category,
+    Article
 }

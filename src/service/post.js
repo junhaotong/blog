@@ -109,4 +109,29 @@ module.exports = class extends think.Service {
     deletePost(id) {
         return this.Post.deletePost(id);
     }
+
+    /**
+     * 获取所有文章列表,包括已删除文章
+     * @param page
+     * @returns {promise}
+     */
+    getPostsByAdmin(page) {
+        return this.Post.getAllPosts(page);
+    }
+
+    async changeStatus(id) {
+        let user = await this.Post.getPostById(id);
+        let newStatus;
+        if (user.status === 0) {
+            newStatus = -1;
+        } else {
+            newStatus = 0;
+        }
+        let line = await this.Post.updateStatus(id, newStatus);
+        if (line) {
+            return newStatus;
+        } else {
+            throw new Error('更新失败');
+        }
+    }
 };

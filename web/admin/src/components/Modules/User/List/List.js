@@ -75,6 +75,11 @@ export default {
                             option = h('Button', {
                                 props: {
                                     type: 'error'
+                                },
+                                on: {
+                                    click: () => {
+                                        this.changeStatus(row.row._index)
+                                    }
                                 }
                             }, '禁止登录');
                             break;
@@ -82,6 +87,11 @@ export default {
                             option = h('Button', {
                                 props: {
                                     type: 'success'
+                                },
+                                on: {
+                                    click: () => {
+                                        this.changeStatus(row.row._index)
+                                    }
                                 }
                             }, '允许登录');
                             break;
@@ -107,6 +117,24 @@ export default {
                     }
                     this.ladingStatus = false;
                 })
+        },
+
+        /**
+         * 禁止/运行登录
+         * @param index
+         */
+        changeStatus(index) {
+            let row = this.data[index];
+            this.axios.post('/admin/change_status', {
+                id: row.id
+            })
+                .then(res => {
+                    if (res.data.code === 0) {
+                        row.status = res.data.data.status;
+                    } else {
+                        this.$Message.error('操作失败');
+                    }
+                });
         }
     },
     mounted() {

@@ -83,7 +83,12 @@ module.exports = class extends think.Model {
      * @param query
      */
     getUserByUsernameOREmail(query) {
-        return this.where(`username = '${query}' OR email = '${query}' AND status = 0`).find();
+        return this
+            .where(`username = '${query}' OR email = '${query}' AND status = 0`)
+            .where({
+                status: 0
+            })
+            .find();
     }
 
     /**
@@ -115,6 +120,21 @@ module.exports = class extends think.Model {
             })
             .update({
                 password: new_pwd
+            })
+    }
+
+    /**
+     * 更新用户status
+     * @param id
+     * @param new_status
+     */
+    updateStatus(id, new_status) {
+        return this
+            .where({
+                id: id
+            })
+            .update({
+                status: new_status
             })
     }
 };
