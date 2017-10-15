@@ -46,4 +46,12 @@ module.exports = class extends think.Logic {
             }
         }
     }
+
+    changeStatusAction() {
+        this.rules = {
+            id: {
+                required: true
+            }
+        }
+    }
 };

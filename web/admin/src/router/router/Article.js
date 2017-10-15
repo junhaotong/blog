@@ -12,5 +12,14 @@ export default [{
     component: resolve => {
         resolve(Components.Content);
     },
-    children: []
+    children: [{
+        path: 'list',
+        name: '文章列表',
+        component: Modules.Article.List
+    }, {
+        path: 'show/:id',
+        name: '文章详情',
+        hidden: true,
+        component: Modules.Article.Show
+    }]
 }]

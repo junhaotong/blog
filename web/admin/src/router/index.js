@@ -7,6 +7,7 @@ Vue.use(Router);
 
 import User from './router/User';
 import Category from './router/Category';
+import Article from './router/Article';
 
 export default new Router({
     routes: [{
@@ -25,4 +26,5 @@ export default new Router({
     }]
         .concat(User)
         .concat(Category)
+        .concat(Article)
 });

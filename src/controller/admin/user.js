@@ -13,4 +13,15 @@ module.exports = class extends BaseRest {
             return this.success(userList);
         }
     }
+
+    /**
+     * 更改用户status
+     * @returns {Promise.<void>}
+     */
+    async changeStatusAction() {
+        let user_id = this.post('id');
+        let userService = this.service('user');
+        let new_status = await userService.changeStatus(user_id);
+        return this.success({status: new_status}, '更新成功');
+    }
 };

@@ -29,7 +29,7 @@ const mutations = {
         state.userinfo = {};
     },
     [types.UPDATE_USERINFO] (state, data) {
-        cookie.set('userinfo', JSON.stringify({id: data.id, username: data.username, token: data.token.token}));
+        cookie.set('userinfo', {id:data.id,username:data.username,token:data.token.token});
         state.userinfo = cookie.getJSON('userinfo') || {};
         axios.defaults.headers.common['Authorization'] = state.userinfo.token;
     }

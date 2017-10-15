@@ -21,16 +21,25 @@ module.exports = class extends Base {
         } else {
             let posts;
             let user = this.ctx.user;
-            if (this.get('category_id')) {
-                posts = await postService.getPostsByCategoryId(this.get('page') || 1, this.get('category_id'));
-            } else if (this.get('creator_id')) {
-                posts = await postService.getPostsByAuthorId(this.get('page') || 1, this.get('creator_id'));
-            } else if (this.get('order_by') === 'time') {
-                posts = await postService.getPostsByTime(this.get('page') || 1);
-            } else if (this.get('type') === 'own') {
-                posts = await postService.getPostsByAuthorId(this.get('page') || 1, user.user_ID);
+            if (this.get('type') === 'admin') {
+                // 判断是否admin
+                if (this.ctx.user.type < 2) {
+                    return this.fail(this.config('unLoginErrno'), '没有权限');
+                } else {
+                    posts = await postService.getPostsByAdmin(this.get('page') || 1);
+                }
             } else {
-                posts = await postService.getPostsByHot(this.get('page') || 1, this.get('search'));
+                if (this.get('category_id')) {
+                    posts = await postService.getPostsByCategoryId(this.get('page') || 1, this.get('category_id'));
+                } else if (this.get('creator_id')) {
+                    posts = await postService.getPostsByAuthorId(this.get('page') || 1, this.get('creator_id'));
+                } else if (this.get('order_by') === 'time') {
+                    posts = await postService.getPostsByTime(this.get('page') || 1);
+                } else if (this.get('type') === 'own') {
+                    posts = await postService.getPostsByAuthorId(this.get('page') || 1, user.user_ID);
+                } else {
+                    posts = await postService.getPostsByHot(this.get('page') || 1, this.get('search'));
+                }
             }
             posts.data.forEach(post => {
                 post.tags = JSON.parse(post.tags);
@@ -85,5 +94,15 @@ module.exports = class extends Base {
         } else {
             return this.fail(this.config('defaultErrno'), '修改失败!');
         }
+    }
+
+    async changeStatusAction() {
+        let user = this.ctx.user;
+        if (user.type < 2) {
+            return this.fail(this.config('unLoginErrno'), '没有权限');
+        }
+        let postService = this.service('post');
+        let newStatus = await postService.changeStatus(this.post('id'));
+        return this.success({status: newStatus}, '更新成功')
     }
 };
