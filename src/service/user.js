@@ -29,7 +29,6 @@ module.exports = class extends think.Service {
             email,
             password,
             avatar,
-            thumb_avatar,
             create_at: moment(new Date()).format('YYYY-MM-DD HH:mm:ss'),
             type,
             status,
