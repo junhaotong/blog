@@ -2,7 +2,7 @@
     <Row class="sign-wrapper">
         <div id="particles-js"></div>
         <div class="sign-dialog">
-            <Tabs :value="tabName">
+            <Tabs @on-click="clickTab" :value="tabName">
                 <TabPane label="登录" name="login">
                     <Login></Login>
                 </TabPane>
@@ -48,6 +48,9 @@
                             });
                     }
                 })
+            },
+            clickTab(name) {
+                this.tabName = name;
             }
         },
         mounted() {
