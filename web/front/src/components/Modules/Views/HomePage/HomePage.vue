@@ -116,11 +116,11 @@
                         this.loadingStatus = false;
                     })
             },
-            beforeEnter: function (el) {
+            beforeEnter(el) {
                 el.style.opacity = 0;
                 el.style.transform = 'translateY(100px)';
             },
-            enter (el, done) {
+            enter(el, done) {
                 var delay = el.dataset.index * 100
                 Velocity(
                     el,
@@ -169,11 +169,16 @@
     .content {
         display: flex;
         .article-list {
-            width: calc(~'100% - 300px');
+            // width: calc(~'100% - 300px');
+            flex: 1;
+            width: 100%;
         }
         .TopstorySideBar {
-            width: 300px;
+            flex: 0 0 300px;
             padding-left: 30px;
+            @media (max-width: 768px) {
+                display: none;
+            }
             .bar-list {
                 border: 1px solid #e9eaec;
                 border-radius: 4px;

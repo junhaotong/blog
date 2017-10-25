@@ -100,6 +100,12 @@
                     margin: 0 5px;
                 }
             }
+            @media (max-width: 768px) {
+                .tags,
+                .author {
+                    flex: 1;
+                }
+            }
         }
     }
 </style>

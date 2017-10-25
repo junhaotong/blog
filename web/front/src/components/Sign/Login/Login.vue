@@ -22,7 +22,6 @@
                 <div id="captcha">
                     <template v-if="captchaStatus">
                         验证码加载中...
-
                     </template>
                 </div>
             </FormItem>
