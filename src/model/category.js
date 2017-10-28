@@ -30,7 +30,17 @@ module.exports = class extends think.Model {
      * 通过categoryId获取一个分类
      * @param id
      */
-    getCategoryBuId(id) {
+    getCategoryById(id) {
         return this.where({id: id, status: 0}).find();
+    }
+    
+    /**
+     * 更新文章分类
+     * @param {any} id 
+     * @param {any} data 
+     * @returns 
+     */
+    updateCategoryById(id, data) {
+        return this.where({id: id}).update(data);
     }
 };

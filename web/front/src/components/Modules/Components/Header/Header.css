@@ -1,0 +1,90 @@
+header {
+  border-bottom: 1px solid #ddd;
+}
+header .header {
+  background-color: #ffffff;
+  height: 60px;
+}
+header .header .logo {
+  font-size: 1.8rem;
+}
+header .header .search {
+  position: relative;
+  height: 32px;
+}
+@media (max-width: 768px) {
+  header .header .search {
+    display: none;
+  }
+}
+header .header .search .search-input {
+  float: right;
+}
+header .header .search .search-input input {
+  width: 32px;
+  border-radius: 50px;
+  z-index: 1;
+  padding-right: 25px;
+  transition: all .3s linear;
+  border-width: 0;
+}
+header .header .search .search-input input:focus {
+  width: 180px;
+  border-width: 1px;
+}
+header .header .search .search-input:hover input {
+  width: 180px;
+  border-width: 1px;
+}
+header .header .search .search-input .ivu-input-icon {
+  font-size: 22px;
+}
+header .header .search .search-btn {
+  position: absolute;
+  right: 0;
+  top: 1px;
+  border-radius: 50px;
+  width: 32px;
+  padding: 2px 9px;
+  font-size: 16px;
+}
+header .header .sign {
+  font-size: 14px;
+  padding: 0 10px;
+}
+header .header .user {
+  padding: 0 10px;
+}
+header .header .user .username {
+  margin: 0 10px;
+  font-size: 1.5rem;
+}
+header .header .user .btn-post {
+  margin: 0 10px;
+}
+header .header .user .btn-post a {
+  color: #fff;
+  font-size: 1.4rem;
+}
+header.headroom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  transition: transform 0.3s ease-in;
+}
+header.headroom.headroom--not-top.headroom--unpinned {
+  transform: translate(0, -60px);
+}
+header.headroom.headroom--not-top,
+header.headroom.headroom--not-top.headroom--pinned {
+  transform: none;
+}
+header .menu li {
+  text-align: center;
+  color: #495060;
+}
+header .menu li a {
+  color: #495060;
+}

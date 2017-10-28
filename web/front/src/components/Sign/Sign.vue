@@ -1,6 +1,7 @@
 <template>
-    <Row class="sign-wrapper">
+    <div>
         <div id="particles-js"></div>
+        <Row class="sign-wrapper">
         <div class="sign-dialog">
             <Tabs @on-click="clickTab" :value="tabName">
                 <TabPane label="登录" name="login">
@@ -12,6 +13,7 @@
             </Tabs>
         </div>
     </Row>
+    </div>
 </template>
 
 <script>
@@ -64,16 +66,19 @@
 </script>
 
 <style lang="less" rel="stylesheet/less">
-    body>.sign-wrapper {
+    #particles-js {
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    body .sign-wrapper.ivu-row {
         position: absolute;
         top: 0;
         left: 0;
         height: 100%;
         width: 100%;
-        #particles-js {
-            width: 100%;
-            height: 100%;
-        }
     }
 
     .sign-wrapper {

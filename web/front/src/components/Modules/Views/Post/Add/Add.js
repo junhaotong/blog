@@ -55,6 +55,9 @@ export default {
                     insertImg(url)
                 }
             }
+            this.editor.customConfig.uploadImgHeaders = {
+                'Authorization': this.$store.state.userinfo.userinfo.token
+            };
             this.editor.customConfig.zIndex = 1;
             this.editor.customConfig.height = 500;
             this.editor.create();

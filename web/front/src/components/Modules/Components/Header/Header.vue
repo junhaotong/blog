@@ -38,7 +38,7 @@
                                 shape="circle"
                                 class="btn-post"
                                 v-if="$route.path !== '/post/add'">
-                            <router-link to="/post/add">发表文章</router-link>
+                            <router-link to="/post/add">写文章</router-link>
                         </Button>
                     </div>
                     <router-link class="sign" to="/sign" v-else>登录</router-link>

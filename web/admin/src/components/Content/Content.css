@@ -1,0 +1,58 @@
+.layout {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+.layout .menu-left {
+  background: #464c5b;
+  flex: 0 0 200px;
+  overflow-y: auto;
+}
+.layout .menu-left .logo {
+  width: 90%;
+  height: 30px;
+  background: #5b6270;
+  border-radius: 3px;
+  margin: 15px auto;
+  color: #fff;
+  font-size: 15px;
+  line-height: 30px;
+  text-align: center;
+}
+.layout .menu-left .menu-icon {
+  font-size: 15px;
+}
+.layout .content-right {
+  flex: 1;
+  overflow-y: auto;
+}
+.layout .content-right .layout-ceiling {
+  background: #464c5b;
+  padding: 10px 10px;
+  height: 60px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 200px;
+  z-index: 1000;
+}
+.layout .content-right .layout-ceiling .cailing-item {
+  line-height: 40px;
+  color: #fff;
+  font-size: 14px;
+  display: inline-block;
+  padding: 0 20px;
+}
+.layout .content-right .layout-ceiling .cailing-item a {
+  color: #fff;
+}
+.layout .content-right .main {
+  margin-top: 60px;
+}
+.layout .content-right .main .bread {
+  background: #F7F7F7;
+  padding: 15px;
+}
+.layout .content-right .main .content {
+  padding: 15px;
+}

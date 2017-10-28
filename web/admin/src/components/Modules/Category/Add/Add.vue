@@ -8,7 +8,7 @@
                         :show-upload-list="false"
                         :on-success="uploadSuccess">
                     <div class="upload">
-                        <img v-if="Form.image" :src="'/' + Form.image" alt="">
+                        <img v-if="Form.image" :src="Form.image" alt="">
                         <template v-else>
                             <Icon type="ios-cloud-upload-outline"></Icon>
                             上传图片

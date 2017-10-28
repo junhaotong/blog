@@ -27,7 +27,8 @@
                                 avatar: true
                             },
                             attrs: {
-                                src: row.row.image || '#'
+                                src: row.row.image || '#',
+                                width: '100%'
                             }
                         })
                     },

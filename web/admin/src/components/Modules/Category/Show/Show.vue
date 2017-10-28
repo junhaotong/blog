@@ -28,11 +28,7 @@
         },
         methods: {
             getDetail() {
-                this.axios.get('/category', {
-                    params: {
-                        id: this.$route.query.id
-                    }
-                })
+                this.axios.get(`/category/${this.$route.query.id}`)
                     .then(res => {
                         if (res.data.code === 0) {
                             let data = res.data.data;

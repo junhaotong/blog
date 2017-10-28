@@ -9,7 +9,7 @@ module.exports = [
     [/^\/api\/login$/, 'front/login', 'post'],
     ['/api/regist', 'front/regist', 'post'],
     ['/api/upload/image', 'upload/image', 'post'],
-    [/^\/api\/category(?:\/(\d+))?$/, 'category', 'rest'],
+    [/^\/api\/category(?:\/(\d+))?$/, 'category?id=:1', 'rest'],
     [/^\/api\/post(?:\/(\d+))?$/, 'post?id=:1', 'rest'],
     [/^\/api\/send_code$/, 'mail/sendCode', 'post'],
     [/^\/api\/userinfo$/, 'front/user/userinfo', 'post', {validator: true}],
