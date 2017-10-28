@@ -1,3 +1,4 @@
+import images from 'images';
 module.exports = class extends think.Service {
     constructor(props) {
         super(props);
@@ -35,11 +36,29 @@ module.exports = class extends think.Service {
     }
 
     /**
-     * 通过categoryId获取分类
+     * 通过Id获取分类
      * @param id
      * @returns {*}
      */
-    getCategoryBuId(id) {
-        return this.Category.getCategoryBuId(id);
+    getCategoryById(id) {
+        return this.Category.getCategoryById(id);
+    }
+
+    /**
+     * 通过Id更新文章分类
+     * 
+     * @param {any} id 
+     * @param {any} image 
+     * @param {any} name 
+     * @param {any} description 
+     * @returns 
+     */
+    updateCategoryById(id, image, name, description) {
+        let data = {
+            image: image,
+            name: name,
+            description: description
+        }
+        return this.Category.updateCategoryById(id, data);
     }
 };

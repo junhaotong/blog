@@ -8,7 +8,7 @@ export default [{
     path: '/category',
     name: '文章分类管理',
     icon: 'ios-pricetag',
-    redirect: '/category/add',
+    redirect: '/category/list',
     component: resolve => {
         resolve(Components.Content);
     },
@@ -25,5 +25,10 @@ export default [{
         name: '分类详情',
         hidden: true,
         component: Modules.Category.Show
+    }, {
+        path: 'edit',
+        name: '修改分类',
+        hidden: true,
+        component: Modules.Category.Add
     }]
 }]
