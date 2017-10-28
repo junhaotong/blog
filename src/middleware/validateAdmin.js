@@ -3,7 +3,7 @@ const cookie = require('cookie');
 module.exports = (options, app) => {
     return async (ctx, next) => {
         if (ctx.isGet) {
-            let reqCookie = cookie.parse(ctx.req.headers.cookie);
+            let reqCookie = cookie.parse(ctx.req.headers.cookie || '');
             if (reqCookie.userinfo) {
                 let userinfo = JSON.parse(reqCookie.userinfo);
                 let userService = ctx.service('user');
