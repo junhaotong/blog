@@ -29,10 +29,7 @@
     "think-session-file": "^1.0.5",
     "think-view": "^1.0.0",
     "think-view-nunjucks": "^1.0.1",
-    "thinkjs": "^3.0.0",
-    "vue": "^2.4.4",
-    "vue-router": "^2.7.0",
-    "vue-server-renderer": "^2.4.4"
+    "thinkjs": "^3.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.24.1",
