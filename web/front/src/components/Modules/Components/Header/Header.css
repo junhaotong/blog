@@ -87,4 +87,5 @@ header .menu li {
 }
 header .menu li a {
   color: #495060;
+  display: block;
 }
