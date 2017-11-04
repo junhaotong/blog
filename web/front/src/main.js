@@ -8,12 +8,35 @@ import router from './router'
 import Nprogress from 'nprogress';
 import 'nprogress/nprogress.css';
 
-import store from './store'
+import store from './store';
 
-//import iview
-import iView from 'iview';
+//import iview components
+import {Row, Col} from 'iview/src/components/grid';
+import Input from 'iview/src/components/input';
+import Button from 'iview/src/components/button';
+import Dropdown from 'iview/src/components/dropdown';
+import Icon from 'iview/src/components/icon';
+import BackTop from 'iview/src/components/back-top';
+import Spin from 'iview/src/components/spin';
+import Card from 'iview/src/components/card';
+import Tag from 'iview/src/components/tag';
 
-Vue.use(iView);
+Vue.component(Row.name, Row);
+Vue.component(Col.name, Col);
+Vue.component(Input.name, Input);
+Vue.component(Button.name, Button);
+Vue.component(Dropdown.name, Dropdown);
+Vue.component('DropdownMenu', Dropdown.Menu);
+Vue.component('DropdownItem', Dropdown.Item);
+Vue.component(Icon.name, Icon);
+Vue.component('BackTop', BackTop);
+Vue.component(Spin.name, Spin);
+Vue.component(Card.name, Card);
+Vue.component(Tag.name, Tag);
+
+
+// import iView from 'iview';
+// Vue.use(iView);
 
 import 'normalize.css';
 
