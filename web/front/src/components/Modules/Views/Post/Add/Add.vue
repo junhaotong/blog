@@ -26,14 +26,13 @@
                                 :value="category.id"
                                 :key="category.id">
                             {{category.name}}
-
                         </Option>
                     </Select>
                 </FormItem>
             </Form>
         </i-col>
         <i-col>
-            <Button type="primary" size="large" @click="submit">发布文章</Button>
+            <Button type="primary" class="btn-submit" size="large" @click="submit">发布文章</Button>
         </i-col>
         <i-col class="spin-col" v-if="spinShow" span="24">
             <Spin size="large" fix></Spin>
@@ -69,5 +68,8 @@
         right: 0;
         height: 100%;
         background-color: rgba(0, 0, 0, .5);
+    }
+    .btn-submit {
+        margin-top: 15px;
     }
 </style>
