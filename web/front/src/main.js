@@ -20,6 +20,8 @@ import BackTop from 'iview/src/components/back-top';
 import Spin from 'iview/src/components/spin';
 import Card from 'iview/src/components/card';
 import Tag from 'iview/src/components/tag';
+import {Select, Option} from 'iview/src/components/select';
+import Message from 'iview/src/components/message'
 
 Vue.component(Row.name, Row);
 Vue.component(Col.name, Col);
@@ -33,6 +35,9 @@ Vue.component('BackTop', BackTop);
 Vue.component(Spin.name, Spin);
 Vue.component(Card.name, Card);
 Vue.component(Tag.name, Tag);
+Vue.component('Select', Select);
+Vue.component('Option', Option);
+Vue.prototype.$Message = Message;
 
 
 import 'iview/src/styles/index.less';
