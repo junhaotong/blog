@@ -1,21 +1,23 @@
 <template>
-    <Row class="setting-wrapper">
-        <div class="setting-menu">
-            <div class="menu-item">
-                <router-link to="/setting/basic">
-                    <Icon type="person"></Icon>
-                    基础信息
-                </router-link>
+    <Row>
+        <div class="setting-wrapper">
+            <div class="setting-menu">
+                <div class="menu-item">
+                    <router-link to="/setting/basic">
+                        <Icon type="person"></Icon>
+                        基础信息
+                    </router-link>
+                </div>
+                <div class="menu-item">
+                    <router-link to="/setting/account">
+                        <Icon type="settings"></Icon>
+                        账户设置
+                    </router-link>
+                </div>
             </div>
-            <div class="menu-item">
-                <router-link to="/setting/account">
-                    <Icon type="settings"></Icon>
-                    账户设置
-                </router-link>
+            <div class="setting-content">
+                <router-view></router-view>
             </div>
-        </div>
-        <div class="setting-content">
-            <router-view></router-view>
         </div>
     </Row>
 </template>
