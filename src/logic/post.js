@@ -18,7 +18,7 @@ module.exports = class extends think.Logic {
                 int: true,
                 required: true
             },
-            tabs: {
+            tags: {
                 array: true,
                 default: []
             }

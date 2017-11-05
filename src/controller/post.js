@@ -2,6 +2,7 @@ const Base = require('./base.js');
 const striptags = require('striptags');
 const moment = require('moment');
 moment.locale('zh-cn');
+const xss = require('xss');
 
 module.exports = class extends Base {
     async getAction() {
@@ -58,7 +59,9 @@ module.exports = class extends Base {
         let title = striptags(this.post('title'));
         let description = striptags(this.post('content'));
         description = description.substr(0, 300);
-        let id = await postService.addPost(title, this.post('content'), this.post('category_id'), this.ctx.user.user_ID, this.post('tags'), description);
+        let content = this.post('content');
+        content = xss(content);
+        let id = await postService.addPost(title, content, this.post('category_id'), this.ctx.user.user_ID, this.post('tags'), description);
         if (id) {
             return this.success({id: id}, '发布成功!');
         } else {
@@ -88,7 +91,9 @@ module.exports = class extends Base {
         let title = striptags(this.post('title'));
         let description = striptags(this.post('content'));
         description = description.substr(0, 300);
-        let id = await postService.updatePost(this.post('id'), title, this.post('content'), this.post('category_id'), this.ctx.user.user_ID, this.post('tags'), description);
+        let content = this.post('content');
+        content = xss(content);
+        let id = await postService.updatePost(this.post('id'), title, content, this.post('category_id'), this.ctx.user.user_ID, this.post('tags'), description);
         if (id) {
             return this.success({id: id}, '修改成功!');
         } else {
