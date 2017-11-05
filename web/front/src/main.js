@@ -23,7 +23,8 @@ import Tag from 'iview/src/components/tag';
 import {Select, Option} from 'iview/src/components/select';
 import Message from 'iview/src/components/message';
 import Tabs from 'iview/src/components/tabs';
-import Form from 'iview/src/components/form'
+import Form from 'iview/src/components/form';
+import Model from 'iview/src/components/modal'
 
 Vue.component(Row.name, Row);
 Vue.component(Col.name, Col);
@@ -44,6 +45,7 @@ Vue.component('TabPane', Tabs.Pane);
 Vue.component('Form', Form);
 Vue.component('FormItem', Form.Item);
 Vue.prototype.$Message = Message;
+Vue.prototype.$Model = Model;
 
 
 import 'iview/src/styles/index.less';
