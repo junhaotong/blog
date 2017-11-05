@@ -37,7 +37,11 @@ module.exports = class extends Base {
                 } else if (this.get('order_by') === 'time') {
                     posts = await postService.getPostsByTime(this.get('page') || 1);
                 } else if (this.get('type') === 'own') {
-                    posts = await postService.getPostsByAuthorId(this.get('page') || 1, user.user_ID);
+                    if (user.user_ID) {
+                        posts = await postService.getPostsByAuthorId(this.get('page') || 1, user.user_ID);   
+                    } else {
+                        this.fail(this.config('unLoginErrno'), '未登录');
+                    }
                 } else {
                     posts = await postService.getPostsByHot(this.get('page') || 1, this.get('search'));
                 }
