@@ -50,8 +50,6 @@ export default new Router({
         }]
     }, {
         path: '/sign',
-        component: resolve => {
-            resolve(Components.Sign);
-        },
+        component: Components.Sign
     }]
 });

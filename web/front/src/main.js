@@ -21,7 +21,9 @@ import Spin from 'iview/src/components/spin';
 import Card from 'iview/src/components/card';
 import Tag from 'iview/src/components/tag';
 import {Select, Option} from 'iview/src/components/select';
-import Message from 'iview/src/components/message'
+import Message from 'iview/src/components/message';
+import Tabs from 'iview/src/components/tabs';
+import Form from 'iview/src/components/form'
 
 Vue.component(Row.name, Row);
 Vue.component(Col.name, Col);
@@ -37,6 +39,10 @@ Vue.component(Card.name, Card);
 Vue.component(Tag.name, Tag);
 Vue.component('Select', Select);
 Vue.component('Option', Option);
+Vue.component('Tabs', Tabs);
+Vue.component('TabPane', Tabs.Pane);
+Vue.component('Form', Form);
+Vue.component('FormItem', Form.Item);
 Vue.prototype.$Message = Message;
 
 
