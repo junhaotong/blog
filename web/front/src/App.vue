@@ -32,9 +32,9 @@
         top: 0;
         left: 0;
         right: 0;
-        padding-bottom: 150px;
+        padding-bottom: 150px !important;
         min-height: 100%;
-        font-size: 14px;
+        font-size: 14px !important;
     }
 
     ol {

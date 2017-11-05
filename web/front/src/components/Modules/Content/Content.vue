@@ -41,7 +41,6 @@
 <style lang="less">
     main.container {
         padding-top: 80px;
-        padding-bottom: 80px;
     }
     .container {
         width: 992px;
