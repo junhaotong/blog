@@ -103,6 +103,11 @@
                 }
             }
         }
+        .content {
+            img {
+                max-width: 100%;
+            }
+        }
         .tags {
             margin-top: 10px;
             border-top: 1px solid #e9eaec;
