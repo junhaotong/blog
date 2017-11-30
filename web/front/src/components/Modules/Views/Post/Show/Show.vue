@@ -103,15 +103,19 @@
                 }
             }
         }
-        .content {
-            img {
-                max-width: 100%;
-            }
-        }
         .tags {
             margin-top: 10px;
             border-top: 1px solid #e9eaec;
             padding-top: 10px;
         }
+    }
+</style>
+<style lang="less">
+    .article-content{
+        .content {
+                img {
+                    max-width: 100%;
+                }
+            }
     }
 </style>
