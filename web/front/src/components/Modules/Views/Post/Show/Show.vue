@@ -113,6 +113,8 @@
 <style lang="less">
     .article-content{
         .content {
+            width: 100%;
+            overflow: hidden;
                 img {
                     max-width: 100%;
                 }
